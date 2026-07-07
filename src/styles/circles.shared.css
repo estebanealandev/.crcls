@@ -3357,7 +3357,7 @@ blockquote {
 }
 
 .thumbnail-small {
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f3f_bg-first.webp");
+  background-image: url("/assets/images/bg-first.webp");
   background-position: 50%;
   background-size: cover;
   min-width: 130px;
@@ -3372,7 +3372,7 @@ blockquote {
 }
 
 .thumbnail-small._03 {
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f44_Vintage-Lace-Portrait.webp");
+  background-image: url("/assets/images/Vintage-Lace-Portrait.webp");
 }
 
 .thumbnail-overlay {
@@ -3395,7 +3395,7 @@ blockquote {
 }
 
 .hero-photo {
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f3f_bg-first.webp");
+  background-image: url("/assets/images/bg-first.webp");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3406,7 +3406,7 @@ blockquote {
 
 .hero-photo._03 {
   z-index: 1;
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f44_Vintage-Lace-Portrait.webp");
+  background-image: url("/assets/images/Vintage-Lace-Portrait.webp");
 }
 
 .hero-photo._02 {
@@ -3415,7 +3415,7 @@ blockquote {
 
 .hero-photo._01 {
   z-index: 3;
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f3f_bg-first.webp");
+  background-image: url("/assets/images/bg-first.webp");
 }
 
 .hero-photo._04 {
@@ -3423,7 +3423,7 @@ blockquote {
 }
 
 .hero-photo._05 {
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f44_Vintage-Lace-Portrait.webp");
+  background-image: url("/assets/images/Vintage-Lace-Portrait.webp");
 }
 
 .hero-photo._06 {

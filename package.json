@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "start": "sirv dist --port $PORT --host --maxAge 31536000 --immutable"
+    "start": "sirv dist --port $PORT --host --maxage 31536000 --immutable"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "lighthouse": "^13.4.0",
+    "sharp": "^0.35.3",
     "wawoff2": "^2.0.1"
   }
 }
