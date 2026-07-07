@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "start": "sirv dist --port $PORT --host"
+    "start": "sirv dist --port $PORT --host --maxAge 31536000 --immutable"
   },
   "engines": {
     "node": ">=20.0.0"
