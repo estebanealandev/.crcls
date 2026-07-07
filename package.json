@@ -18,5 +18,9 @@
   },
   "overrides": {
     "esbuild": "^0.25.0"
+  },
+  "devDependencies": {
+    "lighthouse": "^13.4.0",
+    "wawoff2": "^2.0.1"
   }
 }

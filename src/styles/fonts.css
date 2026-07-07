@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: 'Switzer';
-  src: url('/assets/fonts/Switzer-VariableItalic.ttf') format('truetype');
+  src: url('/assets/fonts/Switzer-VariableItalic.woff2') format('woff2');
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'Switzer Variable';
-  src: url('/assets/fonts/Switzer-Variable.ttf') format('truetype');
+  src: url('/assets/fonts/Switzer-Variable.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: 'Librecasloncondensed Wght';
-  src: url('/assets/fonts/LibreCaslonCondensed-Italic_wght_.ttf') format('truetype');
+  src: url('/assets/fonts/LibreCaslonCondensed-Italic_wght_.woff2') format('woff2');
   font-weight: 400 700;
   font-style: italic;
   font-display: swap;
@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: 'Librecasloncondensed Wght';
-  src: url('/assets/fonts/LibreCaslonCondensed_wght_.ttf') format('truetype');
+  src: url('/assets/fonts/LibreCaslonCondensed_wght_.woff2') format('woff2');
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
