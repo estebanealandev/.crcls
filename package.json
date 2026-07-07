@@ -1,0 +1,22 @@
+{
+  "name": "jores-local",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "start": "sirv dist --port $PORT --host"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "astro": "^7.0.6",
+    "sirv-cli": "^3.0.1"
+  },
+  "overrides": {
+    "esbuild": "^0.25.0"
+  }
+}
