@@ -1,6 +1,9 @@
 ---
 import '../styles/fonts.css';
 import '../styles/circles.shared.css';
+import SEOHead from '../components/SEOHead.astro';
+import StructuredData from '../components/StructuredData.astro';
+import { DEFAULT_LOCALE, LOCALE_META, type Locale } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -8,39 +11,42 @@ interface Props {
   dataWfPage: string;
   wfScript?: string;
   preloadImage?: string | string[];
+  canonicalPath?: string;
+  locale?: Locale;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
-  description = "Circles is a Pérez Zeledón-based studio building AI systems, digital products, and commerce platforms for brands that intend to last.",
+  description = "Circles builds websites, brands, AI systems, and commerce platforms from Pérez Zeledón, Costa Rica, for brands that intend to last.",
   dataWfPage,
   wfScript = "/js/webflow.e6aeb930.103a96742c08bc67.js",
   preloadImage,
-  canonicalPath = "/"
+  canonicalPath = "/",
+  locale = DEFAULT_LOCALE,
+  ogImage,
+  ogType,
+  noindex = false
 } = Astro.props;
-
-const SITE_URL = "https://www.circlescr.com";
-const canonicalUrl = new URL(canonicalPath, SITE_URL).toString();
 ---
 <!DOCTYPE html>
-<html data-wf-page={dataWfPage} lang="en">
+<html data-wf-page={dataWfPage} lang={LOCALE_META[locale].tag}>
 <head>
   <meta charset="utf-8" />
-  <title>{title}</title>
-  <meta content={description} name="description" />
-  <link rel="canonical" href={canonicalUrl} />
-  <meta content={title} property="og:title" />
-  <meta content={description} property="og:description" />
-  <meta content={`${SITE_URL}/assets/images/thumb.jpg`} property="og:image" />
-  <meta content={canonicalUrl} property="og:url" />
-  <meta content="Circles" property="og:site_name" />
-  <meta content="en_US" property="og:locale" />
-  <meta content={title} name="twitter:title" />
-  <meta content={description} name="twitter:description" />
-  <meta content={`${SITE_URL}/assets/images/thumb.jpg`} name="twitter:image" />
-  <meta property="og:type" content="website" />
-  <meta content="summary_large_image" name="twitter:card" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <script is:inline src="/js/i18n-locale.js"></script>
+  <SEOHead
+    title={title}
+    description={description}
+    canonicalPath={canonicalPath}
+    locale={locale}
+    ogImage={ogImage}
+    ogType={ogType}
+    noindex={noindex}
+  />
+  <StructuredData canonicalPath={canonicalPath} locale={locale} noindex={noindex} />
 
   {preloadImage && (
     Array.isArray(preloadImage) ? (
@@ -54,6 +60,8 @@ const canonicalUrl = new URL(canonicalPath, SITE_URL).toString();
   
   <link rel="preload" href="/assets/fonts/Switzer-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/Switzer-VariableItalic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/LibreCaslonCondensed_wght_.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/s_u-4e0qyriQwlOrhSvowK_l5UcA6zuSYEqOzpPe3HOZJ5eX1WtLaQwmYiSeqqJ-k.woff2" as="font" type="font/woff2" crossorigin />
 
 
   

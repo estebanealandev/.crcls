@@ -1,7 +1,11 @@
 import { createServer } from 'node:http';
+import { readFile } from 'node:fs/promises';
 import sirv from 'sirv';
+import compression from 'compression';
 
 const PORT = process.env.PORT || 3000;
+const LOCALE_PREFIXES = ['es', 'fr', 'de', 'pt'];
+const LOCALE_PREFIX_RE = new RegExp(`^/(${LOCALE_PREFIXES.join('|')})(/|$)`);
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'hello@circlescr.com';
 const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Circles <hello@circlescr.com>';
@@ -277,6 +281,8 @@ async function handleFormSubmission(req, res, scope) {
   }
 }
 
+const compress = compression();
+
 createServer((req, res) => {
   res.setHeader('Content-Security-Policy', CSP);
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -297,9 +303,23 @@ createServer((req, res) => {
     return;
   }
 
-  assets(req, res, () => {
-    res.statusCode = 404;
-    res.end('Not found');
+  compress(req, res, () => {
+    assets(req, res, async () => {
+      const { pathname } = new URL(req.url, `http://${req.headers.host}`);
+      const localeMatch = pathname.match(LOCALE_PREFIX_RE);
+      const notFoundFile = localeMatch
+        ? `dist/${localeMatch[1]}/404/index.html`
+        : 'dist/404.html';
+
+      res.statusCode = 404;
+      try {
+        const html = await readFile(notFoundFile, 'utf8');
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        res.end(html);
+      } catch {
+        res.end('Not found');
+      }
+    });
   });
 }).listen(PORT, () => {
   console.log(`Serving dist on :${PORT}`);
