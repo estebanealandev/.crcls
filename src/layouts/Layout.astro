@@ -19,8 +19,6 @@ const {
 } = Astro.props;
 ---
 <!DOCTYPE html>
-<!-- Built with Astro -->
-
 <html data-wf-page={dataWfPage} lang="en">
 <head>
   <meta charset="utf-8" />
@@ -28,7 +26,7 @@ const {
   <meta content={description} name="description" />
   <meta content={title} property="og:title" />
   <meta content={description} property="og:description" />
-  <meta content="/assets/images/69ea3b293f46d55a8da19f6b_thumb.jpg" property="og:image" />
+  <meta content="/assets/images/thumb.jpg" property="og:image" />
   <meta content={title} name="twitter:title" />
   <meta content={description} name="twitter:description" />
   <meta property="og:type" content="website" />
@@ -43,7 +41,6 @@ const {
     )
   )}
   
-  <link rel="preconnect" href="https://cdn.prod.website-files.com" crossorigin />
   <link rel="preconnect" href="https://videos.pexels.com" crossorigin />
   
   <link rel="preload" href="/assets/fonts/Switzer-Variable.woff2" as="font" type="font/woff2" crossorigin />

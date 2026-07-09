@@ -20,3 +20,7 @@ yarn-error.log*
 
 # agent / AI config
 .agents/
+.claude/
+
+# local tooling artifacts (e.g. lighthouse-downloaded chromium)
+chrome/
