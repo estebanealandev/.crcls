@@ -1,3 +1,5 @@
+/* crcls — Design System */
+
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -3419,7 +3421,7 @@ blockquote {
 }
 
 .hero-photo._04 {
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f40_bg-second.webp");
+  background-image: url("/assets/images/bg-second.webp");
 }
 
 .hero-photo._05 {
@@ -3427,11 +3429,11 @@ blockquote {
 }
 
 .hero-photo._06 {
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f42_Dramatic-Blue-Portrait-(1).webp");
+  background-image: url("/assets/images/Dramatic-Blue-Portrait-_1_.webp");
 }
 
 .hero-photo._07 {
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19f6c_Focused-Gaze-Portrait.webp");
+  background-image: url("/assets/images/Focused-Gaze-Portrait.webp");
 }
 
 .hero-content {
@@ -4485,7 +4487,7 @@ blockquote {
 }
 
 .photo-badge {
-  background-image: url("https://cdn.prod.website-files.com/69ea3b293f46d55a8da1998e/69ea3b293f46d55a8da19c2c_unlock-2.jpg");
+  background-image: url("/assets/images/unlock-2.jpg");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
