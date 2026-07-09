@@ -21,6 +21,7 @@ yarn-error.log*
 # agent / AI config
 .agents/
 .claude/
+skills-lock.json
 
 # local tooling artifacts (e.g. lighthouse-downloaded chromium)
 chrome/

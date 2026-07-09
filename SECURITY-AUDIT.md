@@ -255,4 +255,25 @@ Ver el archivo `server.mjs` en la raíz del repo para el código completo y actu
 
 **Sin cambios (por decisión consultada):** el video de Aether se mantiene en `https://videos.pexels.com`, con la CSP `media-src` ya restringida a ese host (H-04).
 
+---
+
+## Adenda — 2026-07-09: superficie de API añadida (rebrand a Circles)
+
+El resumen ejecutivo de este documento (arriba) describe el sitio como "estático... sin backend/API/DB/auth". Eso dejó de ser exacto: `server.mjs` ahora expone `POST /api/contact` y `POST /api/subscribe` para los formularios reales del sitio (antes apuntaban a la API de formularios de Webflow, que no existe para este dominio).
+
+Controles implementados en ambos endpoints:
+- **La API key de Resend nunca llega al cliente** — el envío ocurre solo en `server.mjs`, vía `fetch` server-to-server a `api.resend.com`.
+- **Validación de origen**: se exige header `Origin` presente y con el mismo host que `Host`; si no, `403`.
+- **Rate limiting** en memoria por IP (5 solicitudes / 10 min por endpoint), con purga periódica del mapa.
+- **Honeypot** (`company`) + **trampa de tiempo** (`elapsedMs` < 1.2s): ambos devuelven `200 {ok:true}` sin enviar correo, para no revelarle al bot qué detector activó.
+- **Validación y saneamiento de entradas**: límites de longitud, regex para nombre/email, y `cleanText()` elimina caracteres de control (incluido CR/LF, para evitar inyección de contenido) antes de interpolar cualquier campo en el HTML/asunto del correo. El HTML del correo escapa entidades (`escapeHtml`).
+- **Body cap** de 16 KB por request (`413` si se excede).
+- **Manejo de errores**: sin `RESEND_API_KEY` configurada → `500` genérico; fallo de Resend → `502` genérico. En ningún caso se hace `console.log`/`console.error` del email, nombre o mensaje del remitente — solo se registra el tipo de evento (p. ej. "RESEND_API_KEY no configurada") o el status code de Resend.
+
+**Limitación conocida, aceptada por escala:** el rate limiting es en memoria de proceso — se resetea en cada deploy/restart y no se comparte entre instancias si Railway llegara a escalar horizontalmente. Suficiente para el volumen esperado de un sitio de estudio; si el tráfico de spam se vuelve un problema, la siguiente mejora natural es mover el contador a un store compartido (Redis/Upstash).
+
+**CSP:** `connect-src 'self'` ya permitía el `fetch()` del cliente a `/api/*` sin cambios. `form-action` se mantuvo en `'none'` (no en `'self'`) porque el envío real ocurre por `fetch` interceptando `submit` — así, si el JS de `public/js/forms.js` llegara a fallar, el navegador bloquea el POST/GET nativo del `<form>` en vez de dejarlo navegar a una URL sin backend real detrás.
+
+Archivos añadidos/tocados en esta adenda: `server.mjs` (endpoints + helpers), `public/js/forms.js` (nuevo), `.env.example` (nuevo, documenta `RESEND_API_KEY`), y los `<form>` de `contact.astro` + el subscribe-form del footer (15 páginas) — se les quitaron los atributos específicos de Webflow (`data-wf-page-id`, `method="get"`) y se les añadió el campo honeypot oculto.
+
 **Pendiente de decisión del usuario:** ninguno de los fixes anteriores toca `railway.json` ni requiere acción en Railway — HTTPS/TLS ya es automático en su edge. El `_headers` file era la única pieza que dependía de la plataforma de hosting; con `server.mjs` la configuración de headers ahora es portable a cualquier host que ejecute Node.
