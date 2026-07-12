@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Start",
+    "about": "Über uns",
+    "work": "Arbeiten",
+    "journal": "Journal",
+    "contact": "Kontakt",
+    "licensing": "Lizenzen",
+    "menuOpen": "Menü",
+    "menuClose": "Schließen",
+    "location": "Pérez Zeledón, CR",
+    "logoAriaLabel": "Circles — Startseite",
+    "menuToggleAriaLabel": "Navigationsmenü ein-/ausblenden"
+  },
+  "footer": {
+    "ctaTitle": "©Einmal gebaut. Richtig gemacht.",
+    "ctaButton": "Sprechen wir",
+    "logoLabel": "Studio",
+    "newBusinessLabel": "Neue Projekte:",
+    "newsletterLabel": "Durchdachte Updates, nicht mehr.",
+    "copyright": "© Circles. Alle Rechte vorbehalten.",
+    "addressLabel": "Adresse:",
+    "addressLines": ["Pérez Zeledón,", "Costa Rica"],
+    "phoneLabel": "Telefon:",
+    "socialAriaLabels": {
+      "x": "Circles auf X",
+      "instagram": "Circles auf Instagram",
+      "linkedin": "Circles auf LinkedIn"
+    }
+  },
+  "forms": {
+    "subscribe": {
+      "emailPlaceholder": "E-Mail",
+      "submitLabel": "Abonnieren",
+      "waitLabel": "Wird gesendet...",
+      "successMessage": "Vielen Dank für Ihr Abonnement.",
+      "errorMessage": "Etwas ist schiefgelaufen. Bitte versuchen Sie es gleich noch einmal.",
+      "ariaLabel": "Newsletter abonnieren"
+    }
+  },
+  "languageSwitcher": {
+    "ariaLabel": "Sprache auswählen"
+  },
+  "tooltip": {
+    "viewProject": ["Projekt", "ansehen"],
+    "readMore": ["Mehr", "lesen"]
+  },
+  "misc": {
+    "backToHome": "Zurück zur Startseite"
+  },
+  "projectMeta": {
+    "descriptionLabel": "Projektbeschreibung",
+    "typeLabel": "Typ",
+    "caseStudyValue": "Fallstudie",
+    "dateLabel": "Datum",
+    "dateValue": "2026",
+    "servicesLabel": "Leistungen",
+    "relatedWork": {
+      "prefix": "Verwandte Projekte",
+      "boldText": "Beweise statt Behauptungen.",
+      "grayText": "Ausgewählte Projekte, in denen Marke, Design und Leistung als Einheit wirken."
+    }
+  },
+  "postMeta": {
+    "relatedStory": {
+      "prefix": "Verwandter Beitrag",
+      "boldText": "Wo Geschichten zu Systemen werden.",
+      "grayText": "Substanz, Storytelling und Distribution als ein Ganzes."
+    }
+  }
+}

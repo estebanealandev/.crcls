@@ -1,0 +1,18 @@
+{
+  "title": "How Great Design Drives Perception and Growth",
+  "seo": {
+    "title": "How Great Design Drives Perception and Growth | Circles Journal",
+    "description": "Design isn't decoration. It's the fastest signal a visitor reads before deciding to trust you. Here's how Circles connects visual design to conversion, not just aesthetics."
+  },
+  "backToBlogLabel": "Back to Blog",
+  "body": [
+    { "type": "p", "text": "A visitor decides whether to trust a company before they read a single word, usually inside two seconds, based on layout, spacing, and type alone. Great design isn't a finishing touch applied after the \"real\" work is done. It's the first argument your brand makes, and it either earns the next ten seconds of attention or loses them." },
+    { "type": "p", "text": "We treat perception as a growth lever, not an aesthetic preference. The same craft makes an interface feel considered: consistent spacing, a type scale that establishes hierarchy, motion that clarifies instead of decorates. It's what makes a stranger believe the product behind it is considered too." },
+    { "type": "h3", "text": "Design as a trust signal" },
+    { "type": "p", "text": "Buyers use design as a proxy for competence, especially when they can't evaluate the product itself yet. A checkout flow with careless alignment reads as a company that might be careless with a shipment or a support ticket. A pricing page with confusing hierarchy reads as a company hiding something. None of that is fair, and all of it is how people actually decide." },
+    { "type": "blockquote", "text": "Nobody consciously thinks \"the kerning is off, I don't trust this.\" They just feel a small doubt, and doubt is what kills conversion." },
+    { "type": "p", "text": "This is why we never separate brand work from growth work. A rebrand that doesn't move a conversion number, or a landing page redesign that isn't wired into analytics, is unfinished work wearing a finished coat of paint." },
+    { "type": "h3", "text": "Where design meets the numbers" },
+    { "type": "p", "text": "In practice, this means every visual decision on a client site earns its place by supporting a specific outcome: a hero that states the value proposition before the fold ends, a form that removes friction instead of collecting it, a product page that answers the objection before the visitor has to ask. Design and performance marketing aren't two departments handing off a file. They're one conversation, running the whole way through." }
+  ]
+}

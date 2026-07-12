@@ -1,0 +1,59 @@
+---
+interface Props {
+  t: {
+    nameLabel: string;
+    firstNamePlaceholder: string;
+    lastNamePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+    companyLabel: string;
+    privacyNotice: string;
+    submitLabel: string;
+    waitLabel: string;
+    successTitle: string;
+    successMessage: string;
+    errorMessage: string;
+  };
+}
+
+const { t } = Astro.props;
+---
+
+<div id="Form" class="hero-form w-form">
+  <form id="contact-form" name="contact-form" class="hero-form-wrap w-node-_9b63f02c-8bda-0052-8f7c-69171281d1d5-8da19975" data-crcls-form="contact">
+    <div class="top-text gray">{t.nameLabel}</div>
+    <div class="feild-block-wrapper invert">
+      <div class="field-block invert">
+        <input class="field-main-contact w-node-_9b63f02c-8bda-0052-8f7c-69171281d1da-8da19975 w-input" maxlength="256" name="firstName" placeholder={t.firstNamePlaceholder} type="text" id="First-Name" autocomplete="given-name" required />
+        <input class="field-main-contact w-node-_9b63f02c-8bda-0052-8f7c-69171281d1db-8da19975 w-input" maxlength="256" name="lastName" placeholder={t.lastNamePlaceholder} type="text" id="Last-Name" autocomplete="family-name" required />
+      </div>
+      <div class="field-block invert">
+        <div class="top-text gray">{t.emailLabel}</div>
+        <input class="field-main-contact w-node-_9b63f02c-8bda-0052-8f7c-69171281d1df-8da19975 w-input" maxlength="256" name="email" placeholder={t.emailPlaceholder} type="email" id="Email" autocomplete="email" required />
+      </div>
+      <div class="field-block invert">
+        <div class="top-text gray">{t.messageLabel}</div>
+        <textarea id="Message" name="message" maxlength="5000" placeholder={t.messagePlaceholder} class="field-main-contact large w-node-_9b63f02c-8bda-0052-8f7c-69171281d1e3-8da19975 w-input" required></textarea>
+      </div>
+      <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+        <label for="contact-company">{t.companyLabel}</label>
+        <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="privacy-space">
+        <p class="p-smaller">{t.privacyNotice}</p>
+      </div>
+      <div class="button-flex">
+        <input type="submit" data-wait={t.waitLabel} class="button w-button" value={t.submitLabel} />
+      </div>
+    </div>
+  </form>
+  <div id="contact-form-success" class="success-message w-form-done" role="status">
+    <h3>{t.successTitle}</h3>
+    <div>{t.successMessage}</div>
+  </div>
+  <div id="contact-form-error" class="error-message w-form-fail" role="alert">
+    <div>{t.errorMessage}</div>
+  </div>
+</div>

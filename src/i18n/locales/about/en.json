@@ -1,0 +1,97 @@
+{
+  "seo": {
+    "title": "About Circles — AI, Product & Brand Studio in Pérez Zeledón",
+    "description": "Circles is a Pérez Zeledón-based studio unifying AI, product engineering, commerce, and brand strategy. This is how we think, and how we work.",
+    "jsonLdName": "About Circles",
+    "jsonLdDescription": "Circles is a Pérez Zeledón-based studio unifying AI, product engineering, commerce, and brand strategy. This is how we think, and how we work."
+  },
+  "hero": {
+    "title": "About"
+  },
+  "gallery": {
+    "images": [
+      { "alt": "Portrait study in modern fashion styling" },
+      { "alt": "Portrait of a model in a tailored red suit" },
+      { "alt": "Two men posed in matching white suits" },
+      { "alt": "Portrait of a model wearing statement sunglasses" },
+      { "alt": "Portrait of a stylish man photographed outdoors" },
+      { "alt": "Studio portrait of a woman" },
+      { "alt": "Calm, serene portrait study" }
+    ],
+    "stickyTitle": "Think. Build. Compound."
+  },
+  "philosophy": {
+    "lead": "Circles",
+    "boldText": "Built beyond identity. Vision defined. Brand shaped. Systems engineered. Intelligence embedded.",
+    "grayText": "We create structure where there is noise, clarity where there is complexity, and direction where there is friction. Brand, AI, product, and growth move together. Nothing stands alone. Built to scale. Built to endure.",
+    "values": [
+      {
+        "title": "Clarity©",
+        "number": "(01)",
+        "description": "We remove noise and define direction. Every engagement starts with a clear read on the problem, not assumptions."
+      },
+      {
+        "title": "Structure©",
+        "number": "(02)",
+        "description": "We build systems, not fragments. Brand, product, and AI aligned into one cohesive flow instead of four disconnected vendors."
+      },
+      {
+        "title": "Precision©",
+        "number": "(03)",
+        "description": "Every detail matters. From the first workflow diagram to the last line of code, nothing is accidental."
+      },
+      {
+        "title": "Performance©",
+        "number": "(04)",
+        "description": "If it doesn't move a number, it doesn't ship. Everything we build is measured, monitored, and built to compound."
+      }
+    ]
+  },
+  "team": {
+    "prefix": "Team",
+    "boldText": "No hierarchy for show. No disconnected roles.",
+    "grayText": "Only aligned minds, structured collaboration, and execution that delivers. Built to move as one.",
+    "members": [
+      {
+        "image": "/assets/images/circles-team-01.webp",
+        "role": "Founder & Creative Director",
+        "alt": "Portrait of the Circles Founder & Creative Director"
+      },
+      {
+        "image": "/assets/images/circles-team-03.webp",
+        "role": "Lead Product Engineer",
+        "alt": "Portrait of the Circles Lead Product Engineer"
+      },
+      {
+        "image": "/assets/images/circles-team-02.webp",
+        "role": "AI & Automation Lead",
+        "alt": "Portrait of the Circles AI & Automation Lead"
+      },
+      {
+        "image": "/assets/images/circles-team-04.webp",
+        "role": "Client Success",
+        "alt": "Portrait of the Circles Client Success lead"
+      }
+    ],
+    "ctaLabel": "Work with us"
+  },
+  "stack": {
+    "prefix": "Stack",
+    "boldText": "No decoration. Just tools that earn their place.",
+    "grayText": "What we reach for when brand, product, and AI need to ship together.",
+    "columns": {
+      "category": "Category",
+      "tools": "Tools",
+      "focus": "Focus"
+    },
+    "rows": [
+      { "category": "AI & Automation", "tools": "LangChain, OpenAI API, n8n", "focus": "Agents©" },
+      { "category": "Product Engineering", "tools": "Next.js, Astro, React Native", "focus": "Product©" },
+      { "category": "Commerce", "tools": "Shopify, Medusa", "focus": "Commerce©" },
+      { "category": "Automation", "tools": "Zapier, Make, n8n", "focus": "Systems©" },
+      { "category": "Marketing", "tools": "GA4, Search Console, HubSpot", "focus": "Growth©" },
+      { "category": "Brand", "tools": "Figma, Adobe CC", "focus": "Identity©" },
+      { "category": "Infrastructure", "tools": "Railway, Vercel, Resend", "focus": "Delivery©" }
+    ]
+  }
+}

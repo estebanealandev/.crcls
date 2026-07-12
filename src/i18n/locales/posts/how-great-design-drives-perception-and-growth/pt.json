@@ -1,0 +1,18 @@
+{
+  "title": "Como o bom design impulsiona a perceção e o crescimento",
+  "seo": {
+    "title": "Como o bom design impulsiona a perceção e o crescimento | Circles Journal",
+    "description": "O design não é decoração. É o sinal mais rápido que um visitante capta antes de decidir se confia em si. Eis como a Circles liga o design visual à conversão, e não apenas à estética."
+  },
+  "backToBlogLabel": "Voltar ao blogue",
+  "body": [
+    { "type": "p", "text": "Um visitante decide se confia numa empresa antes de ler uma única palavra, normalmente em menos de dois segundos, com base apenas no layout, no espaçamento e na tipografia. Um bom design não é um retoque final aplicado depois de terminado o «verdadeiro» trabalho. É o primeiro argumento que a sua marca apresenta, e ou ganha os dez segundos de atenção seguintes, ou perde-os." },
+    { "type": "p", "text": "Para nós, a perceção é uma alavanca de crescimento, não uma preferência estética. É o mesmo cuidado que faz uma interface parecer bem pensada: espaçamento consistente, uma escala tipográfica que estabelece hierarquia, movimento que esclarece em vez de decorar. É isso que leva um desconhecido a acreditar que o produto por trás também é bem pensado." },
+    { "type": "h3", "text": "O design como sinal de confiança" },
+    { "type": "p", "text": "Os compradores usam o design como indicador de competência, sobretudo quando ainda não conseguem avaliar o próprio produto. Um checkout com um alinhamento descuidado transmite a ideia de uma empresa que também pode ser descuidada com uma entrega ou um pedido de suporte. Uma página de preços com uma hierarquia confusa transmite a ideia de uma empresa que esconde alguma coisa. Nada disto é justo, e é exatamente assim que as pessoas decidem." },
+    { "type": "blockquote", "text": "Ninguém pensa conscientemente «o kerning está mal, não confio nisto». Sentem apenas uma pequena dúvida, e é a dúvida que mata a conversão." },
+    { "type": "p", "text": "É por isso que nunca separamos o trabalho de marca do trabalho de crescimento. Um rebranding que não move um número de conversão, ou um redesenho de landing page que não está ligado à analítica, é trabalho por terminar com uma camada de tinta acabada." },
+    { "type": "h3", "text": "Onde o design encontra os números" },
+    { "type": "p", "text": "Na prática, isto significa que cada decisão visual no site de um cliente só ganha o seu lugar se apoiar um resultado específico: um hero que declara a proposta de valor antes do final do fold, um formulário que remove fricção em vez de a acumular, uma página de produto que responde à objeção antes de o visitante ter de a colocar. O design e o marketing de performance não são dois departamentos a passar um ficheiro um ao outro. São uma única conversa, do início ao fim." }
+  ]
+}

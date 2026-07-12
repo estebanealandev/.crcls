@@ -1,0 +1,15 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import PostPage from '../../../templates/PostPage.astro';
+import { POSTS } from '../../../data/posts';
+import { localeSlugPaths } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return localeSlugPaths(POSTS);
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { locale, slug } = Astro.props;
+---
+
+<PostPage locale={locale} slug={slug} />

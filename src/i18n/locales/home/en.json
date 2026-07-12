@@ -1,0 +1,122 @@
+{
+  "seo": {
+    "title": "Circles — Web Design, Branding & AI Studio in Pérez Zeledón, Costa Rica",
+    "description": "Circles builds websites, brands, AI systems, and commerce platforms from Pérez Zeledón, Costa Rica. Strategy, design, and engineering, run as one connected system.",
+    "jsonLdName": "Circles — AI, Product & Growth Studio",
+    "jsonLdDescription": "Circles builds AI systems, digital products, and commerce platforms for brands that intend to last. Strategy, design, and engineering, run as one connected system.",
+    "servicesListName": "Services",
+    "services": [
+      "Brand Direction",
+      "Performance & Marketing",
+      "Product & Commerce Engineering",
+      "AI & Systems Automation"
+    ]
+  },
+  "hero": {
+    "imageAlt": "Circles studio: AI, product, and commerce systems",
+    "strategyLine1": "Strategy, design, and code.",
+    "strategyLine2": "Engineered as one system.",
+    "mainLine1": "We build AI, product, and commerce systems that compound.",
+    "mainLine2": "Costa Rica-based. Built for brands that plan to stay."
+  },
+  "works": {
+    "title": "Works"
+  },
+  "services": {
+    "prefix": "Services",
+    "boldText": "Built beyond a checklist.",
+    "grayText": "Brand, product, AI, and growth, engineered as one connected system.",
+    "quote": {
+      "text": "“We don't hand off a deliverable and disappear. We build the system, then stay close enough to keep it compounding.”",
+      "attribution": "Circles, Founding Team"
+    },
+    "cards": [
+      {
+        "titleLine1": "Performance &",
+        "titleLine2": "Marketing",
+        "items": [
+          "Technical & Local SEO",
+          "Performance Marketing",
+          "Conversion Rate Optimization",
+          "Funnel & Analytics Design",
+          "Email Marketing",
+          "CRM Integration",
+          "Growth Strategy"
+        ]
+      },
+      {
+        "titleLine1": "AI & Systems",
+        "titleLine2": "Automation",
+        "items": [
+          "AI Agents & Workflows",
+          "AI Customer Support",
+          "AI Internal Tools",
+          "AI Strategy & Consulting",
+          "CRM & ERP Integration",
+          "Zapier, Make & n8n",
+          "Internal Dashboards"
+        ]
+      },
+      {
+        "titleLine1": "Product & ",
+        "titleLine2": "Commerce",
+        "items": [
+          "Web Apps & SaaS Platforms",
+          "Progressive Web & Mobile Apps",
+          "Shopify & Medusa Commerce",
+          "Headless Commerce Builds",
+          "Ecommerce Optimization & CRO",
+          "API Integrations",
+          "Scalable Infrastructure"
+        ]
+      },
+      {
+        "titleLine1": "Brand",
+        "titleLine2": "Direction",
+        "items": [
+          "Brand Strategy & Naming",
+          "Visual Identity Systems",
+          "Art Direction",
+          "Motion Branding",
+          "Design Systems",
+          "Digital Storytelling",
+          "Creative Direction"
+        ]
+      }
+    ]
+  },
+  "growthStatement": {
+    "text": "We align AI, engineering, and brand to move growth forward."
+  },
+  "capabilities": {
+    "prefix": "Capabilities",
+    "boldText": "One team, not four vendors.",
+    "grayText": "Fluent across AI, product, commerce, and brand, so nothing gets lost in translation."
+  },
+  "testimonials": [
+    {
+      "quote": "“Circles didn't just ship a website, they rebuilt how our brand, product, and growth teams work together. It finally feels like one system.”",
+      "name": "Founding Client",
+      "role": "Brand & Web Engagement",
+      "imageAlt": "Portrait of a Circles client, Brand & Web Engagement"
+    },
+    {
+      "quote": "“The AI workflow Circles built now handles what used to be two full-time hours of manual work a day. It just runs, quietly, in the background.”",
+      "name": "Founding Client",
+      "role": "AI & Automation Engagement",
+      "imageAlt": "Portrait of a Circles client, AI & Automation Engagement"
+    },
+    {
+      "quote": "“What stood out was their ability to simplify complexity. Strategy, design, and engineering came together seamlessly, and the results followed.”",
+      "name": "Founding Client",
+      "role": "Ecommerce Engagement",
+      "imageAlt": "Portrait of a Circles client, Ecommerce Engagement"
+    }
+  ],
+  "journal": {
+    "prefix": "Journal",
+    "boldText": "built beyond content.",
+    "grayText": "Notes on AI, product engineering, commerce, and brand, from the studio actually building it.",
+    "viewAllLabel": "View all"
+  }
+}

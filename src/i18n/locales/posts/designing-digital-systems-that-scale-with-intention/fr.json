@@ -1,0 +1,42 @@
+{
+  "title": "Concevoir des systèmes numériques qui évoluent avec intention",
+  "seo": {
+    "title": "Concevoir des systèmes numériques qui évoluent avec intention | Circles Journal",
+    "description": "La plupart des produits « évolutifs » n’ont que plus d’écrans. Voici comment Circles conçoit des systèmes, workflows d’IA compris, qui tiennent la route face à une vraie croissance, pas seulement en démo."
+  },
+  "backToBlogLabel": "Retour au blog",
+  "body": [
+    {
+      "type": "p",
+      "text": "« Évolutif » sert à décrire presque tout ce qui possède une base de données et un écran de connexion. La plupart du temps, ce n’est pas le cas. Un système évolue avec intention lorsque l’arrivée des 10 000 prochains utilisateurs, du prochain agent IA ou du prochain canal de vente n’exige pas de repenser ce qui fonctionne déjà. C’est une décision de conception, prise en amont, pas un correctif de performance appliqué après coup."
+    },
+    {
+      "type": "p",
+      "text": "Nous traitons chaque projet de la même façon, qu’il s’agisse d’une boutique Shopify, d’un workflow IA interne ou d’un tableau de bord destiné aux clients : nous identifions d’abord la partie qui subira la plus forte charge, et nous la construisons comme si elle était permanente. Tout le reste peut évoluer par itérations."
+    },
+    {
+      "type": "h3",
+      "text": "Où les systèmes cassent vraiment"
+    },
+    {
+      "type": "p",
+      "text": "D’après notre expérience, les problèmes d’échelle commencent rarement comme des problèmes techniques. Ils commencent comme des décisions sans propriétaire clair : un workflow qui n’existe que dans la tête d’une seule personne, une intégration tenue par un tableur, un parcours d’achat que personne n’a stress-testé au-delà d’un mardi ordinaire. Le code survit généralement. Le processus autour, non."
+    },
+    {
+      "type": "blockquote",
+      "text": "Un système n’est pas évolutif parce qu’il peut absorber plus de trafic. Il est évolutif parce qu’il peut absorber plus de complexité sans plus de chaos."
+    },
+    {
+      "type": "p",
+      "text": "C’est là que l’automatisation par IA trouve sa place, quand elle est utilisée avec discernement : non pas pour ajouter un chatbot pour la forme, mais pour supprimer l’étape manuelle qui plafonnait discrètement la croissance : le tri des tickets qui dévorait deux heures par jour, la logique de routage des commandes qui vivait dans la mémoire de quelqu’un, le rapport qu’il fallait assembler à la main chaque lundi."
+    },
+    {
+      "type": "h3",
+      "text": "Comment nous construisons pour ça"
+    },
+    {
+      "type": "p",
+      "text": "Chaque projet commence par la même question : que se passe-t-il quand ça marche ? Si la réponse honnête est « il faudrait tout reconstruire », nous repensons les fondations avant de livrer la fonctionnalité. C’est ce qui distingue un produit qui évolue avec intention d’un produit qui grossit simplement."
+    }
+  ]
+}

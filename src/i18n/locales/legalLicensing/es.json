@@ -1,0 +1,25 @@
+{
+  "seo": {
+    "title": "Licencias de recursos | Circles",
+    "description": "Información de licencias sobre las imágenes y tipografías utilizadas en circlescr.com."
+  },
+  "jsonLd": {
+    "name": "Licencias de recursos",
+    "description": "Información de licencias sobre las imágenes y tipografías utilizadas en circlescr.com.",
+    "aboutName": "Licencias de recursos de Circles",
+    "aboutDescription": "Todas las imágenes y tipografías utilizadas en este sitio cuentan con licencia para uso personal y comercial.",
+    "aboutText": "Información de licencias de las imágenes de LUMMI, la tipografía Switzer de Fontshare y la tipografía IBM Plex Mono de Google Fonts",
+    "lummiDescription": "Imágenes con licencia para uso personal y comercial",
+    "switzerDescription": "Tipografía con licencia de Fontshare",
+    "ibmPlexDescription": "Tipografía con licencia de Google Fonts"
+  },
+  "intro": "Todas las imágenes y tipografías utilizadas en este sitio cuentan con licencia para uso personal y comercial. A continuación se detallan las fuentes y licencias de cada recurso.",
+  "imageSectionLabel": "Imagen",
+  "fontSectionLabel": "Licencia de tipografía",
+  "lummiLinkLabel": "LUMMI",
+  "lummiImageAlt": "Muestra de fotografía de stock de LUMMI con licencia de uso en este sitio",
+  "switzerLinkLabel": "Switzer",
+  "switzerSampleText": "Soy Switzer, ¡un gusto conocerte!",
+  "ibmMonoLinkLabel": "IBM Mono",
+  "ibmMonoSampleText": "Soy IBM Plex Mono, ¡un gusto conocerte!"
+}

@@ -1,0 +1,15 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import ProjectPage from '../../../templates/ProjectPage.astro';
+import { PROJECTS } from '../../../data/projects';
+import { localeSlugPaths } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return localeSlugPaths(PROJECTS);
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { locale, slug } = Astro.props;
+---
+
+<ProjectPage locale={locale} slug={slug} />

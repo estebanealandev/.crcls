@@ -1,0 +1,11 @@
+{
+  "seo": {
+    "title": "Seite Nicht Gefunden | Circles",
+    "description": "Diese Seite existiert nicht mehr oder wurde verschoben. Kehren Sie zur Circles-Startseite zurück, um zu finden, wonach Sie suchen."
+  },
+  "jsonLdName": "404 - Seite Nicht Gefunden",
+  "jsonLdDescription": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+  "code": "404",
+  "message": "Die gesuchte Seite existiert nicht oder wurde verschoben",
+  "backToHomeLabel": "Zurück zur Startseite"
+}

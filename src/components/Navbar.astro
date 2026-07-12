@@ -1,0 +1,79 @@
+---
+import Logo from './Logo.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import commonEn from '../i18n/locales/common/en.json';
+import commonEs from '../i18n/locales/common/es.json';
+import commonFr from '../i18n/locales/common/fr.json';
+import commonDe from '../i18n/locales/common/de.json';
+import commonPt from '../i18n/locales/common/pt.json';
+
+const COMMON = { en: commonEn, es: commonEs, fr: commonFr, de: commonDe, pt: commonPt } as const;
+
+interface Props {
+  locale: Locale;
+  /** Locale-agnostic canonical path of the current page, e.g. "/", "/about", "/project/atlas" */
+  currentPath: string;
+  /** Some pages render a page-specific scroll-blur overlay as a sibling of the navbar inside .fixed-element. */
+  blurEffectId?: string;
+}
+
+const { locale, currentPath, blurEffectId } = Astro.props;
+const t = COMMON[locale].nav;
+
+const isHome = currentPath === '/';
+const homeHref = localizedPath(locale, '/');
+
+const navItems = [
+  { key: 'home', label: t.home, path: '/' },
+  { key: 'about', label: t.about, path: '/about' },
+  { key: 'work', label: t.work, path: '/work' },
+  { key: 'journal', label: t.journal, path: '/journal' },
+  { key: 'contact', label: t.contact, path: '/contact' },
+].map((item) => ({
+  ...item,
+  href: localizedPath(locale, item.path),
+  active: item.path === currentPath,
+}));
+---
+
+<div class="fixed-element">
+  {blurEffectId && <div data-w-id={blurEffectId} style="opacity:0" class="blur-effect"></div>}
+  <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-wf-component-id="9837f6c3-9169-b539-158a-ed2948b3ef44" data-easing="ease" data-wf-variant-state="base" data-collapse="medium" data-w-id="9837f6c3-9169-b539-158a-ed2948b3ef44" role="banner" data-duration="400" data-wf--navigation--variant="base">
+    <a
+      id="w-node-_9837f6c3-9169-b539-158a-ed2948b3ef45-48b3ef44"
+      href={homeHref}
+      aria-current={isHome ? 'page' : undefined}
+      aria-label={t.logoAriaLabel}
+      class={`nav-link for-logo w-inline-block${isHome ? ' w--current' : ''}`}
+    >
+      <Logo height={24} />
+    </a>
+    <div id="w-node-_9837f6c3-9169-b539-158a-ed2948b3ef48-48b3ef44" class="menu-part">
+      <div class="make-grid hide-mobile">
+        <a href="#" class="menu-link w-inline-block">
+          <div class="menu-text _01">{t.menuOpen}</div>
+          <div class="menu-text _02">{t.menuClose}</div>
+        </a>
+        <nav role="navigation" class="nav-menu w-nav-menu">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              aria-current={item.active ? 'page' : undefined}
+              class={`nav-item w-inline-block${item.active ? ' w--current' : ''}`}
+            >
+              <div class="nav-text">{item.label}</div>
+            </a>
+          ))}
+        </nav>
+      </div>
+      <div class="last-item">
+        <div class="menu-button w-nav-button" aria-label={t.menuToggleAriaLabel}>
+          <div data-is-ix2-target="1" class="lottie-white" data-w-id="9837f6c3-9169-b539-158a-ed2948b3ef53" data-animation-type="lottie" data-src="/assets/lotties/hamburger_animation.json" data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1.5015014403440954" data-loading="eager"></div>
+        </div>
+        <div><div>{t.location}</div></div>
+        <LanguageSwitcher locale={locale} canonicalPath={currentPath} ariaLabel={COMMON[locale].languageSwitcher.ariaLabel} />
+      </div>
+    </div>
+  </div>
+</div>

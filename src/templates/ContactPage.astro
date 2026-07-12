@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+import PlusLineGrid from '../components/PlusLineGrid.astro';
+import HoverTooltip from '../components/HoverTooltip.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { type Locale } from '../i18n/utils';
+import { dictionaries } from '../i18n/dictionaries';
+import { localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import contactEn from '../i18n/locales/contact/en.json';
+
+const DICT = dictionaries<typeof contactEn>('contact');
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = DICT[locale];
+const canonicalPath = '/contact';
+const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  dataWfPage="69ea3b293f46d55a8da19975"
+  wfScript="/js/webflow.e6aeb930.103a96742c08bc67.js"
+  preloadImage="/assets/images/Focused-Gaze-Portrait.webp"
+  canonicalPath={canonicalPath}
+  locale={locale}
+>
+  <script is:inline type="application/ld+json" slot="head" set:html={jsonLdString({
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": t.seo.jsonLdName,
+    "url": pageUrl,
+    "inLanguage": locale,
+    "description": t.seo.jsonLdDescription,
+    "mainEntity": { "@id": "https://www.circlescr.com/#business" },
+    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+  })} />
+
+  <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="0af327c3-bf7e-eb75-b2a7-d44d7a6d6f28" />
+  <Preloader />
+  <main style="display:contents">
+
+  <div class="main-content">
+    <div class="main-hero-wrapper">
+      <div class="hero-main for-inner">
+        <div data-w-id="6637c249-41f9-c402-ef4e-dbcfc5776f44" class="hero-slider">
+          <div class="block-center">
+            <div class="hero-content">
+              <div class="hero-photo _07"><div class="overlay"></div></div>
+            </div>
+            <div class="container for-inner">
+              <div><h1 class="h1-inner">{t.hero.title}<span class="light-oc">©</span></h1></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-w-id="6637c249-41f9-c402-ef4e-dbcfc5776f4f"></div>
+
+  <div class="content-effect _01">
+    <section class="section">
+      <div class="container">
+        <div>
+          <h2 class="page-title">{t.pageTitle.prefix}© — {t.pageTitle.boldText} <span class="gray-color">{t.pageTitle.grayText}</span></h2>
+        </div>
+        <div class="divider-m"></div>
+        <div>
+          <div class="card-3 for-contact">
+            <ContactForm t={t.form} />
+          </div>
+        </div>
+        <div class="divider-l"></div>
+        <div class="faq-grid">
+          <div>
+            <div>
+              <h2 class="page-title">{t.faq.prefix}© — {t.faq.boldText} <span class="gray-color">{t.faq.grayText}</span></h2>
+              <div class="divider-l"></div>
+              <div class="button-flex">
+                <ButtonLink href="mailto:hello@circlescr.com" label={t.faq.emailUsLabel} />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <FaqAccordion items={t.faq.items} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="6637c249-41f9-c402-ef4e-dbcfc5776f63"></div>
+
+  </main>
+  <Footer locale={locale} currentPath={canonicalPath} />
+  <PlusLineGrid />
+  <HoverTooltip locale={locale} />
+</Layout>

@@ -1,0 +1,21 @@
+---
+interface Block {
+  /** "h3" and "blockquote" render as such; anything else falls back to a paragraph. */
+  type: string;
+  text: string;
+}
+
+interface Props {
+  blocks: Block[];
+}
+
+const { blocks } = Astro.props;
+---
+
+<div class="rich-blog w-richtext">
+  {blocks.map((block) => {
+    if (block.type === 'h3') return <h3>{block.text}</h3>;
+    if (block.type === 'blockquote') return <blockquote>{block.text}</blockquote>;
+    return <p>{block.text}</p>;
+  })}
+</div>

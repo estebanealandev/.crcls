@@ -1,0 +1,18 @@
+{
+  "title": "De l'idée à l'exécution : construire avec précision",
+  "seo": {
+    "title": "De l'idée à l'exécution : construire avec précision | Circles Journal",
+    "description": "Entre une bonne idée et un produit livré, il y a des centaines de petites décisions. Voici le processus que Circles utilise pour s'assurer qu'aucune n'est prise par hasard."
+  },
+  "backToBlogLabel": "Retour au blog",
+  "body": [
+    { "type": "p", "text": "Chaque projet arrive sous la forme d'une idée aux contours encore flous : « nous avons besoin d'un agent IA pour le support », « nous voulons une boutique headless », « notre marque ne nous ressemble plus ». Rien de tout cela n'est encore un cahier des charges. C'est une direction. Le travail entre cette phrase et un résultat livré, c'est là que la plupart des agences perdent en précision, et c'est là que nous concentrons l'essentiel de notre effort." },
+    { "type": "h3", "text": "Le périmètre avant le sprint" },
+    { "type": "p", "text": "Avant de concevoir ou de construire quoi que ce soit, nous définissons ce que signifie « terminé » en termes précis et vérifiables : pas « améliorer la conversion », mais « réduire l'abandon au paiement en identifiant et en corrigeant les trois étapes qui perdent le plus de clients ». Des objectifs vagues produisent un travail vague, quel que soit le talent de l'équipe qui l'exécute." },
+    { "type": "blockquote", "text": "La précision n'est pas un trait de caractère. C'est ce qui se produit quand la cible est assez précise pour pouvoir être manquée." },
+    { "type": "p", "text": "À partir de là, nous organisons la construction autour de l'hypothèse la plus risquée. Si un workflow d'IA dépend de données source imparfaites, nous testons les données avant de construire l'interface. Si une refonte de marque dépend d'un positionnement que la direction n'a pas encore pleinement validé, nous réglons ce point avant qu'une seule maquette n'existe. Construire d'abord les parties faciles ressemble à du progrès ; ce n'est généralement qu'un risque reporté." },
+    { "type": "h3", "text": "L'exécution est une série de petites décisions vérifiées" },
+    { "type": "p", "text": "L'écart entre l'idée et l'exécution n'est pas un grand saut. Ce sont des centaines de petits arbitrages : quel champ est obligatoire, que se passe-t-il quand l'agent IA n'est pas sûr de lui, comment un paiement refusé est-il communiqué. Nous prenons ces décisions délibérément, en toute transparence, avec le client dans la pièce, plutôt que de laisser le dernier développeur à avoir touché ce fichier les trancher à sa place." },
+    { "type": "p", "text": "C'est la véritable définition de la précision que nous visons : rien n'est livré par hasard." }
+  ]
+}

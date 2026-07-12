@@ -1,0 +1,11 @@
+{
+  "seo": {
+    "title": "Journal — Notes sur l'IA, le Produit et la Marque | Circles",
+    "description": "Des notes sur l'automatisation par l'IA, l'ingénierie produit, l'e-commerce et la stratégie de marque, par Circles, le studio de Pérez Zeledón, au Costa Rica, qui le construit réellement."
+  },
+  "jsonLdName": "Journal",
+  "jsonLdDescription": "Des notes sur l'automatisation par l'IA, l'ingénierie produit et la stratégie de marque, par le studio Circles qui le construit réellement.",
+  "hero": {
+    "title": "journal"
+  }
+}

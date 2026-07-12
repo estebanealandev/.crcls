@@ -1,0 +1,18 @@
+{
+  "title": "Cómo el buen diseño impulsa la percepción y el crecimiento",
+  "seo": {
+    "title": "Cómo el buen diseño impulsa la percepción y el crecimiento | Circles Journal",
+    "description": "El diseño no es decoración. Es la señal más rápida que un visitante lee antes de decidir si confía en ti. Así conecta Circles el diseño visual con la conversión, no solo con la estética."
+  },
+  "backToBlogLabel": "Volver al blog",
+  "body": [
+    { "type": "p", "text": "Un visitante decide si confía en una empresa antes de leer una sola palabra, normalmente en menos de dos segundos, basándose solo en el layout, el espaciado y la tipografía. El buen diseño no es un retoque final que se añade después de terminar el «trabajo de verdad». Es el primer argumento que presenta tu marca: o se gana los próximos diez segundos de atención, o los pierde." },
+    { "type": "p", "text": "Para nosotros, la percepción es una palanca de crecimiento, no una preferencia estética. Es el mismo oficio el que hace que una interfaz se sienta cuidada: espaciado consistente, una escala tipográfica que establece jerarquía, movimiento que aclara en lugar de decorar. Es lo que hace que un desconocido crea que el producto detrás también está bien pensado." },
+    { "type": "h3", "text": "El diseño como señal de confianza" },
+    { "type": "p", "text": "Los compradores usan el diseño como indicador de competencia, sobre todo cuando todavía no pueden evaluar el producto en sí. Un checkout con alineación descuidada transmite la idea de una empresa que también podría ser descuidada con un envío o un ticket de soporte. Una página de precios con una jerarquía confusa se percibe como una empresa que esconde algo. Nada de eso es justo, y así es exactamente como decide la gente." },
+    { "type": "blockquote", "text": "Nadie piensa conscientemente «el kerning está mal, no confío en esto». Solo sienten una pequeña duda, y la duda es lo que mata la conversión." },
+    { "type": "p", "text": "Por eso nunca separamos el trabajo de marca del trabajo de crecimiento. Un rebranding que no mueve una cifra de conversión, o un rediseño de landing page que no está conectado a analítica, es trabajo sin terminar disfrazado de trabajo terminado." },
+    { "type": "h3", "text": "Donde el diseño se encuentra con los números" },
+    { "type": "p", "text": "En la práctica, esto significa que cada decisión visual en el sitio de un cliente se gana su lugar respaldando un resultado específico: un hero que comunica la propuesta de valor antes de que termine el fold, un formulario que elimina fricción en lugar de acumularla, una página de producto que responde la objeción antes de que el visitante tenga que planteársela. El diseño y el performance marketing no son dos departamentos que se pasan un archivo. Son una sola conversación, de principio a fin." }
+  ]
+}

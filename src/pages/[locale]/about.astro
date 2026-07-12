@@ -1,0 +1,14 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import AboutPage from '../../templates/AboutPage.astro';
+import { secondaryLocalePaths } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return secondaryLocalePaths();
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { locale } = Astro.props;
+---
+
+<AboutPage locale={locale} />

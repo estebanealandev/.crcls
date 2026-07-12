@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "work": "Trabalhos",
+    "journal": "Diário",
+    "contact": "Contacto",
+    "licensing": "Licenciamento",
+    "menuOpen": "Menu",
+    "menuClose": "Fechar",
+    "location": "Pérez Zeledón, CR",
+    "logoAriaLabel": "Circles — início",
+    "menuToggleAriaLabel": "Alternar menu de navegação"
+  },
+  "footer": {
+    "ctaTitle": "©Construído uma vez. Feito como deve ser.",
+    "ctaButton": "Vamos Falar",
+    "logoLabel": "Estúdio",
+    "newBusinessLabel": "Novos Projetos:",
+    "newsletterLabel": "Atualizações com critério, nada mais.",
+    "copyright": "© Circles. Todos os direitos reservados.",
+    "addressLabel": "Morada:",
+    "addressLines": ["Pérez Zeledón,", "Costa Rica"],
+    "phoneLabel": "Telefone:",
+    "socialAriaLabels": {
+      "x": "Circles no X",
+      "instagram": "Circles no Instagram",
+      "linkedin": "Circles no LinkedIn"
+    }
+  },
+  "forms": {
+    "subscribe": {
+      "emailPlaceholder": "E-mail",
+      "submitLabel": "Subscrever",
+      "waitLabel": "A enviar...",
+      "successMessage": "Obrigado por subscrever.",
+      "errorMessage": "Algo correu mal. Por favor, tente novamente dentro de instantes.",
+      "ariaLabel": "Subscrever a newsletter"
+    }
+  },
+  "languageSwitcher": {
+    "ariaLabel": "Selecionar idioma"
+  },
+  "tooltip": {
+    "viewProject": ["Ver", "Projeto"],
+    "readMore": ["Ler", "Mais"]
+  },
+  "misc": {
+    "backToHome": "Voltar ao início"
+  },
+  "projectMeta": {
+    "descriptionLabel": "Descrição do Projeto",
+    "typeLabel": "Tipo",
+    "caseStudyValue": "Caso de Estudo",
+    "dateLabel": "Data",
+    "dateValue": "2026",
+    "servicesLabel": "Serviços",
+    "relatedWork": {
+      "prefix": "Trabalhos Relacionados",
+      "boldText": "Provas para lá das palavras.",
+      "grayText": "Projetos selecionados onde marca, design e desempenho se movem como um só."
+    }
+  },
+  "postMeta": {
+    "relatedStory": {
+      "prefix": "Artigo Relacionado",
+      "boldText": "Onde as histórias se tornam sistemas.",
+      "grayText": "Perspetiva, narrativa e distribuição a trabalhar em conjunto."
+    }
+  }
+}

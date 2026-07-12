@@ -1,0 +1,425 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+import PlusLineGrid from '../components/PlusLineGrid.astro';
+import HoverTooltip from '../components/HoverTooltip.astro';
+import WorkCard from '../components/WorkCard.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
+import { localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { PROJECTS, requireProject } from '../data/projects';
+import { requirePost, postImageSrcset } from '../data/posts';
+import homeEn from '../i18n/locales/home/en.json';
+
+const DICT = dictionaries<typeof homeEn>('home');
+// This page only needs the card-level copy of each project/post.
+const PROJECT_COPY = slugDictionaries<{ title: string; servicesValue: string }>(
+  'projects',
+  PROJECTS.map((p) => p.slug)
+);
+
+// Featured work grid: three visual rows, exactly as originally authored.
+const WORK_ROWS = [
+  { slugs: ['atlas', 'aether'], gridClass: 'work-grid-main w-dyn-items' },
+  { slugs: ['nova'], gridClass: 'work-grid-main _01 w-dyn-items' },
+  { slugs: ['pulse', 'vertex'], gridClass: 'work-grid-main w-dyn-items' },
+] as const;
+
+// Featured journal grid: a 3-post subset of POSTS, in the order authored in the original export.
+const JOURNAL_SLUGS = [
+  'designing-digital-systems-that-scale-with-intention',
+  'why-clarity-is-the-foundation-of-modern-brands',
+  'from-idea-to-execution-building-with-precision',
+] as const;
+const JOURNAL_IMAGE_WRAP_ID = 'd3b3af6e-4d1d-6513-f03c-603d82b3f68e';
+const POST_COPY = slugDictionaries<{ title: string }>('posts', JOURNAL_SLUGS);
+
+// Service cards: structural (non-translatable) ids/classes/numbers, zipped by index with t.services.cards.
+const SERVICE_CARDS = [
+  { id: '03e8d322-fa65-c83a-1494-de81e392097b', cardClass: '_02', number: '(02)' },
+  { id: '5be1a0e4-80cc-d391-e0ac-1023f6fe72bf', cardClass: '_04', number: '(04)' },
+  { id: '61aeaeac-9eea-9402-3da6-bfcd9385ff20', cardClass: '_03', number: '(03)' },
+  { id: '5fba5656-a942-3b54-dd2c-c48361763b21', cardClass: '_01', number: '(01)' },
+] as const;
+
+// Testimonial slides: locale-independent portrait assets, zipped by index with t.testimonials.
+const TESTIMONIAL_IMAGES = [
+  {
+    src: '/assets/images/Contemplative_Man_in_Stylish_Attire.webp',
+    sizes: '100vw',
+    srcset: '/assets/images/Contemplative_20Man_20in_20Stylish_20Attire-p-500.webp 500w, /assets/images/Contemplative_20Man_20in_20Stylish_20Attire-p-800.webp 800w, /assets/images/Contemplative_20Man_20in_20Stylish_20Attire-p-1080.webp 1080w, /assets/images/Contemplative_Man_in_Stylish_Attire.webp 1200w',
+  },
+  {
+    src: '/assets/images/Stylish_Sunglasses_Portrait.webp',
+    sizes: '100vw',
+    srcset: '/assets/images/Stylish_20Sunglasses_20Portrait-p-500.webp 500w, /assets/images/Stylish_20Sunglasses_20Portrait-p-800.webp 800w, /assets/images/Stylish_20Sunglasses_20Portrait-p-1080.webp 1080w, /assets/images/Stylish_Sunglasses_Portrait.webp 1200w',
+  },
+  {
+    src: '/assets/images/Minimalist_Portrait__3_.webp',
+    sizes: '100vw',
+    srcset: '/assets/images/Minimalist_20Portrait_20_3_-p-500.webp 500w, /assets/images/Minimalist_20Portrait_20_3_-p-800.webp 800w, /assets/images/Minimalist_20Portrait_20_3_-p-1080.webp 1080w, /assets/images/Minimalist_Portrait__3_.webp 1200w',
+  },
+] as const;
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = DICT[locale];
+const canonicalPath = '/';
+const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+
+// Structural ids/classes and localized copy are zipped by index; a length
+// mismatch between the JSON and the constants above must fail the build.
+const serviceCards = SERVICE_CARDS.map((card, i) => {
+  const copy = t.services.cards[i];
+  if (!copy) throw new Error(`home.services.cards[${i}] is missing for locale "${locale}"`);
+  return { ...card, copy };
+});
+const testimonials = t.testimonials.map((testimonial, i) => {
+  const image = TESTIMONIAL_IMAGES[i];
+  if (!image) throw new Error(`TESTIMONIAL_IMAGES[${i}] has no asset for locale "${locale}"`);
+  return { ...testimonial, image };
+});
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  dataWfPage="69ea3b293f46d55a8da19968"
+  wfScript="/js/webflow.a41d47af.3073163fb57e81fa.js"
+  preloadImage="/assets/images/bg-first.webp, /assets/images/Vintage-Lace-Portrait.webp, /assets/images/hero-photo-2.webp"
+  canonicalPath={canonicalPath}
+  locale={locale}
+>
+  <script is:inline type="application/ld+json" slot="head" set:html={jsonLdString({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": t.seo.jsonLdName,
+    "description": t.seo.jsonLdDescription,
+    "url": pageUrl,
+    "inLanguage": locale,
+    "about": { "@id": "https://www.circlescr.com/#business" },
+    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": t.seo.servicesListName,
+      "itemListElement": t.seo.services.map((name, i) => ({
+        "@type": "Service",
+        "name": name,
+        "position": i + 1,
+      })),
+    },
+  })} />
+
+  <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="514259e0-c596-3b68-1ac0-dd45c0eed9eb" />
+  <main style="display:contents">
+
+  <div class="main-content">
+    <div class="main-hero-wrapper">
+      <div class="hero-main">
+        <div data-w-id="20c3c8f9-976a-a493-d7ed-8aa1ec524ff2" class="hero-slider">
+          <div class="block-center">
+            <div class="hero-content">
+              <div class="hero-photo _01"><div class="overlay"></div></div>
+              <div class="hero-photo _02">
+                <div class="background-video">
+                  <img src="/assets/images/hero-photo-2.webp" fetchpriority="high" alt={t.hero.imageAlt} style="width:100%; height:100%; object-fit:cover; position:absolute; z-index:-1;" />
+                </div>
+                <div class="overlay"></div>
+              </div>
+              <div class="hero-photo _03"><div class="overlay"></div></div>
+            </div>
+          </div>
+          <div class="container absolute _100">
+            <div class="bottom-grid">
+              <div id="w-node-_2a315fc9-8bdb-2f21-615d-478a97f09295-8da19968">
+                <h2 class="h2 _02">{t.hero.strategyLine1} <br />{t.hero.strategyLine2}</h2>
+              </div>
+              <div id="w-node-_3d052635-e052-89e0-c157-462c38f80e17-8da19968">
+                <h2 class="h2 _01">{t.hero.mainLine1}<br />
+                  <span class="gray-color">{t.hero.mainLine2}</span>
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="hero-thumbnail">
+            <div class="thumbnail-wrapper">
+              <div data-w-id="20c3c8f9-976a-a493-d7ed-8aa1ec524ffe" class="thumbnail-small _01">
+                <div style="opacity:0" class="thumbnail-overlay _01"></div>
+              </div>
+              <div data-w-id="20c3c8f9-976a-a493-d7ed-8aa1ec525000" class="thumbnail-small _02">
+                <div style="opacity:1" class="thumbnail-overlay _02"></div>
+                <div class="background-video w-background-video w-background-video-atom" style="background-image:url('/assets/images/hero-photo-2.webp'); background-size: cover; background-position: center;"></div>
+              </div>
+              <div data-w-id="20c3c8f9-976a-a493-d7ed-8aa1ec525003" class="thumbnail-small _03">
+                <div style="opacity:1" class="thumbnail-overlay _03"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-w-id="38d4477e-1853-8c35-ea4f-9aa9a42bb615"></div>
+
+  <div class="content-effect _01">
+    <section class="section">
+      <div class="container effect">
+        <div class="work-grid">
+          <h2 id="w-node-_1384ecdd-252f-705d-ca11-26efec102b6a-8da19968" class="h2 fade cnt">{t.works.title}<span class="light-oc">©</span></h2>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section class="section-work">
+    <div data-w-id="22196faf-531d-9da9-629d-5fdd075cbf48" class="work-main">
+      {WORK_ROWS.map((row, rowIndex) => (
+        <>
+          {rowIndex > 0 && <div class="divider-10"></div>}
+          <div class="w-dyn-list">
+            <div role="list" class={row.gridClass}>
+              {row.slugs.map((slug) => {
+                const p = requireProject(slug);
+                const copy = PROJECT_COPY(slug)[locale];
+                return (
+                  <WorkCard
+                    href={localizedPath(locale, `/project/${p.slug}`)}
+                    title={copy.title}
+                    serviceLabel={copy.servicesValue}
+                    image={p.heroImage}
+                    logoImage={p.logoImage}
+                    video={p.video}
+                    eagerVideo={false}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </>
+      ))}
+    </div>
+  </section>
+  <div data-w-id="341b604c-50aa-f364-4667-c5c84c5dcf2d"></div>
+
+  <div class="content-effect _02">
+    <section class="section _01">
+      <div class="container effect">
+        <div>
+          <h2 class="page-title">{t.services.prefix}© — {t.services.boldText} <span class="gray-color">{t.services.grayText}</span></h2>
+        </div>
+        <div class="divider-l"></div>
+        <div class="service-grid">
+          <div id="w-node-_8cf6445e-d523-cfbb-514e-d6804a66c33c-8da19968">
+            <h3 data-w-id="a010a520-cb6c-2dbc-fcd3-83689247abf2" style="opacity:0" class="page-title-small _01 hdi">{t.services.quote.text}<br />
+              <br />
+              <span class="gray-color">{t.services.quote.attribution}</span>
+              <br />
+            </h3>
+          </div>
+          {serviceCards.map((card) => (
+            <div id={`w-node-_${card.id}-8da19968`} data-w-id={card.id} style="opacity:0" class={`service-card ${card.cardClass}`}>
+              <h3 class="service-title">{card.copy.titleLine1}<br />{card.copy.titleLine2}</h3>
+              <p class="font-change">{card.copy.items.map((item, j) => <>{item}{j < card.copy.items.length - 1 && <br />}</>)}</p>
+              <h3 class="service-title second">{card.number}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="service-image-wrapper">
+        <img src="/assets/images/Dramatic-Blue-Portrait-_1_.webp" loading="lazy" sizes="100vw" srcset="/assets/images/Dramatic-Blue-Portrait-_1_-p-500.webp 500w, /assets/images/Dramatic-Blue-Portrait-_1_-p-800.webp 800w, /assets/images/Dramatic-Blue-Portrait-_1_-p-1080.webp 1080w, /assets/images/Dramatic-Blue-Portrait-_1_-p-1600.webp 1600w, /assets/images/Dramatic-Blue-Portrait-_1_-p-2000.webp 2000w, /assets/images/Dramatic-Blue-Portrait-_1_-p-2600.webp 2600w, /assets/images/Dramatic-Blue-Portrait-_1_-p-3200.webp 3200w, /assets/images/Dramatic-Blue-Portrait-_1_.webp 4800w" alt="" id="ab-1" class="about-img _01" />
+        <img src="/assets/images/03.webp" loading="lazy" sizes="100vw" srcset="/assets/images/03-p-500.webp 500w, /assets/images/03-p-800.webp 800w, /assets/images/03-p-1080.webp 1080w, /assets/images/03-p-1600.webp 1600w, /assets/images/03-p-2000.webp 2000w, /assets/images/03.webp 2400w" alt="" class="about-img _02 hide-img" />
+        <img src="/assets/images/02.webp" loading="lazy" sizes="100vw" srcset="/assets/images/02-p-500.webp 500w, /assets/images/02-p-800.webp 800w, /assets/images/02-p-1080.webp 1080w, /assets/images/02-p-1600.webp 1600w, /assets/images/02-p-2000.webp 2000w, /assets/images/02.webp 2400w" alt="" id="ab-3" class="about-img _03" />
+        <img src="/assets/images/01.webp" loading="lazy" sizes="100vw" srcset="/assets/images/01-p-500.webp 500w, /assets/images/01-p-800.webp 800w, /assets/images/01-p-1080.webp 1080w, /assets/images/01-p-1600.webp 1600w, /assets/images/01-p-2000.webp 2000w, /assets/images/01.webp 2400w" alt="" id="ab-4" class="about-img _04" />
+        <div data-poster-url="/assets/images/Blurred_Futuristic_Portrait_poster.0000000.jpg" data-video-urls="/assets/videos/Blurred_Futuristic_Portrait_mp4.mp4,/assets/videos/Blurred_Futuristic_Portrait_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="about-img _01 hide-video w-background-video w-background-video-atom">
+          <video id="1ba8e0b1-b842-1736-b151-d575d8032aca-video" preload="none" loop style={`background-image:url("/assets/images/Blurred_Futuristic_Portrait_poster.0000000.jpg")`} muted playsinline data-wf-ignore="true" data-object-fit="cover">
+            <source src="/assets/videos/Blurred_Futuristic_Portrait_mp4.mp4" data-wf-ignore="true" />
+            <source src="/assets/videos/Blurred_Futuristic_Portrait_webm.webm" data-wf-ignore="true" />
+          </video>
+        </div>
+        <div data-poster-url="/assets/images/Red_Fashion_Close-Up_poster.0000000.jpg" data-video-urls="/assets/videos/Red_Fashion_Close-Up_mp4.mp4,/assets/videos/Red_Fashion_Close-Up_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" id="ab-2" class="about-img _02 w-background-video w-background-video-atom">
+          <video id="973c5e31-e8ba-88a5-8eee-7b66f158ddfe-video" preload="none" loop style={`background-image:url("/assets/images/Red_Fashion_Close-Up_poster.0000000.jpg")`} muted playsinline data-wf-ignore="true" data-object-fit="cover">
+            <source src="/assets/videos/Red_Fashion_Close-Up_mp4.mp4" data-wf-ignore="true" />
+            <source src="/assets/videos/Red_Fashion_Close-Up_webm.webm" data-wf-ignore="true" />
+          </video>
+        </div>
+        <div data-poster-url="/assets/images/Mysterious_Portrait_poster.0000000.jpg" data-video-urls="/assets/videos/Mysterious_Portrait_mp4.mp4,/assets/videos/Mysterious_Portrait_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="about-img _03 hide-video w-background-video w-background-video-atom">
+          <video id="ecdb58f0-5ec2-c369-ef5b-328a9375f383-video" preload="none" loop style={`background-image:url("/assets/images/Mysterious_Portrait_poster.0000000.jpg")`} muted playsinline data-wf-ignore="true" data-object-fit="cover">
+            <source src="/assets/videos/Mysterious_Portrait_mp4.mp4" data-wf-ignore="true" />
+            <source src="/assets/videos/Mysterious_Portrait_webm.webm" data-wf-ignore="true" />
+          </video>
+        </div>
+        <div data-poster-url="/assets/images/Stylish_in_Tall_Grass_poster.0000000.jpg" data-video-urls="/assets/videos/Stylish_in_Tall_Grass_mp4.mp4,/assets/videos/Stylish_in_Tall_Grass_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="about-img _04 hide-video w-background-video w-background-video-atom">
+          <video id="4d034390-13cf-f1f4-3a59-4b782c0545da-video" preload="none" loop style={`background-image:url("/assets/images/Stylish_in_Tall_Grass_poster.0000000.jpg")`} muted playsinline data-wf-ignore="true" data-object-fit="cover">
+            <source src="/assets/videos/Stylish_in_Tall_Grass_mp4.mp4" data-wf-ignore="true" />
+            <source src="/assets/videos/Stylish_in_Tall_Grass_webm.webm" data-wf-ignore="true" />
+          </video>
+        </div>
+        <div class="gradient-top"></div>
+        <div class="gradient-top bottom"></div>
+        <div class="about-overlay"></div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="fbdfe94c-3fb4-ef6f-d873-fb0120bbe5f9"></div>
+
+  <div class="content-effect _03">
+    <section class="section">
+      <div class="container effect">
+        <div>
+          <h2 class="h2 fade cnt sml">{t.growthStatement.text}</h2>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="bb9ba485-4e3d-46d9-7d31-ceb345c66e03"></div>
+
+  <div class="content-effect _04">
+    <section data-w-id="e56fe92a-0d4b-0455-7879-7ab5d92a5581" class="section _02">
+      <div class="container">
+        <div>
+          <h2 class="page-title">{t.capabilities.prefix}© — {t.capabilities.boldText} <span class="gray-color">{t.capabilities.grayText}</span></h2>
+        </div>
+        <div class="divider-l"></div>
+      </div>
+      <div class="clients-grid">
+        <div class="w-inline-block">
+          <div class="logo-filter" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="OpenAI" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>
+          </div>
+        </div>
+        <div class="w-inline-block">
+          <div class="logo-filter _01" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="Shopify" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.629 0 2.295-1.44 3.76-3.406 3.76-2.354 0-3.54-1.465-3.54-1.465l.646-2.086s1.245 1.066 2.28 1.066c.675 0 .975-.545.975-.932 0-1.619-2.654-1.694-2.654-4.359-.034-2.237 1.571-4.416 4.827-4.416 1.257 0 1.875.361 1.875.361l-.945 2.715-.02.01zM11.17.83c.136 0 .271.038.405.135-.984.465-2.064 1.639-2.508 3.992-.656.213-1.293.405-1.889.578C7.697 3.75 8.951.84 11.17.84V.83zm1.235 2.949v.135c-.754.232-1.583.484-2.394.736.466-1.777 1.333-2.645 2.085-2.971.193.501.309 1.176.309 2.1zm.539-2.234c.694.074 1.141.867 1.429 1.755-.349.114-.735.231-1.158.366v-.252c0-.752-.096-1.371-.271-1.871v.002zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.21c-.423-1.233-1.176-2.37-2.508-2.37h-.115C12.135.209 11.669 0 11.265 0 8.159 0 6.675 3.877 6.21 5.846c-1.194.365-2.063.636-2.16.674-.675.213-.694.232-.772.87-.075.462-1.83 14.063-1.83 14.063L15.009 24l.927-21.166z"/></svg>
+          </div>
+        </div>
+        <div class="w-inline-block">
+          <div class="logo-filter _02" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="Next.js" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"/></svg>
+          </div>
+        </div>
+        <div class="w-inline-block">
+          <div class="logo-filter _01" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="Anthropic" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>
+          </div>
+        </div>
+        <div class="w-inline-block">
+          <div class="logo-filter _02" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="Amazon AWS" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zM21.698 16.207c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zM22.792 14.961c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+          </div>
+        </div>
+        <div class="w-inline-block">
+          <div class="logo-filter _03" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="n8n" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632"/></svg>
+          </div>
+        </div>
+        <div class="w-inline-block">
+          <div class="logo-filter _02" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="Astro" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M8.358 20.162c-1.186-1.07-1.532-3.316-1.038-4.944.856 1.026 2.043 1.352 3.272 1.535 1.897.283 3.76.177 5.522-.678.202-.098.388-.229.608-.36.166.473.209.95.151 1.437-.14 1.185-.738 2.1-1.688 2.794-.38.277-.782.525-1.175.787-1.205.804-1.531 1.747-1.078 3.119l.044.148a3.158 3.158 0 0 1-1.407-1.188 3.31 3.31 0 0 1-.544-1.815c-.004-.32-.004-.642-.048-.958-.106-.769-.472-1.113-1.161-1.133-.707-.02-1.267.411-1.415 1.09-.012.053-.028.104-.045.165h.002zm-5.961-4.445s3.24-1.575 6.49-1.575l2.451-7.565c.092-.366.36-.614.662-.614.302 0 .57.248.662.614l2.45 7.565c3.85 0 6.491 1.575 6.491 1.575L16.088.727C15.93.285 15.663 0 15.303 0H8.697c-.36 0-.615.285-.784.727l-5.516 14.99z"/></svg>
+          </div>
+        </div>
+        <div class="w-inline-block">
+          <div class="logo-filter _01" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="Figma" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+          </div>
+        </div>
+        <div class="w-inline-block">
+          <div class="logo-filter _02" style="opacity:0.65; display:flex; align-items:center; justify-content:center;">
+            <svg aria-label="Vercel" width="42" height="42" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="m12 1.608 12 20.784H0Z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="divider-l"></div>
+        <div class="line-divider"></div>
+        <div class="divider-l"></div>
+        <div>
+          <div data-w-id="1920b008-b90d-a6b7-e374-41086d36403a" class="quote-base">
+            <div data-delay="4000" data-animation="over" class="slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="0" data-infinite="true">
+              <div class="mask w-slider-mask">
+                {testimonials.map((testimonial) => (
+                  <div class="slide w-slide">
+                    <div class="testimonials-content">
+                      <div class="testimonials-title">
+                        <h2 class="testimonials-large">{testimonial.quote}</h2>
+                      </div>
+                      <div class="testimonials-name">
+                        <div class="testimonials-small">{testimonial.name}</div>
+                        <div class="testimonials-small light">{testimonial.role}</div>
+                      </div>
+                      <div class="image-paralax">
+                        <div class="image-wrapper-main">
+                          <div class="image-height"></div>
+                          <img src={testimonial.image.src} loading="lazy" sizes={testimonial.image.sizes} srcset={testimonial.image.srcset} alt={testimonial.imageAlt} class="image-cover" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div class="slide-arrow left w-slider-arrow-left">
+                <div class="slide-block"><img src="/assets/images/arrow.webp" width="172" height="143" loading="lazy" alt="" class="icon-small rotate" /></div>
+              </div>
+              <div class="slide-arrow w-slider-arrow-right">
+                <div class="slide-block"><img src="/assets/images/arrow.webp" width="172" height="143" loading="lazy" alt="" class="icon-small" /></div>
+              </div>
+              <div class="hide w-slider-nav w-round w-num"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="3baec6d3-ce0b-e7ff-4e7d-ac3ed62a37eb"></div>
+
+  <div class="content-effect _05">
+    <section class="section _03">
+      <div class="container">
+        <div>
+          <h2 class="page-title">{t.journal.prefix}© — {t.journal.boldText} <span class="gray-color">{t.journal.grayText}</span></h2>
+        </div>
+        <div class="divider-m"></div>
+        <div data-w-id="a893ba32-cc11-6ff6-aabc-1359f6f10619">
+          <div class="w-dyn-list">
+            <div role="list" class="collection-list _2-column w-dyn-items">
+              {JOURNAL_SLUGS.map((slug) => {
+                const post = requirePost(slug);
+                return (
+                  <BlogCard
+                    href={localizedPath(locale, `/post/${slug}`)}
+                    title={POST_COPY(slug)[locale].title}
+                    image={postImageSrcset(post.heroImageBase)}
+                    imageWrapId={JOURNAL_IMAGE_WRAP_ID}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div class="divider-m"></div>
+        <div class="flex-button">
+          <a href={localizedPath(locale, '/journal')} data-wf--button-line--variant="base" data-wf-component-id="64524c8d-f2ce-d90a-bb23-2f13e9a4e1bb" data-wf-variant-state="base" class="button-link w-inline-block">
+            <div class="button-flex">
+              <div class="text-overflow">
+                <div class="navigation-text-main _01">{t.journal.viewAllLabel}</div>
+                <div class="navigation-text-main _02">{t.journal.viewAllLabel}</div>
+              </div>
+              <div class="line-divider"><div class="line-absolute"></div></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="f79cef18-f63c-8dc3-7595-be7283192418"></div>
+
+  </main>
+  <Footer locale={locale} currentPath={canonicalPath} />
+  <PlusLineGrid />
+  <Preloader showLogoAnimation />
+  <HoverTooltip locale={locale} hoverCards="both" />
+</Layout>

@@ -1,0 +1,34 @@
+---
+// The cursor-follow tooltip shown when hovering work/journal cards. Pages
+// with hoverable cards pre-hide the relevant pill via inline styles for the
+// JS-driven hover reveal: "work" pages (project cards) hide the "View
+// Project" pill, "post" pages (journal cards) hide the "Read More" pill,
+// "both" (e.g. the homepage, which shows both card types) hides both.
+import commonEn from '../i18n/locales/common/en.json';
+import commonEs from '../i18n/locales/common/es.json';
+import commonFr from '../i18n/locales/common/fr.json';
+import commonDe from '../i18n/locales/common/de.json';
+import commonPt from '../i18n/locales/common/pt.json';
+import type { Locale } from '../i18n/utils';
+
+const COMMON = { en: commonEn, es: commonEs, fr: commonFr, de: commonDe, pt: commonPt } as const;
+
+interface Props {
+  locale: Locale;
+  hoverCards?: 'work' | 'post' | 'both' | false;
+}
+
+const { locale, hoverCards = false } = Astro.props;
+const t = COMMON[locale].tooltip;
+const hideViewProject = hoverCards === 'work' || hoverCards === 'both';
+const hideReadMore = hoverCards === 'post' || hoverCards === 'both';
+---
+
+<div class="text-tool-tip">
+  <div class="view-work _01" style={hideViewProject ? 'width:0px;height:0px' : undefined}>
+    <div class="pill-text _01" style={hideViewProject ? 'opacity:0' : undefined}>{t.viewProject[0]}<br />{t.viewProject[1]}</div>
+  </div>
+  <div class="view-work _02" style={hideReadMore ? 'width:0px;height:0px' : undefined}>
+    <div class="pill-text _02" style={hideReadMore ? 'opacity:0' : undefined}>{t.readMore[0]}<br />{t.readMore[1]}</div>
+  </div>
+</div>

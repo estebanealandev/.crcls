@@ -1,0 +1,60 @@
+{
+  "seo": {
+    "title": "Contacta a Circles — Estudio de Web, Marca e IA en Pérez Zeledón",
+    "description": "Cuéntanos qué estás construyendo. Circles responde a toda consulta seria en un día hábil desde Pérez Zeledón, Costa Rica.",
+    "jsonLdName": "Contacta a Circles",
+    "jsonLdDescription": "Comparte tu idea. Nosotros le daremos dirección. Contacta a Circles para nuevas consultas de negocio."
+  },
+  "hero": {
+    "title": "hola"
+  },
+  "pageTitle": {
+    "prefix": "Contacto",
+    "boldText": "Construido más allá de la conversación.",
+    "grayText": "Alineamos visión, estrategia y ejecución desde el primer mensaje."
+  },
+  "form": {
+    "nameLabel": "Nombre",
+    "firstNamePlaceholder": "Nombre",
+    "lastNamePlaceholder": "Apellido",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "Tu correo electrónico",
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "¿Cómo podemos ayudarte?...",
+    "companyLabel": "Empresa",
+    "privacyNotice": "*Al enviar este formulario, aceptas que Circles te contacte sobre tu consulta. No compartimos tu información con nadie más.",
+    "submitLabel": "Contáctanos",
+    "waitLabel": "Enviando...",
+    "successTitle": "Gracias.",
+    "successMessage": "Tu mensaje ha sido recibido. Respondemos a toda consulta seria en un día hábil.",
+    "errorMessage": "Algo salió mal de nuestro lado. Intenta de nuevo, o escríbenos directamente a hello@circlescr.com."
+  },
+  "faq": {
+    "prefix": "FAQ",
+    "boldText": "Preguntas, resueltas.",
+    "grayText": "Visión, estructura y ejecución alineadas desde el inicio.",
+    "emailUsLabel": "Escríbenos",
+    "items": [
+      {
+        "question": "¿Qué construye Circles exactamente?",
+        "answer": "Cuatro prácticas conectadas: agentes de IA y automatización, ingeniería de producto y ecommerce, estrategia de marca e identidad, y marketing de rendimiento. La mayoría de los proyectos combinan dos o tres de estas: un agente de soporte con IA conectado a una nueva tienda en línea, o un rebranding que se lanza junto con el sitio que lo sostiene."
+      },
+      {
+        "question": "¿Necesitamos una estrategia de IA, o solo una función de IA?",
+        "answer": "Por lo general, ninguna de las dos, al principio. Empezamos con una auditoría de dónde el trabajo manual te está costando tiempo o dinero, y luego recomendamos el sistema más pequeño que lo resuelva: a veces una sola automatización, a veces un agente completo. Preferimos lanzar algo acotado que funcione, antes que algo amplio que no."
+      },
+      {
+        "question": "¿Cómo definen el alcance de un nuevo proyecto?",
+        "answer": "Todo proyecto comienza con una llamada de descubrimiento, seguida de un alcance breve y por escrito: objetivos, cronograma y cómo se ve \"terminado\" en términos medibles. Apruebas eso antes de que empiece cualquier trabajo de diseño o desarrollo, para que no haya sorpresas cuando llegue la factura."
+      },
+      {
+        "question": "¿Cuánto dura un proyecto típico?",
+        "answer": "Un proyecto de marca o web suele tomar entre 4 y 8 semanas. Los proyectos de automatización con IA van desde un flujo único de dos semanas hasta la construcción de un agente de varios meses. El marketing de rendimiento y el trabajo continuo de producto funcionan por retainer, con reportes mensuales incluidos desde el primer día."
+      },
+      {
+        "question": "¿Trabajan con equipos fuera de Costa Rica?",
+        "answer": "La mayoría de nuestros proyectos son remotos por defecto. Estamos en Pérez Zeledón, y trabajamos con equipos de toda Norteamérica y Latinoamérica en horarios compatibles. Si te ayuda conversarlo primero, una llamada no cuesta nada."
+      }
+    ]
+  }
+}

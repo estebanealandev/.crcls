@@ -1,0 +1,11 @@
+{
+  "seo": {
+    "title": "Página Não Encontrada | Circles",
+    "description": "Esta página não existe ou foi movida. Volte à página inicial da Circles para encontrar o que procura."
+  },
+  "jsonLdName": "404 - Página Não Encontrada",
+  "jsonLdDescription": "A página que procura não existe ou foi movida.",
+  "code": "404",
+  "message": "A página que procura não existe ou foi movida",
+  "backToHomeLabel": "Voltar ao Início"
+}

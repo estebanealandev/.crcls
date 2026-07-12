@@ -1,0 +1,11 @@
+{
+  "seo": {
+    "title": "Page Not Found | Circles",
+    "description": "This page doesn't exist or has moved. Head back to the Circles homepage to find what you're looking for."
+  },
+  "jsonLdName": "404 - Page Not Found",
+  "jsonLdDescription": "The page you are looking for doesn't exist or has been moved.",
+  "code": "404",
+  "message": "The page you are looking for doesn't exist or has been moved",
+  "backToHomeLabel": "Back to Home"
+}

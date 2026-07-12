@@ -1,0 +1,194 @@
+---
+import { SITE_URL, SITE_NAME, BUSINESS_ID, WEBSITE_ID, GEO, absoluteUrl, jsonLdString } from '../lib/seo';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../i18n/utils';
+import { dictionaries } from '../i18n/dictionaries';
+import commonEn from '../i18n/locales/common/en.json';
+
+const COMMON = dictionaries<typeof commonEn>('common');
+
+interface Props {
+  canonicalPath?: string;
+  locale?: Locale;
+  /** Localized title of the current page, used as the breadcrumb's final label. Falls back to a title-cased slug. */
+  pageTitle?: string;
+  noindex?: boolean;
+}
+
+const { canonicalPath = "/", locale = DEFAULT_LOCALE, pageTitle, noindex = false } = Astro.props;
+const nav = COMMON[locale].nav;
+
+function localizedAbsoluteUrl(path: string): string {
+  return new URL(localizedPath(locale, path), SITE_URL).toString();
+}
+
+const business = {
+  "@type": "ProfessionalService",
+  "@id": BUSINESS_ID,
+  name: SITE_NAME,
+  legalName: SITE_NAME,
+  description:
+    "Circles is a web design, branding, and AI studio in San Isidro de El General, Pérez Zeledón, Costa Rica. We build websites, brand identities, ecommerce platforms, and AI systems for businesses in the Zona Sur, across Costa Rica, and abroad.",
+  slogan: "Think. Build. Compound.",
+  url: `${SITE_URL}/`,
+  logo: absoluteUrl("/assets/images/favicon.svg"),
+  image: absoluteUrl("/assets/images/thumb.jpg"),
+  telephone: "+506-7176-3386",
+  email: "hello@circlescr.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "San Isidro de El General",
+    addressRegion: "San José",
+    postalCode: "11901",
+    addressCountry: "CR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: GEO.latitude,
+    longitude: GEO.longitude,
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "San Isidro de El General",
+      containedInPlace: { "@type": "AdministrativeArea", name: "Pérez Zeledón, San José, Costa Rica" },
+    },
+    { "@type": "AdministrativeArea", name: "Pérez Zeledón" },
+    { "@type": "AdministrativeArea", name: "Región Brunca (Zona Sur)" },
+    { "@type": "AdministrativeArea", name: "Provincia de San José" },
+    { "@type": "Country", name: "Costa Rica" },
+  ],
+  serviceArea: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: GEO.latitude,
+      longitude: GEO.longitude,
+    },
+    geoRadius: "50000",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Studio services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Web Design & Development",
+          description:
+            "Professional website design and development (diseño web) for businesses in Pérez Zeledón and across Costa Rica.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Branding & Brand Identity",
+          description:
+            "Brand strategy, logo design, and visual identity (branding y diseño de marca) for companies in Pérez Zeledón and Costa Rica.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Ecommerce Engineering",
+          description:
+            "Headless storefronts and online stores built for speed and conversion, from Pérez Zeledón for clients everywhere.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "AI & Systems Automation",
+          description:
+            "AI agents and workflow automation scoped, built, and run in production for businesses in Costa Rica and abroad.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Performance Marketing",
+          description:
+            "SEO, paid media, and analytics wired into one feedback loop, run from Pérez Zeledón, Costa Rica.",
+        },
+      },
+    ],
+  },
+  priceRange: "$$",
+  currenciesAccepted: "CRC, USD",
+  paymentAccepted: "SINPE Móvil, Bank transfer, Cash",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "18:00",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "New Business",
+    email: "hello@circlescr.com",
+    telephone: "+506-7176-3386",
+    availableLanguage: ["English", "Spanish", "French", "German", "Portuguese"],
+  },
+  knowsLanguage: ["en", "es", "fr", "de", "pt"],
+};
+
+const website = {
+  "@type": "WebSite",
+  "@id": WEBSITE_ID,
+  name: SITE_NAME,
+  url: localizedAbsoluteUrl("/"),
+  description:
+    "Web design, branding, and AI studio in Pérez Zeledón, Costa Rica.",
+  publisher: { "@id": BUSINESS_ID },
+  inLanguage: locale,
+};
+
+// Intermediate URL segments that are not real pages map to their listing page.
+const SEGMENT_MAP: Record<string, { name: string; path: string } | null> = {
+  project: { name: nav.work, path: "/work" },
+  post: { name: nav.journal, path: "/journal" },
+  legal: null,
+};
+
+function titleCase(slug: string): string {
+  return slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+function buildBreadcrumb(path: string) {
+  const segments = path.split("/").filter(Boolean);
+  const lastSegment = segments[segments.length - 1];
+  if (lastSegment === undefined) return null;
+
+  const items: { name: string; path: string }[] = [{ name: nav.home, path: "/" }];
+  segments.slice(0, -1).forEach((seg) => {
+    const mapped = SEGMENT_MAP[seg];
+    if (mapped === null) return;
+    items.push(mapped ?? { name: titleCase(seg), path: `/${seg}` });
+  });
+  items.push({ name: pageTitle ?? titleCase(lastSegment), path });
+
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: localizedAbsoluteUrl(item.path),
+    })),
+  };
+}
+
+const breadcrumb = noindex ? null : buildBreadcrumb(canonicalPath);
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [business, website, ...(breadcrumb ? [breadcrumb] : [])],
+};
+---
+<script is:inline type="application/ld+json" set:html={jsonLdString(graph)} />

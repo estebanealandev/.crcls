@@ -1,0 +1,18 @@
+{
+  "title": "Von der Idee zur Umsetzung: mit Präzision bauen",
+  "seo": {
+    "title": "Von der Idee zur Umsetzung: mit Präzision bauen | Circles Journal",
+    "description": "Zwischen einer guten Idee und einem fertigen Produkt liegen Hunderte kleiner Entscheidungen. So stellt Circles sicher, dass keine davon dem Zufall überlassen wird."
+  },
+  "backToBlogLabel": "Zurück zum Blog",
+  "body": [
+    { "type": "p", "text": "Jedes Projekt beginnt als Idee mit noch unscharfen Details: „Wir brauchen einen KI-Agenten für den Support“, „Wir wollen einen Headless-Onlineshop“, „Unsere Marke fühlt sich nicht mehr richtig an.“ Nichts davon ist bereits ein Briefing. Es ist eine Richtung. Die Arbeit zwischen diesem Satz und einem fertigen Ergebnis ist der Punkt, an dem die meisten Agenturen an Präzision verlieren – und genau dort investieren wir die meiste bewusste Sorgfalt." },
+    { "type": "h3", "text": "Scope vor Sprint" },
+    { "type": "p", "text": "Bevor irgendetwas entworfen oder gebaut wird, halten wir schriftlich fest, was „fertig“ konkret und überprüfbar bedeutet: nicht „Conversion verbessern“, sondern „Warenkorbabbrüche senken, indem wir die drei Schritte mit dem größten Abbruch identifizieren und beheben“. Vage Ziele erzeugen vage Arbeit – egal wie talentiert das ausführende Team ist." },
+    { "type": "blockquote", "text": "Präzision ist keine Charaktereigenschaft. Sie entsteht, wenn das Ziel konkret genug ist, um verfehlt werden zu können." },
+    { "type": "p", "text": "Von dort aus richten wir den Aufbau an der riskantesten Annahme aus. Hängt ein KI-Workflow von unsauberen Quelldaten ab, testen wir die Daten, bevor wir die Oberfläche bauen. Hängt ein Rebranding von einer Positionierung ab, auf die sich die Geschäftsführung noch nicht vollständig geeinigt hat, klären wir das, bevor auch nur ein Mockup existiert. Zuerst die einfachen Teile zu bauen, fühlt sich nach Fortschritt an – meist ist es nur aufgeschobenes Risiko." },
+    { "type": "h3", "text": "Umsetzung ist eine Reihe kleiner, geprüfter Entscheidungen" },
+    { "type": "p", "text": "Die Lücke zwischen Idee und Umsetzung ist kein einzelner großer Sprung. Es sind Hunderte kleiner Entscheidungen: welches Feld ist Pflicht, was passiert, wenn sich der KI-Agent nicht sicher ist, wie eine fehlgeschlagene Zahlung kommuniziert wird. Wir treffen diese Entscheidungen bewusst, offen und gemeinsam mit dem Kunden – statt sie dem Ingenieur zu überlassen, der diese Datei zuletzt angefasst hat." },
+    { "type": "p", "text": "Das ist die eigentliche Definition von Präzision, an der wir arbeiten: nichts wird versehentlich ausgeliefert." }
+  ]
+}

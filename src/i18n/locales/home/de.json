@@ -1,0 +1,122 @@
+{
+  "seo": {
+    "title": "Circles — Webdesign-, Branding- und KI-Studio in Pérez Zeledón, Costa Rica",
+    "description": "Circles entwickelt Websites, Marken, KI-Systeme und Commerce-Plattformen von Pérez Zeledón, Costa Rica aus. Strategie, Design und Engineering, als ein zusammenhängendes System.",
+    "jsonLdName": "Circles — Studio für KI, Produkt und Wachstum",
+    "jsonLdDescription": "Circles entwickelt KI-Systeme, digitale Produkte und Commerce-Plattformen für Marken, die auf Dauer angelegt sind. Strategie, Design und Engineering, als ein zusammenhängendes System.",
+    "servicesListName": "Leistungen",
+    "services": [
+      "Markenführung",
+      "Performance & Marketing",
+      "Produkt- & Commerce-Engineering",
+      "KI & Systemautomatisierung"
+    ]
+  },
+  "hero": {
+    "imageAlt": "Circles Studio: KI-, Produkt- und Commerce-Systeme",
+    "strategyLine1": "Strategie, Design und Code.",
+    "strategyLine2": "Als ein System entwickelt.",
+    "mainLine1": "Wir entwickeln KI-, Produkt- und Commerce-Systeme, die sich gegenseitig verstärken.",
+    "mainLine2": "Mit Sitz in Costa Rica. Gebaut für Marken, die bleiben wollen."
+  },
+  "works": {
+    "title": "Arbeiten"
+  },
+  "services": {
+    "prefix": "Leistungen",
+    "boldText": "Mehr als nur eine Checkliste.",
+    "grayText": "Marke, Produkt, KI und Wachstum, als ein zusammenhängendes System entwickelt.",
+    "quote": {
+      "text": "„Wir liefern kein Projekt ab und verschwinden dann. Wir bauen das System und bleiben nah genug dran, damit es weiterwächst.“",
+      "attribution": "Circles, Gründungsteam"
+    },
+    "cards": [
+      {
+        "titleLine1": "Performance &",
+        "titleLine2": "Marketing",
+        "items": [
+          "Technisches & lokales SEO",
+          "Performance-Marketing",
+          "Conversion-Rate-Optimierung",
+          "Funnel- & Analytics-Design",
+          "E-Mail-Marketing",
+          "CRM-Integration",
+          "Wachstumsstrategie"
+        ]
+      },
+      {
+        "titleLine1": "KI & Systeme",
+        "titleLine2": "Automatisierung",
+        "items": [
+          "KI-Agenten & Workflows",
+          "KI-Kundensupport",
+          "Interne KI-Tools",
+          "KI-Strategie & Beratung",
+          "CRM- & ERP-Integration",
+          "Zapier, Make & n8n",
+          "Interne Dashboards"
+        ]
+      },
+      {
+        "titleLine1": "Produkt & ",
+        "titleLine2": "Commerce",
+        "items": [
+          "Web-Apps & SaaS-Plattformen",
+          "Progressive Web- & Mobile-Apps",
+          "Shopify- & Medusa-Commerce",
+          "Headless-Commerce-Entwicklung",
+          "E-Commerce-Optimierung & CRO",
+          "API-Integrationen",
+          "Skalierbare Infrastruktur"
+        ]
+      },
+      {
+        "titleLine1": "Marken",
+        "titleLine2": "führung",
+        "items": [
+          "Markenstrategie & Naming",
+          "Visuelle Identitätssysteme",
+          "Art Direction",
+          "Motion Branding",
+          "Designsysteme",
+          "Digitales Storytelling",
+          "Kreativdirektion"
+        ]
+      }
+    ]
+  },
+  "growthStatement": {
+    "text": "Wir bringen KI, Engineering und Marke in Einklang, um Wachstum voranzutreiben."
+  },
+  "capabilities": {
+    "prefix": "Kompetenzen",
+    "boldText": "Ein Team, nicht vier Dienstleister.",
+    "grayText": "Sicher in KI, Produkt, Commerce und Marke, damit nichts auf dem Weg verloren geht."
+  },
+  "testimonials": [
+    {
+      "quote": "„Circles hat nicht einfach nur eine Website geliefert, sondern neu definiert, wie unsere Marken-, Produkt- und Wachstumsteams zusammenarbeiten. Es fühlt sich endlich wie ein System an.“",
+      "name": "Gründungskunde",
+      "role": "Marken- & Web-Projekt",
+      "imageAlt": "Porträt eines Circles-Kunden, Marken- & Web-Projekt"
+    },
+    {
+      "quote": "„Der von Circles entwickelte KI-Workflow übernimmt heute, was früher zwei volle Stunden manuelle Arbeit pro Tag waren. Er läuft einfach, still, im Hintergrund.“",
+      "name": "Gründungskunde",
+      "role": "KI- & Automatisierungsprojekt",
+      "imageAlt": "Porträt eines Circles-Kunden, KI- & Automatisierungsprojekt"
+    },
+    {
+      "quote": "„Beeindruckend war ihre Fähigkeit, Komplexität zu vereinfachen. Strategie, Design und Engineering griffen nahtlos ineinander, und die Ergebnisse folgten.“",
+      "name": "Gründungskunde",
+      "role": "E-Commerce-Projekt",
+      "imageAlt": "Porträt eines Circles-Kunden, E-Commerce-Projekt"
+    }
+  ],
+  "journal": {
+    "prefix": "Journal",
+    "boldText": "mehr als nur Content.",
+    "grayText": "Notizen zu KI, Produkt-Engineering, Commerce und Marke, direkt aus dem Studio, das sie umsetzt.",
+    "viewAllLabel": "Alle ansehen"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Conceber sistemas digitais que escalam com intenção",
+  "seo": {
+    "title": "Conceber sistemas digitais que escalam com intenção | Circles Journal",
+    "description": "A maioria dos produtos “escaláveis” tem apenas mais ecrãs. Eis como a Circles concebe sistemas, incluindo fluxos de IA, que aguentam o crescimento real, não apenas uma demonstração."
+  },
+  "backToBlogLabel": "Voltar ao blogue",
+  "body": [
+    {
+      "type": "p",
+      "text": "“Escalável” é usado para descrever quase tudo o que tem uma base de dados e um ecrã de início de sessão. A maioria não é. Um sistema escala com intenção quando acrescentar os próximos 10 000 utilizadores, o próximo agente de IA ou o próximo canal de vendas não exige reconstruir a arquitetura do que já funciona. Essa é uma decisão de design, tomada logo no início, não uma correção de desempenho aplicada mais tarde."
+    },
+    {
+      "type": "p",
+      "text": "Tratamos cada projeto da mesma forma, seja uma loja Shopify, um fluxo de IA interno ou um painel voltado para o cliente: identificamos primeiro a parte que vai suportar mais carga e construímo-la como se fosse permanente. Tudo o resto pode iterar."
+    },
+    {
+      "type": "h3",
+      "text": "Onde os sistemas realmente falham"
+    },
+    {
+      "type": "p",
+      "text": "Na nossa experiência, os problemas de escala raramente começam como problemas técnicos. Começam como decisões sem dono: um fluxo de trabalho que existe apenas na cabeça de uma pessoa, uma integração mantida por uma folha de cálculo, um processo de checkout que ninguém testou sob pressão para lá de uma terça-feira normal. O código costuma sobreviver. O processo à volta, não."
+    },
+    {
+      "type": "blockquote",
+      "text": "Um sistema não é escalável por aguentar mais tráfego. É escalável por aguentar mais complexidade sem mais caos."
+    },
+    {
+      "type": "p",
+      "text": "É aqui que a automação com IA ganha o seu lugar, quando usada com critério: não para acrescentar um chatbot por acrescentar, mas para eliminar o passo manual que, silenciosamente, limitava o crescimento: a triagem de tickets que consumia duas horas por dia, a lógica de encaminhamento de encomendas que vivia na memória de alguém, o relatório que tinha de ser montado à mão todas as segundas-feiras."
+    },
+    {
+      "type": "h3",
+      "text": "Como construímos para isso"
+    },
+    {
+      "type": "p",
+      "text": "Cada projeto começa com a mesma pergunta: o que acontece quando isto funcionar? Se a resposta honesta for “teríamos de reconstruir”, redesenhamos a base antes de lançarmos a funcionalidade. Essa é a diferença entre um produto que escala com intenção e um que apenas se torna maior."
+    }
+  ]
+}

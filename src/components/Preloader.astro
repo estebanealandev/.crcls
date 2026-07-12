@@ -1,0 +1,28 @@
+---
+// Purely decorative loading animation, no translatable content.
+// The homepage's preloader additionally cross-fades the "Circles" wordmark
+// (a brand name, identical across locales) via `showLogoAnimation`.
+interface Props {
+  showLogoAnimation?: boolean;
+}
+
+const { showLogoAnimation = false } = Astro.props;
+---
+
+<div class="preloader">
+  <div class="loader-1"></div>
+  <div class="loader-2"></div>
+  <div class="loader-3"></div>
+  {showLogoAnimation && (
+    <div class="logo-center">
+      <div class="logo-animation-preloader">
+        <div class="logo-text-preloader _01">Circles</div>
+        <div class="logo-text-preloader _02">Circles</div>
+        <div class="logo-text-preloader _03">Circles</div>
+        <div class="logo-text-preloader _04">Circles</div>
+        <div class="logo-text-preloader _05">Circles</div>
+        <div class="logo-text-preloader _06">Circles</div>
+      </div>
+    </div>
+  )}
+</div>

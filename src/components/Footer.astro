@@ -1,0 +1,105 @@
+---
+import Logo from './Logo.astro';
+import ButtonLink from './ButtonLink.astro';
+import SubscribeForm from './SubscribeForm.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import commonEn from '../i18n/locales/common/en.json';
+import commonEs from '../i18n/locales/common/es.json';
+import commonFr from '../i18n/locales/common/fr.json';
+import commonDe from '../i18n/locales/common/de.json';
+import commonPt from '../i18n/locales/common/pt.json';
+
+const COMMON = { en: commonEn, es: commonEs, fr: commonFr, de: commonDe, pt: commonPt } as const;
+
+interface Props {
+  locale: Locale;
+  /** Locale-agnostic canonical path of the current page, e.g. "/", "/about", "/project/atlas" */
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const t = COMMON[locale];
+const nav = t.nav;
+const footer = t.footer;
+
+const footerNavItems = [
+  { label: nav.home, path: '/' },
+  { label: nav.about, path: '/about' },
+  { label: nav.work, path: '/work' },
+  { label: nav.journal, path: '/journal' },
+  { label: nav.contact, path: '/contact' },
+  { label: nav.licensing, path: '/legal/licensing' },
+].map((item) => ({ ...item, href: localizedPath(locale, item.path), active: item.path === currentPath }));
+
+const ctaHref = localizedPath(locale, '/contact');
+const mailtoHref = 'mailto:hello@circlescr.com';
+const telHref = 'tel:+50671763386';
+---
+
+<div class="footer">
+  <div class="container">
+    <div class="align-center">
+      <h2 class="h2 fade cnt sml inv">{footer.ctaTitle}</h2>
+      <div class="flex-btn">
+        <ButtonLink href={ctaHref} label={footer.ctaButton} variant="dark" active={currentPath === '/contact'} />
+      </div>
+    </div>
+    <div class="divider-l"></div>
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h2 class="h2 invert for-logo" style="display: flex; align-items: center; gap: 8px;">
+          <Logo height={28} />{footer.logoLabel}
+        </h2>
+        <div class="divider-s"></div>
+        <div class="flex-footer">
+          <div class="text-footer light">{footer.newBusinessLabel}</div>
+          <ButtonLink href={mailtoHref} label="hello@circlescr.com" />
+        </div>
+        <div class="divider-s"></div>
+        <div>
+          <div class="text-footer light">{footer.newsletterLabel}</div>
+        </div>
+        <div class="divider-xs"></div>
+        <div>
+          <SubscribeForm t={t.forms.subscribe} />
+        </div>
+        <div class="divider-xs"></div>
+        <div>
+          <div class="text-footer light">{footer.copyright}</div>
+        </div>
+      </div>
+      <div class="grid-right-footer">
+        <div>
+          <div class="flex-footer _01">
+            {footerNavItems.map((item) => (
+              <ButtonLink href={item.href} label={item.label} active={item.active} />
+            ))}
+          </div>
+        </div>
+        <div>
+          <div class="flex-footer">
+            <div class="social-wrapper">
+              <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="logo-testimonials rl w-inline-block" aria-label={footer.socialAriaLabels.x}>
+                <img width="14" height="14" loading="lazy" alt="" src="/assets/images/x.webp" sizes="(max-width: 991px) 14px, 1vw" srcset="/assets/images/x-p-500.png 500w, /assets/images/x.webp 512w" />
+              </a>
+              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="logo-testimonials rl w-inline-block" aria-label={footer.socialAriaLabels.instagram}>
+                <img width="16" height="16" loading="lazy" alt="" src="/assets/images/insta.png" sizes="(max-width: 767px) 16px, (max-width: 991px) 2vw, (max-width: 1919px) 16px, 1vw" srcset="/assets/images/insta-p-500.png 500w, /assets/images/insta.png 512w" />
+              </a>
+              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="logo-testimonials rl w-inline-block" aria-label={footer.socialAriaLabels.linkedin}>
+                <img width="16" height="16" loading="lazy" alt="" src="/assets/images/li.png" sizes="(max-width: 767px) 16px, (max-width: 991px) 2vw, (max-width: 1919px) 16px, 1vw" srcset="/assets/images/li-p-500.png 500w, /assets/images/li.png 512w" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex-footer">
+          <div class="text-footer light">{footer.addressLabel}</div>
+          <div class="text-footer invert">{footer.addressLines[0]}<br />{footer.addressLines[1]}</div>
+        </div>
+        <div class="flex-footer">
+          <div class="text-footer light">{footer.phoneLabel}</div>
+          <ButtonLink href={telHref} label="+506 7176 3386" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

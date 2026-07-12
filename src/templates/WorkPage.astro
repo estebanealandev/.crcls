@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+import PlusLineGrid from '../components/PlusLineGrid.astro';
+import HoverTooltip from '../components/HoverTooltip.astro';
+import WorkCard from '../components/WorkCard.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
+import { absoluteUrl, localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { PROJECTS } from '../data/projects';
+import workEn from '../i18n/locales/work/en.json';
+
+const DICT = dictionaries<typeof workEn>('work');
+const PROJECT_COPY = slugDictionaries<{ title: string; servicesValue: string }>(
+  'projects',
+  PROJECTS.map((p) => p.slug)
+);
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = DICT[locale];
+const canonicalPath = '/work';
+const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  dataWfPage="69ea3b293f46d55a8da19970"
+  wfScript="/js/webflow.e6aeb930.103a96742c08bc67.js"
+  preloadImage="/assets/images/bg-second.webp"
+  canonicalPath={canonicalPath}
+  locale={locale}
+>
+  <script is:inline type="application/ld+json" slot="head" set:html={jsonLdString({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": t.jsonLdName,
+    "description": t.jsonLdDescription,
+    "url": pageUrl,
+    "inLanguage": locale,
+    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+    "hasPart": PROJECTS.map((p) => ({
+      "@type": "CreativeWork",
+      "@id": `https://www.circlescr.com/project/${p.slug}`,
+      "name": PROJECT_COPY(p.slug)[locale].title,
+      "url": localizedAbsoluteUrl(locale, `/project/${p.slug}`),
+      "image": absoluteUrl(p.heroImage.src),
+      "about": PROJECT_COPY(p.slug)[locale].servicesValue,
+    })),
+  })} />
+
+  <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="4d5b06cd-a965-20bf-b72a-e01f91f1c448" />
+  <PlusLineGrid />
+  <main style="display:contents">
+
+  <div class="main-content">
+    <div class="main-hero-wrapper">
+      <div class="hero-main for-inner">
+        <div data-w-id="04dcb905-14e9-c7a0-af4d-acd96d87c8a4" class="hero-slider">
+          <div class="block-center">
+            <div class="hero-content"><div class="hero-photo _04"><div class="overlay"></div></div></div>
+            <div class="container for-inner">
+              <div><h1 class="h1-inner">{t.hero.title}<span class="light-oc">©</span></h1></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-w-id="04dcb905-14e9-c7a0-af4d-acd96d87c8ad"></div>
+
+  <div class="content-effect _01">
+    <section class="section">
+      <div data-w-id="04dcb905-14e9-c7a0-af4d-acd96d87c8b0" class="work-main">
+        <div class="w-dyn-list">
+          <div role="list" class="work-grid-main w-dyn-items">
+            {PROJECTS.map((p) => (
+              <WorkCard
+                href={localizedPath(locale, `/project/${p.slug}`)}
+                title={PROJECT_COPY(p.slug)[locale].title}
+                serviceLabel={PROJECT_COPY(p.slug)[locale].servicesValue}
+                image={p.heroImage}
+                logoImage={p.logoImage}
+                video={p.video}
+                eagerVideo={false}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="04dcb905-14e9-c7a0-af4d-acd96d87c8c5"></div>
+
+  </main>
+  <Footer locale={locale} currentPath={canonicalPath} />
+  <Preloader />
+  <HoverTooltip locale={locale} hoverCards="work" />
+</Layout>

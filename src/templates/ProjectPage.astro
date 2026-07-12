@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+import PlusLineGrid from '../components/PlusLineGrid.astro';
+import HoverTooltip from '../components/HoverTooltip.astro';
+import WorkCard from '../components/WorkCard.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
+import { absoluteUrl, localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { PROJECTS, requireProject, otherProjects } from '../data/projects';
+import commonEn from '../i18n/locales/common/en.json';
+import projectEn from '../i18n/locales/projects/atlas/en.json';
+
+const COMMON = dictionaries<typeof commonEn>('common');
+const PROJECT_COPY = slugDictionaries<typeof projectEn>('projects', PROJECTS.map((p) => p.slug));
+
+interface Props {
+  locale: Locale;
+  slug: string;
+}
+
+const { locale, slug } = Astro.props;
+const project = requireProject(slug);
+const t = PROJECT_COPY(slug)[locale];
+const common = COMMON[locale];
+const canonicalPath = `/project/${slug}`;
+const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+const others = otherProjects(slug);
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  dataWfPage={project.dataWfPage}
+  wfScript={project.wfScript}
+  preloadImage={project.heroImage.src}
+  canonicalPath={canonicalPath}
+  locale={locale}
+>
+  <script is:inline type="application/ld+json" slot="head" set:html={jsonLdString({
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": t.title,
+    "description": t.jsonLdDescription,
+    "url": pageUrl,
+    "image": absoluteUrl(project.logoImage ?? project.heroImage.src),
+    "inLanguage": locale,
+    "creator": { "@id": "https://www.circlescr.com/#business" },
+    "about": {
+      "@type": "Service",
+      "name": t.servicesValue,
+      "description": t.jsonLdDescription,
+    },
+    "associatedMedia": [project.heroImage, ...project.galleryImages].map((img) => ({
+      "@type": "ImageObject",
+      "url": absoluteUrl(img.src),
+    })),
+    ...(project.video ? { video: { "@type": "VideoObject", url: project.video } } : {}),
+    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+  })} />
+
+  <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="2c6d055c-3822-5e83-74c0-a9ee4eb30d6c" />
+  <main style="display:contents">
+
+  <div class="main-content">
+    <div class="main-hero-wrapper">
+      <div class="hero-main for-inner">
+        <div data-w-id="fb777357-e368-8536-668d-092edf191c05" class="hero-slider">
+          <div class="block-center">
+            <div class="hero-content">
+              <div style={`background-image:url("${project.heroImage.src}")`} class="hero-photo _04"><div class="overlay"></div></div>
+            </div>
+            <div class="container for-inner">
+              <div><h1 class="h1-inner">{t.title}</h1></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-w-id="fb777357-e368-8536-668d-092edf191c10"></div>
+
+  <div class="content-effect _01">
+    <section class="section">
+      <div class="container effect">
+        <div>
+          <div class="case-details">
+            <div id="w-node-ff12d927-4261-9e21-ce8e-265e012de00d-8da1996c" class="case-sticky">
+              <div class="max-w-left add-wkp">
+                <h2 class="h2 _03">{common.projectMeta.descriptionLabel}©</h2>
+                <div class="margin-20px"><h2 class="work-page-title">{t.workPageTitle}</h2></div>
+              </div>
+              <div class="project-bottom-line">
+                <div class="line-flex">
+                  <p class="project-text">{common.projectMeta.typeLabel}</p>
+                  <div><p class="project-text">{common.projectMeta.caseStudyValue}</p></div>
+                </div>
+                <div class="line-flex">
+                  <p class="project-text">{common.projectMeta.dateLabel}</p>
+                  <div>
+                    <div class="flex-kllapa">
+                      <p class="project-text">©</p>
+                      <p class="project-text">{common.projectMeta.dateValue}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="line-flex vertical">
+                  <p class="project-text">{common.projectMeta.servicesLabel}</p>
+                  <div><p class="project-text">{t.servicesValue}</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="case-picture gr">
+              <div class="photo-wrapper">
+                <img loading="lazy" src={project.heroImage.src} alt={t.imageAlt} sizes={project.heroImage.sizes} srcset={project.heroImage.srcset} class="work-photo-first" />
+              </div>
+              {project.galleryImages.map((img, i) => (
+                <div class="photo-wrapper">
+                  <img loading="lazy" src={img.src} alt={t.imageAlt} sizes={img.sizes} srcset={img.srcset} class={i === project.galleryImages.length - 1 ? 'work-photo-first _03' : 'work-photo-first'} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="60cee276-e239-4e34-cb62-d28de049fe42"></div>
+
+  <div class="content-effect _02">
+    <section class="section _02">
+      <div class="container">
+        <h2 class="page-title">
+          {common.projectMeta.relatedWork.prefix}© — {common.projectMeta.relatedWork.boldText} <span class="gray-color">{common.projectMeta.relatedWork.grayText}</span>
+        </h2>
+        <div class="divider-m"></div>
+        <div data-w-id="fb777357-e368-8536-668d-092edf191c13" class="work-main">
+          <div class="w-dyn-list">
+            <div role="list" class="work-grid-main w-dyn-items">
+              {others.map((other) => (
+                <WorkCard
+                  href={localizedPath(locale, `/project/${other.slug}`)}
+                  title={PROJECT_COPY(other.slug)[locale].title}
+                  serviceLabel={PROJECT_COPY(other.slug)[locale].servicesValue}
+                  image={other.heroImage}
+                  logoImage={other.logoImage}
+                  video={other.video}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="fb777357-e368-8536-668d-092edf191c28"></div>
+
+  </main>
+  <Footer locale={locale} currentPath={canonicalPath} />
+  <PlusLineGrid />
+  <Preloader />
+  <HoverTooltip locale={locale} hoverCards="work" />
+</Layout>

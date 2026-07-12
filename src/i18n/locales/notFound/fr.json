@@ -1,0 +1,11 @@
+{
+  "seo": {
+    "title": "Page Introuvable | Circles",
+    "description": "Cette page n'existe pas ou a été déplacée. Retournez à l'accueil Circles pour trouver ce que vous cherchez."
+  },
+  "jsonLdName": "404 - Page Introuvable",
+  "jsonLdDescription": "La page que vous recherchez n'existe pas ou a été déplacée.",
+  "code": "404",
+  "message": "La page que vous recherchez n'existe pas ou a été déplacée",
+  "backToHomeLabel": "Retour à l'Accueil"
+}

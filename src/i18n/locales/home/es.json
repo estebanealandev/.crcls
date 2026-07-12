@@ -1,0 +1,122 @@
+{
+  "seo": {
+    "title": "Circles — Diseño Web, Branding y Estudio de IA en Pérez Zeledón, Costa Rica",
+    "description": "Circles crea sitios web, marcas, sistemas de IA y plataformas de comercio desde Pérez Zeledón, Costa Rica. Estrategia, diseño e ingeniería, como un solo sistema conectado.",
+    "jsonLdName": "Circles — Estudio de IA, Producto y Crecimiento",
+    "jsonLdDescription": "Circles crea sistemas de IA, productos digitales y plataformas de comercio para marcas que buscan perdurar. Estrategia, diseño e ingeniería, como un solo sistema conectado.",
+    "servicesListName": "Servicios",
+    "services": [
+      "Dirección de Marca",
+      "Rendimiento y Marketing",
+      "Ingeniería de Producto y Comercio",
+      "IA y Automatización de Sistemas"
+    ]
+  },
+  "hero": {
+    "imageAlt": "Estudio Circles: sistemas de IA, producto y comercio",
+    "strategyLine1": "Estrategia, diseño y código.",
+    "strategyLine2": "Diseñados como un solo sistema.",
+    "mainLine1": "Creamos sistemas de IA, producto y comercio que se potencian con el tiempo.",
+    "mainLine2": "Con sede en Costa Rica. Hecho para marcas que planean quedarse."
+  },
+  "works": {
+    "title": "Trabajos"
+  },
+  "services": {
+    "prefix": "Servicios",
+    "boldText": "Construido más allá de una lista de tareas.",
+    "grayText": "Marca, producto, IA y crecimiento, diseñados como un solo sistema conectado.",
+    "quote": {
+      "text": "“No entregamos un proyecto y desaparecemos. Construimos el sistema y nos quedamos lo bastante cerca como para que siga creciendo.”",
+      "attribution": "Circles, Equipo Fundador"
+    },
+    "cards": [
+      {
+        "titleLine1": "Rendimiento y",
+        "titleLine2": "Marketing",
+        "items": [
+          "SEO Técnico y Local",
+          "Marketing de Rendimiento",
+          "Optimización de Conversión (CRO)",
+          "Diseño de Embudos y Analítica",
+          "Email Marketing",
+          "Integración de CRM",
+          "Estrategia de Crecimiento"
+        ]
+      },
+      {
+        "titleLine1": "IA y Sistemas",
+        "titleLine2": "Automatización",
+        "items": [
+          "Agentes y Flujos de IA",
+          "Soporte al Cliente con IA",
+          "Herramientas Internas con IA",
+          "Estrategia y Consultoría en IA",
+          "Integración de CRM y ERP",
+          "Zapier, Make y n8n",
+          "Paneles Internos"
+        ]
+      },
+      {
+        "titleLine1": "Producto y ",
+        "titleLine2": "Comercio",
+        "items": [
+          "Web Apps y Plataformas SaaS",
+          "Apps Web Progresivas y Móviles",
+          "Comercio con Shopify y Medusa",
+          "Desarrollos de Comercio Headless",
+          "Optimización de Ecommerce y CRO",
+          "Integraciones de API",
+          "Infraestructura Escalable"
+        ]
+      },
+      {
+        "titleLine1": "Dirección",
+        "titleLine2": "de Marca",
+        "items": [
+          "Estrategia de Marca y Naming",
+          "Sistemas de Identidad Visual",
+          "Dirección de Arte",
+          "Motion Branding",
+          "Sistemas de Diseño",
+          "Storytelling Digital",
+          "Dirección Creativa"
+        ]
+      }
+    ]
+  },
+  "growthStatement": {
+    "text": "Alineamos IA, ingeniería y marca para impulsar el crecimiento."
+  },
+  "capabilities": {
+    "prefix": "Capacidades",
+    "boldText": "Un solo equipo, no cuatro proveedores.",
+    "grayText": "Fluidez en IA, producto, comercio y marca, para que nada se pierda en el camino."
+  },
+  "testimonials": [
+    {
+      "quote": "“Circles no solo lanzó un sitio web: rediseñó la forma en que nuestros equipos de marca, producto y crecimiento trabajan juntos. Por fin se siente como un solo sistema.”",
+      "name": "Cliente Fundador",
+      "role": "Colaboración de Marca y Web",
+      "imageAlt": "Retrato de un cliente de Circles, Colaboración de Marca y Web"
+    },
+    {
+      "quote": "“El flujo de trabajo de IA que Circles construyó ahora hace lo que antes eran dos horas diarias de trabajo manual. Simplemente funciona, en silencio, de fondo.”",
+      "name": "Cliente Fundador",
+      "role": "Colaboración de IA y Automatización",
+      "imageAlt": "Retrato de un cliente de Circles, Colaboración de IA y Automatización"
+    },
+    {
+      "quote": "“Lo que más destacó fue su capacidad para simplificar la complejidad. Estrategia, diseño e ingeniería se unieron sin fricciones, y los resultados llegaron.”",
+      "name": "Cliente Fundador",
+      "role": "Colaboración de Ecommerce",
+      "imageAlt": "Retrato de un cliente de Circles, Colaboración de Ecommerce"
+    }
+  ],
+  "journal": {
+    "prefix": "Bitácora",
+    "boldText": "construida más allá del contenido.",
+    "grayText": "Notas sobre IA, ingeniería de producto, comercio y marca, del estudio que realmente lo construye.",
+    "viewAllLabel": "Ver todo"
+  }
+}

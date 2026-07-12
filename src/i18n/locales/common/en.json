@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "work": "Work",
+    "journal": "Journal",
+    "contact": "Contact",
+    "licensing": "Licensing",
+    "menuOpen": "Menu",
+    "menuClose": "Close",
+    "location": "Pérez Zeledón, CR",
+    "logoAriaLabel": "Circles — home",
+    "menuToggleAriaLabel": "Toggle navigation menu"
+  },
+  "footer": {
+    "ctaTitle": "©Built once. Done properly.",
+    "ctaButton": "Let's Talk",
+    "logoLabel": "Studio",
+    "newBusinessLabel": "New Business:",
+    "newsletterLabel": "Thoughtful updates, nothing more.",
+    "copyright": "© Copyright Circles",
+    "addressLabel": "Address:",
+    "addressLines": ["Pérez Zeledón,", "Costa Rica"],
+    "phoneLabel": "Phone:",
+    "socialAriaLabels": {
+      "x": "Circles on X",
+      "instagram": "Circles on Instagram",
+      "linkedin": "Circles on LinkedIn"
+    }
+  },
+  "forms": {
+    "subscribe": {
+      "emailPlaceholder": "E-mail",
+      "submitLabel": "Subscribe",
+      "waitLabel": "Sending...",
+      "successMessage": "Thank you for subscribing.",
+      "errorMessage": "Something went wrong. Please try again in a moment.",
+      "ariaLabel": "Subscribe to the newsletter"
+    }
+  },
+  "languageSwitcher": {
+    "ariaLabel": "Select language"
+  },
+  "tooltip": {
+    "viewProject": ["View", "Project"],
+    "readMore": ["Read", "More"]
+  },
+  "misc": {
+    "backToHome": "Back to Home"
+  },
+  "projectMeta": {
+    "descriptionLabel": "Project Description",
+    "typeLabel": "Type",
+    "caseStudyValue": "Case Study",
+    "dateLabel": "Date",
+    "dateValue": "2026",
+    "servicesLabel": "Services",
+    "relatedWork": {
+      "prefix": "Related Work",
+      "boldText": "Proof beyond words.",
+      "grayText": "Selected projects where brand, design, and performance move as one."
+    }
+  },
+  "postMeta": {
+    "relatedStory": {
+      "prefix": "Related Story",
+      "boldText": "Where stories become systems.",
+      "grayText": "Insight, storytelling, and distribution working as one."
+    }
+  }
+}

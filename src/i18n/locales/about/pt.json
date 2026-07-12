@@ -1,0 +1,97 @@
+{
+  "seo": {
+    "title": "Sobre a Circles — Estúdio de IA, Produto e Marca em Pérez Zeledón",
+    "description": "A Circles é um estúdio sediado em Pérez Zeledón que reúne IA, engenharia de produto, comércio e estratégia de marca. É assim que pensamos e é assim que trabalhamos.",
+    "jsonLdName": "Sobre a Circles",
+    "jsonLdDescription": "A Circles é um estúdio sediado em Pérez Zeledón que reúne IA, engenharia de produto, comércio e estratégia de marca. É assim que pensamos e é assim que trabalhamos."
+  },
+  "hero": {
+    "title": "Sobre"
+  },
+  "gallery": {
+    "images": [
+      { "alt": "Estudo de retrato em styling de moda moderno" },
+      { "alt": "Retrato de um modelo com um fato vermelho à medida" },
+      { "alt": "Dois homens posando com fatos brancos a condizer" },
+      { "alt": "Retrato de um modelo com óculos de sol de destaque" },
+      { "alt": "Retrato de um homem elegante fotografado ao ar livre" },
+      { "alt": "Retrato de estúdio de uma mulher" },
+      { "alt": "Estudo de retrato calmo e sereno" }
+    ],
+    "stickyTitle": "Pensar. Construir. Multiplicar."
+  },
+  "philosophy": {
+    "lead": "Circles",
+    "boldText": "Construído além da identidade. Visão definida. Marca moldada. Sistemas concebidos. Inteligência integrada.",
+    "grayText": "Criamos estrutura onde há ruído, clareza onde há complexidade e direção onde há fricção. Marca, IA, produto e crescimento avançam em conjunto. Nada existe isoladamente. Construído para escalar. Construído para perdurar.",
+    "values": [
+      {
+        "title": "Clareza©",
+        "number": "(01)",
+        "description": "Eliminamos o ruído e definimos o rumo. Cada projeto começa com uma leitura clara do problema, não com suposições."
+      },
+      {
+        "title": "Estrutura©",
+        "number": "(02)",
+        "description": "Construímos sistemas, não fragmentos. Marca, produto e IA alinhados num único fluxo coerente, em vez de quatro fornecedores desligados entre si."
+      },
+      {
+        "title": "Precisão©",
+        "number": "(03)",
+        "description": "Cada detalhe importa. Do primeiro diagrama de fluxo à última linha de código, nada é acidental."
+      },
+      {
+        "title": "Desempenho©",
+        "number": "(04)",
+        "description": "Se não mexe num número, não vai para produção. Tudo o que construímos é medido, monitorizado e concebido para crescer de forma sustentada."
+      }
+    ]
+  },
+  "team": {
+    "prefix": "Equipa",
+    "boldText": "Sem hierarquias de fachada. Sem funções desligadas entre si.",
+    "grayText": "Apenas mentes alinhadas, colaboração estruturada e execução que cumpre. Feitos para avançar como um só.",
+    "members": [
+      {
+        "image": "/assets/images/circles-team-01.webp",
+        "role": "Fundador e Diretor Criativo",
+        "alt": "Retrato do Fundador e Diretor Criativo da Circles"
+      },
+      {
+        "image": "/assets/images/circles-team-03.webp",
+        "role": "Engenheiro de Produto Principal",
+        "alt": "Retrato do Engenheiro de Produto Principal da Circles"
+      },
+      {
+        "image": "/assets/images/circles-team-02.webp",
+        "role": "Responsável de IA e Automação",
+        "alt": "Retrato do Responsável de IA e Automação da Circles"
+      },
+      {
+        "image": "/assets/images/circles-team-04.webp",
+        "role": "Sucesso do Cliente",
+        "alt": "Retrato do responsável de Sucesso do Cliente da Circles"
+      }
+    ],
+    "ctaLabel": "Trabalhe connosco"
+  },
+  "stack": {
+    "prefix": "Stack",
+    "boldText": "Sem decoração. Apenas ferramentas que merecem o seu lugar.",
+    "grayText": "Aquilo a que recorremos quando marca, produto e IA precisam de avançar juntos.",
+    "columns": {
+      "category": "Categoria",
+      "tools": "Ferramentas",
+      "focus": "Foco"
+    },
+    "rows": [
+      { "category": "IA e Automação", "tools": "LangChain, OpenAI API, n8n", "focus": "Agentes©" },
+      { "category": "Engenharia de Produto", "tools": "Next.js, Astro, React Native", "focus": "Produto©" },
+      { "category": "Comércio", "tools": "Shopify, Medusa", "focus": "Comércio©" },
+      { "category": "Automação", "tools": "Zapier, Make, n8n", "focus": "Sistemas©" },
+      { "category": "Marketing", "tools": "GA4, Search Console, HubSpot", "focus": "Crescimento©" },
+      { "category": "Marca", "tools": "Figma, Adobe CC", "focus": "Identidade©" },
+      { "category": "Infraestrutura", "tools": "Railway, Vercel, Resend", "focus": "Entrega©" }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "work": "Trabajo",
+    "journal": "Diario",
+    "contact": "Contacto",
+    "licensing": "Licencias",
+    "menuOpen": "Menú",
+    "menuClose": "Cerrar",
+    "location": "Pérez Zeledón, CR",
+    "logoAriaLabel": "Circles — inicio",
+    "menuToggleAriaLabel": "Alternar menú de navegación"
+  },
+  "footer": {
+    "ctaTitle": "©Se construye una vez. Bien hecho.",
+    "ctaButton": "Hablemos",
+    "logoLabel": "Estudio",
+    "newBusinessLabel": "Nuevos Proyectos:",
+    "newsletterLabel": "Actualizaciones con criterio, nada más.",
+    "copyright": "© Circles. Todos los derechos reservados.",
+    "addressLabel": "Dirección:",
+    "addressLines": ["Pérez Zeledón,", "Costa Rica"],
+    "phoneLabel": "Teléfono:",
+    "socialAriaLabels": {
+      "x": "Circles en X",
+      "instagram": "Circles en Instagram",
+      "linkedin": "Circles en LinkedIn"
+    }
+  },
+  "forms": {
+    "subscribe": {
+      "emailPlaceholder": "Correo electrónico",
+      "submitLabel": "Suscribirse",
+      "waitLabel": "Enviando...",
+      "successMessage": "Gracias por suscribirte.",
+      "errorMessage": "Algo salió mal. Inténtalo de nuevo en un momento.",
+      "ariaLabel": "Suscribirse al boletín"
+    }
+  },
+  "languageSwitcher": {
+    "ariaLabel": "Seleccionar idioma"
+  },
+  "tooltip": {
+    "viewProject": ["Ver", "Proyecto"],
+    "readMore": ["Leer", "Más"]
+  },
+  "misc": {
+    "backToHome": "Volver al inicio"
+  },
+  "projectMeta": {
+    "descriptionLabel": "Descripción del Proyecto",
+    "typeLabel": "Tipo",
+    "caseStudyValue": "Caso de Estudio",
+    "dateLabel": "Fecha",
+    "dateValue": "2026",
+    "servicesLabel": "Servicios",
+    "relatedWork": {
+      "prefix": "Trabajo Relacionado",
+      "boldText": "Pruebas más allá de las palabras.",
+      "grayText": "Proyectos seleccionados donde marca, diseño y rendimiento se mueven como uno solo."
+    }
+  },
+  "postMeta": {
+    "relatedStory": {
+      "prefix": "Historia Relacionada",
+      "boldText": "Donde las historias se convierten en sistemas.",
+      "grayText": "Perspectiva, narrativa y distribución trabajando como una sola cosa."
+    }
+  }
+}

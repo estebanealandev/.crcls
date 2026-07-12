@@ -1,0 +1,18 @@
+{
+  "title": "Da ideia à execução: construir com precisão",
+  "seo": {
+    "title": "Da ideia à execução: construir com precisão | Circles Journal",
+    "description": "Entre uma boa ideia e um produto lançado há centenas de pequenas decisões. Este é o processo que a Circles utiliza para garantir que nenhuma delas é tomada por acaso."
+  },
+  "backToBlogLabel": "Voltar ao blog",
+  "body": [
+    { "type": "p", "text": "Todos os projetos começam como uma ideia com os detalhes ainda por definir: «precisamos de um agente de IA para o apoio ao cliente», «queremos uma loja headless», «a nossa marca já não parece certa». Nada disso é ainda um briefing. É uma direção. O trabalho entre essa frase e um resultado lançado é onde a maioria das agências perde precisão — e é aí que colocamos o esforço mais deliberado." },
+    { "type": "h3", "text": "Âmbito antes do sprint" },
+    { "type": "p", "text": "Antes de desenhar ou construir seja o que for, escrevemos o que significa «concluído» em termos específicos e verificáveis: não «melhorar a conversão», mas «reduzir o abandono no checkout identificando e corrigindo os três passos com maior queda». Objetivos vagos produzem trabalho vago, por mais talentosa que seja a equipa que os executa." },
+    { "type": "blockquote", "text": "Precisão não é um traço de personalidade. É o que acontece quando o alvo é suficientemente específico para poder ser falhado." },
+    { "type": "p", "text": "A partir daí, organizamos a construção em torno da suposição mais arriscada. Se um fluxo de IA depende de dados de origem pouco fiáveis, testamos os dados antes de construir a interface. Se um rebranding depende de um posicionamento que a liderança ainda não acordou por completo, resolvemos isso antes de existir um único mockup. Construir primeiro as partes fáceis parece progresso; normalmente é apenas risco adiado." },
+    { "type": "h3", "text": "A execução é uma série de pequenas decisões verificadas" },
+    { "type": "p", "text": "A distância entre a ideia e a execução não é um único grande salto. São centenas de pequenas decisões: que campo é obrigatório, o que acontece quando o agente de IA não tem confiança suficiente, como se comunica um pagamento falhado. Tomamos essas decisões de propósito, de forma aberta, com o cliente presente, em vez de deixar que sejam decididas pelo último engenheiro a mexer nesse ficheiro." },
+    { "type": "p", "text": "Essa é a verdadeira definição de precisão que perseguimos: nada é lançado por acaso." }
+  ]
+}

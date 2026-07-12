@@ -1,0 +1,25 @@
+{
+  "seo": {
+    "title": "Asset Licensing | Circles",
+    "description": "Licensing information for the imagery and typefaces used across circlescr.com."
+  },
+  "jsonLd": {
+    "name": "Asset Licensing",
+    "description": "Licensing information for the imagery and typefaces used across circlescr.com.",
+    "aboutName": "Circles Asset Licensing",
+    "aboutDescription": "All imagery and typefaces used on this site are licensed for personal and commercial use.",
+    "aboutText": "Licensing information for images from LUMMI, Switzer font from Fontshare, and IBM Plex Mono font from Google Fonts",
+    "lummiDescription": "Licensed images for personal and commercial use",
+    "switzerDescription": "Font licensed from Fontshare",
+    "ibmPlexDescription": "Font licensed from Google Fonts"
+  },
+  "intro": "All imagery and typefaces used on this site are licensed for personal and commercial use. Sources and licenses for each asset are listed below.",
+  "imageSectionLabel": "Image",
+  "fontSectionLabel": "Font License",
+  "lummiLinkLabel": "LUMMI",
+  "lummiImageAlt": "LUMMI stock photography sample licensed for use on this site",
+  "switzerLinkLabel": "Switzer",
+  "switzerSampleText": "I'm Switzer, happy to meet you!",
+  "ibmMonoLinkLabel": "IBM Mono",
+  "ibmMonoSampleText": "I'm IBM Plex Mono, happy to meet you!"
+}

@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import PlusLineGrid from '../components/PlusLineGrid.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import { dictionaries } from '../i18n/dictionaries';
+import { localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import notFoundEn from '../i18n/locales/notFound/en.json';
+
+const DICT = dictionaries<typeof notFoundEn>('notFound');
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = DICT[locale];
+const canonicalPath = '/404';
+const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  dataWfPage="69ea3b293f46d55a8da1996d"
+  wfScript="/js/webflow.21c96129.b139c9ba2e1a8ee4.js"
+  canonicalPath={canonicalPath}
+  locale={locale}
+  noindex={true}
+>
+  <script is:inline type="application/ld+json" slot="head" set:html={jsonLdString({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": t.jsonLdName,
+    "description": t.jsonLdDescription,
+    "url": pageUrl,
+    "inLanguage": locale,
+    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+  })} />
+
+  <Navbar locale={locale} currentPath={canonicalPath} />
+
+  <main class="utility-page-wrap">
+    <div class="utility-page-content">
+      <h2 class="_404">{t.code}</h2>
+      <div><p>{t.message}</p></div>
+      <div class="divider-s"></div>
+      <div>
+        <ButtonLink href={localizedPath(locale, '/')} label={t.backToHomeLabel} />
+      </div>
+    </div>
+  </main>
+  <PlusLineGrid />
+</Layout>

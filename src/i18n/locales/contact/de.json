@@ -1,0 +1,60 @@
+{
+  "seo": {
+    "title": "Kontakt zu Circles — Web-, Marken- und KI-Studio in Pérez Zeledón",
+    "description": "Erzählen Sie uns, was Sie aufbauen. Circles beantwortet jede ernsthafte Anfrage innerhalb eines Werktags aus Pérez Zeledón, Costa Rica.",
+    "jsonLdName": "Kontakt zu Circles",
+    "jsonLdDescription": "Teilen Sie Ihre Idee. Wir geben ihr die Richtung. Kontaktieren Sie Circles für neue Geschäftsanfragen."
+  },
+  "hero": {
+    "title": "hallo"
+  },
+  "pageTitle": {
+    "prefix": "Kontakt",
+    "boldText": "Gebaut jenseits von Gesprächen.",
+    "grayText": "Wir bringen Vision, Strategie und Umsetzung von der ersten Nachricht an in Einklang."
+  },
+  "form": {
+    "nameLabel": "Name",
+    "firstNamePlaceholder": "Vorname",
+    "lastNamePlaceholder": "Nachname",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Ihre E-Mail-Adresse",
+    "messageLabel": "Nachricht",
+    "messagePlaceholder": "Wie können wir helfen?...",
+    "companyLabel": "Unternehmen",
+    "privacyNotice": "*Mit dem Absenden dieses Formulars stimmen Sie zu, von Circles bezüglich Ihrer Anfrage kontaktiert zu werden. Wir geben Ihre Daten an niemanden sonst weiter.",
+    "submitLabel": "Kontaktieren Sie uns",
+    "waitLabel": "Wird gesendet...",
+    "successTitle": "Danke.",
+    "successMessage": "Ihre Nachricht ist eingegangen. Wir beantworten jede ernsthafte Anfrage innerhalb eines Werktags.",
+    "errorMessage": "Auf unserer Seite ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an hello@circlescr.com."
+  },
+  "faq": {
+    "prefix": "FAQ",
+    "boldText": "Fragen, geklärt.",
+    "grayText": "Einblick, Struktur und Umsetzung von Anfang an aufeinander abgestimmt.",
+    "emailUsLabel": "E-Mail schreiben",
+    "items": [
+      {
+        "question": "Was baut Circles eigentlich?",
+        "answer": "Vier miteinander verbundene Bereiche: KI-Agenten und Automatisierung, Produkt- und E-Commerce-Engineering, Markenstrategie und Identität sowie Performance-Marketing. Die meisten Projekte kombinieren zwei oder drei davon: einen KI-Support-Agenten, der in einen neuen Onlineshop eingebunden ist, oder ein Rebranding, das zusammen mit der Website erscheint, die es trägt."
+      },
+      {
+        "question": "Brauchen wir eine KI-Strategie oder nur eine KI-Funktion?",
+        "answer": "Meistens zunächst keines von beidem. Wir beginnen mit einem Audit, um herauszufinden, wo manuelle Arbeit Sie tatsächlich Zeit oder Geld kostet, und empfehlen dann das kleinstmögliche System, das dies löst, manchmal eine einzelne Automatisierung, manchmal einen vollständigen Agenten. Wir liefern lieber etwas Kleines, das funktioniert, als etwas Umfangreiches, das es nicht tut."
+      },
+      {
+        "question": "Wie legen Sie den Umfang eines neuen Projekts fest?",
+        "answer": "Jedes Projekt beginnt mit einem Discovery-Call, gefolgt von einem kurzen schriftlichen Leistungsumfang: Ziele, Zeitplan und was \"fertig\" in messbaren Begriffen bedeutet. Sie geben diesen frei, bevor Design- oder Entwicklungsarbeit beginnt, damit es bei der Rechnung keine Überraschungen gibt."
+      },
+      {
+        "question": "Wie lange dauert ein typisches Projekt?",
+        "answer": "Ein Marken- oder Webprojekt dauert in der Regel 4 bis 8 Wochen. KI-Automatisierungsprojekte reichen von einem einzelnen Workflow in zwei Wochen bis zum Aufbau eines Agenten über mehrere Monate. Performance-Marketing und laufende Produktarbeit laufen auf Retainer-Basis, mit monatlichem Reporting von Anfang an."
+      },
+      {
+        "question": "Arbeiten Sie mit Teams außerhalb von Costa Rica zusammen?",
+        "answer": "Die meisten unserer Projekte sind remote-first angelegt. Wir sitzen in Pérez Zeledón und arbeiten mit Teams in ganz Nordamerika und Lateinamerika in zeitzonenfreundlichen Abläufen. Wenn es hilft, vorher kurz zu sprechen: Ein Anruf kostet nichts."
+      }
+    ]
+  }
+}

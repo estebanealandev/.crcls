@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+import PlusLineGrid from '../components/PlusLineGrid.astro';
+import HoverTooltip from '../components/HoverTooltip.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
+import { absoluteUrl, localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { POSTS, requirePost, postImageSrcset } from '../data/posts';
+import journalEn from '../i18n/locales/journal/en.json';
+
+const DICT = dictionaries<typeof journalEn>('journal');
+const POST_COPY = slugDictionaries<{ title: string }>('posts', POSTS.map((p) => p.slug));
+
+// Visual grid order (as authored in the original export).
+const GRID_ORDER = [
+  'designing-digital-systems-that-scale-with-intention',
+  'why-clarity-is-the-foundation-of-modern-brands',
+  'from-idea-to-execution-building-with-precision',
+  'how-great-design-drives-perception-and-growth',
+] as const;
+
+// JSON-LD ItemList order (as authored in the original export — independent of grid order).
+const JSONLD_ORDER = [
+  'how-great-design-drives-perception-and-growth',
+  'why-clarity-is-the-foundation-of-modern-brands',
+  'designing-digital-systems-that-scale-with-intention',
+  'from-idea-to-execution-building-with-precision',
+] as const;
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = DICT[locale];
+const canonicalPath = '/journal';
+const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+const RELATED_LIST_W_NODE = 'e88426f0-5aca-ec78-a438-746bfdb2e8ee';
+const IMAGE_WRAP_ID = 'e88426f0-5aca-ec78-a438-746bfdb2e8f6';
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  dataWfPage="69ea3b293f46d55a8da19974"
+  wfScript="/js/webflow.e6aeb930.103a96742c08bc67.js"
+  preloadImage="/assets/images/Vintage-Lace-Portrait.webp"
+  canonicalPath={canonicalPath}
+  locale={locale}
+>
+  <script is:inline type="application/ld+json" slot="head" set:html={jsonLdString({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": t.jsonLdName,
+    "description": t.jsonLdDescription,
+    "url": pageUrl,
+    "inLanguage": locale,
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": JSONLD_ORDER.map((slug, i) => {
+        const post = requirePost(slug);
+        return {
+          "@type": "ListItem",
+          "position": i + 1,
+          "item": {
+            "@type": "BlogPosting",
+            "name": POST_COPY(slug)[locale].title,
+            "url": localizedAbsoluteUrl(locale, `/post/${slug}`),
+            "image": { "@type": "ImageObject", "url": absoluteUrl(`/assets/images/${post.heroImageBase}-thumb.webp`) },
+          },
+        };
+      }),
+    },
+    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+  })} />
+
+  <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="ea4eea0f-b3eb-64d0-557d-cca621ff13f8" />
+  <main style="display:contents">
+
+  <div class="main-content">
+    <div class="main-hero-wrapper">
+      <div class="hero-main for-inner">
+        <div data-w-id="5aa7c02d-74f0-4174-efca-cd21c5c9ebb2" class="hero-slider">
+          <div class="block-center">
+            <div class="hero-content"><div class="hero-photo _05"><div class="overlay"></div></div></div>
+            <div class="container for-inner">
+              <div><h1 class="h1-inner">{t.hero.title}<span class="light-oc">©</span></h1></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-w-id="5aa7c02d-74f0-4174-efca-cd21c5c9ebbb"></div>
+
+  <div class="content-effect _01">
+    <section class="section">
+      <div class="container">
+        <div>
+          <div data-w-id={RELATED_LIST_W_NODE}>
+            <div class="w-dyn-list">
+              <div role="list" class="collection-list _2-column _01 w-dyn-items">
+                {GRID_ORDER.map((slug) => {
+                  const post = requirePost(slug);
+                  return (
+                    <BlogCard
+                      href={localizedPath(locale, `/post/${slug}`)}
+                      title={POST_COPY(slug)[locale].title}
+                      image={postImageSrcset(post.heroImageBase)}
+                      imageWrapId={IMAGE_WRAP_ID}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="5aa7c02d-74f0-4174-efca-cd21c5c9ebd3"></div>
+
+  </main>
+  <Footer locale={locale} currentPath={canonicalPath} />
+  <PlusLineGrid />
+  <Preloader />
+  <HoverTooltip locale={locale} hoverCards="post" />
+</Layout>

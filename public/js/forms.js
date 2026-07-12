@@ -41,7 +41,7 @@
     var form = event.currentTarget;
     event.preventDefault();
 
-    var kind = form.getAttribute('data-circles-form');
+    var kind = form.getAttribute('data-crcls-form');
     var endpoint = ENDPOINTS[kind];
     if (!endpoint) return;
 
@@ -74,7 +74,7 @@
       });
   }
 
-  var forms = document.querySelectorAll('[data-circles-form]');
+  var forms = document.querySelectorAll('[data-crcls-form]');
   for (var i = 0; i < forms.length; i++) {
     forms[i].addEventListener('submit', handleSubmit);
   }

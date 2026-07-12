@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+import PlusLineGrid from '../components/PlusLineGrid.astro';
+import HoverTooltip from '../components/HoverTooltip.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import { dictionaries } from '../i18n/dictionaries';
+import { localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import aboutEn from '../i18n/locales/about/en.json';
+
+const DICT = dictionaries<typeof aboutEn>('about');
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = DICT[locale];
+const canonicalPath = '/about';
+const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+
+// Stable per-item node/interaction id pairs consumed by the animation runtime,
+// zipped with t.stack.rows by index so the translated text can be mapped in
+// without regenerating the bound ids.
+const STACK_ROW_IDS = [
+  { wrapper: 'b4de8ad0-c163-d2f0-c0fb-d2b25599ebd0', category: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebd1-8da1996f', tools: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebd3-8da1996f', focus: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebd5-8da1996f' },
+  { wrapper: 'b4de8ad0-c163-d2f0-c0fb-d2b25599ebd8', category: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebd9-8da1996f', tools: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebdb-8da1996f', focus: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebdd-8da1996f' },
+  { wrapper: 'b4de8ad0-c163-d2f0-c0fb-d2b25599ebe0', category: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebe1-8da1996f', tools: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebe3-8da1996f', focus: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebe5-8da1996f' },
+  { wrapper: 'b4de8ad0-c163-d2f0-c0fb-d2b25599ebe8', category: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebe9-8da1996f', tools: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebeb-8da1996f', focus: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebed-8da1996f' },
+  { wrapper: 'b4de8ad0-c163-d2f0-c0fb-d2b25599ebf0', category: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebf1-8da1996f', tools: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebf3-8da1996f', focus: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebf5-8da1996f' },
+  { wrapper: 'b4de8ad0-c163-d2f0-c0fb-d2b25599ebf8', category: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebf9-8da1996f', tools: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebfb-8da1996f', focus: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebfd-8da1996f' },
+  { wrapper: 'b4de8ad0-c163-d2f0-c0fb-d2b25599ec00', category: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ec01-8da1996f', tools: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ec03-8da1996f', focus: 'w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ec05-8da1996f' },
+] as const;
+
+// Gallery images: filename base + hero-node ids, in the original order.
+const GALLERY_IMAGES = [
+  { base: 'Modern_Fashion_Portrait', spacedBase: 'Modern_20Fashion_20Portrait', wNodeId: 'w-node-e7ba9ffe-669b-ffe7-ef25-def1fe3986f0-8da1996f', dataWId: 'e7ba9ffe-669b-ffe7-ef25-def1fe3986f0' },
+  { base: 'Elegant_Portrait_in_Red_Suit', spacedBase: 'Elegant_20Portrait_20in_20Red_20Suit', wNodeId: 'w-node-_8fa9c024-f0b9-6256-3f31-7a7e678d71e9-8da1996f', dataWId: '8fa9c024-f0b9-6256-3f31-7a7e678d71e9' },
+  { base: 'Elegant_Men_in_White_Suits', spacedBase: 'Elegant_20Men_20in_20White_20Suits', wNodeId: 'w-node-_3096beed-7010-b518-83ba-dbf3cfb76118-8da1996f', dataWId: '3096beed-7010-b518-83ba-dbf3cfb76118' },
+  { base: 'Stylish_Sunglasses_Portrait__1_', spacedBase: 'Stylish_20Sunglasses_20Portrait_20_1_', wNodeId: 'w-node-ee6d0096-e1b7-0b3c-c5e3-ac7c3df69577-8da1996f', dataWId: 'ee6d0096-e1b7-0b3c-c5e3-ac7c3df69577' },
+  { base: 'Stylish_Man_Outdoors', spacedBase: 'Stylish_20Man_20Outdoors', wNodeId: 'w-node-c053e2dc-9016-8e2d-4d3d-b312de02bcc9-8da1996f', dataWId: 'c053e2dc-9016-8e2d-4d3d-b312de02bcc9' },
+  { base: 'Portrait_of_a_Woman__5_', spacedBase: 'Portrait_20of_20a_20Woman_20_5_', wNodeId: 'w-node-fa98b5f4-1850-0446-f09e-af348cc6e44c-8da1996f', dataWId: 'fa98b5f4-1850-0446-f09e-af348cc6e44c' },
+  { base: 'Portrait_of_Serenity__1_', spacedBase: 'Portrait_20of_20Serenity_20_1_', wNodeId: 'w-node-_50ff119b-87f9-9305-1d41-96e10a15f77d-8da1996f', dataWId: '50ff119b-87f9-9305-1d41-96e10a15f77d' },
+] as const;
+
+const VALUE_CARDS = [
+  { id: 'e5ceb60d-60a5-2100-56cb-158d17178d72', cardClass: 'service-card value-01' },
+  { id: '47d2453b-d795-903b-ccc4-611204e833c9', cardClass: 'service-card value-01 _02' },
+  { id: 'e313bf45-0b52-8973-ad0d-c1bbdaeaf87b', cardClass: 'service-card value-01 _03' },
+  { id: '1ae49110-0f63-c11e-37b0-912e9f3e080d', cardClass: 'service-card value-01 _04' },
+] as const;
+
+// Copy arrays and structural ids are zipped by index; a length mismatch
+// between the locale JSON and the constants above must fail the build.
+function zipByIndex<A, B>(label: string, left: readonly A[], right: readonly B[]): [A, B][] {
+  return left.map((a, i) => {
+    const b = right[i];
+    if (b === undefined) throw new Error(`${label}[${i}] has no structural counterpart`);
+    return [a, b];
+  });
+}
+
+const galleryImages = zipByIndex('about.gallery.images', GALLERY_IMAGES, t.gallery.images);
+const valueCards = zipByIndex('about.philosophy.values', t.philosophy.values, VALUE_CARDS);
+const stackRows = zipByIndex('about.stack.rows', t.stack.rows, STACK_ROW_IDS);
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  dataWfPage="69ea3b293f46d55a8da1996f"
+  wfScript="/js/webflow.1366dd87.f6f50b2381f2e580.js"
+  preloadImage="/assets/images/Dramatic-Blue-Portrait-_1_.webp"
+  canonicalPath={canonicalPath}
+  locale={locale}
+>
+  <script is:inline type="application/ld+json" slot="head" set:html={jsonLdString({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": t.seo.jsonLdName,
+    "url": pageUrl,
+    "inLanguage": locale,
+    "description": t.seo.jsonLdDescription,
+    "about": { "@id": "https://www.circlescr.com/#business" },
+    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+  })} />
+
+  <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="660d70ef-4599-ac53-d4a7-cb20ffce951d" />
+  <main style="display:contents">
+
+  <div class="main-content">
+    <div class="main-hero-wrapper">
+      <div class="hero-main for-inner">
+        <div data-w-id="50ab68b2-f591-7ece-412d-c6ce0c9bd8c0" class="hero-slider">
+          <div class="block-center">
+            <div class="hero-content">
+              <div class="hero-photo _06"><div class="overlay"></div></div>
+            </div>
+            <div class="container for-inner">
+              <div><h1 class="h1-inner">{t.hero.title}<span class="light-oc">©</span></h1></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-effect _01">
+    <section class="section _04">
+      <div class="image-about-wrapper">
+        {galleryImages.map(([img, copy]) => (
+          <div id={img.wNodeId} data-w-id={img.dataWId} class="image-wrap about">
+            <img
+              sizes="100vw"
+              srcset={`/assets/images/${img.spacedBase}-p-500.webp 500w, /assets/images/${img.spacedBase}-p-800.webp 800w, /assets/images/${img.spacedBase}-p-1080.webp 1080w, /assets/images/${img.base}.webp 1200w`}
+              alt={copy.alt}
+              src={`/assets/images/${img.base}.webp`}
+              loading="lazy"
+              class="paralax-image"
+            />
+          </div>
+        ))}
+      </div>
+      <div class="sticky-element">
+        <div class="container">
+          <div><h2 class="h2 fade cnt _02">{t.gallery.stickyTitle}</h2></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="54aa107f-7515-57ec-0321-1a394c85ccad"></div>
+
+  <div class="content-effect _02">
+    <section class="section">
+      <div class="container">
+        <div>
+          <div>
+            <h2 class="page-title">{t.philosophy.lead} — {t.philosophy.boldText} <span class="gray-color">{t.philosophy.grayText}</span></h2>
+            <div class="divider-l"></div>
+            <div class="value-grid">
+              {valueCards.map(([value, card]) => (
+                <div data-w-id={card.id} style="opacity:0" class={card.cardClass}>
+                  <h3 class="service-title _01">{value.title}</h3>
+                  <h3 class="service-title second">{value.number}</h3>
+                  <p>{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="1b92719f-6b01-bdbb-e5d3-141a6e7ddb1c"></div>
+
+  <div class="content-effect _03">
+    <section class="section _02">
+      <div class="container">
+        <div>
+          <div>
+            <h2 class="page-title">{t.team.prefix}© — {t.team.boldText} <span class="gray-color">{t.team.grayText}</span></h2>
+            <div class="divider-m"></div>
+            <div>
+              <div class="team-grid">
+                {t.team.members.map((member) => (
+                  <div class="team-wrapper">
+                    <div class="team-image">
+                      <img width="1200" loading="lazy" alt={member.alt} src={member.image} class="team-image" />
+                    </div>
+                    <div>
+                      <div class="team-content"><h2 class="team-title">{member.role}</h2></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="divider-m"></div>
+          </div>
+        </div>
+        <div class="flex-button">
+          <ButtonLink href={localizedPath(locale, '/contact')} label={t.team.ctaLabel} />
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="ab1031e8-dd89-48f6-ff5c-bbfe754c91b3"></div>
+
+  <div class="content-effect _04">
+    <section class="section">
+      <div class="container">
+        <div>
+          <div>
+            <h2 class="page-title">{t.stack.prefix}© — {t.stack.boldText} <span class="gray-color">{t.stack.grayText}</span></h2>
+            <div class="divider-m"></div>
+            <div class="contact-info for-awa">
+              <div class="grdi-3-columns opaciy mk3">
+                <p id="w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebc8-8da1996f" class="text-award aw-t">{t.stack.columns.category}</p>
+                <p id="w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebca-8da1996f" class="text-award aw-t">{t.stack.columns.tools}</p>
+                <p id="w-node-b4de8ad0-c163-d2f0-c0fb-d2b25599ebcc-8da1996f" class="text-award aw-t">{t.stack.columns.focus}</p>
+              </div>
+              <div>
+                <div class="award-content">
+                  {stackRows.map(([row, ids]) => (
+                    <div data-w-id={ids.wrapper} class="award-wrapper">
+                      <div id={ids.category} class="award-text">{row.category}</div>
+                      <div id={ids.tools} class="award-text">{row.tools}</div>
+                      <div id={ids.focus} class="award-text">{row.focus}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id="50ab68b2-f591-7ece-412d-c6ce0c9bda13"></div>
+
+  </main>
+  <Footer locale={locale} currentPath={canonicalPath} />
+  <Preloader />
+  <PlusLineGrid />
+  <HoverTooltip locale={locale} />
+</Layout>

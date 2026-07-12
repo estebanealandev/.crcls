@@ -1,0 +1,97 @@
+{
+  "seo": {
+    "title": "Über Circles — Studio für KI, Produkt und Marke in Pérez Zeledón",
+    "description": "Circles ist ein Studio mit Sitz in Pérez Zeledón, das KI, Produktentwicklung, Commerce und Markenstrategie vereint. So denken wir, und so arbeiten wir.",
+    "jsonLdName": "Über Circles",
+    "jsonLdDescription": "Circles ist ein Studio mit Sitz in Pérez Zeledón, das KI, Produktentwicklung, Commerce und Markenstrategie vereint. So denken wir, und so arbeiten wir."
+  },
+  "hero": {
+    "title": "Über uns"
+  },
+  "gallery": {
+    "images": [
+      { "alt": "Porträtstudie im modernen Fashion-Styling" },
+      { "alt": "Porträt eines Models in einem maßgeschneiderten roten Anzug" },
+      { "alt": "Zwei Männer in aufeinander abgestimmten weißen Anzügen" },
+      { "alt": "Porträt eines Models mit auffälliger Sonnenbrille" },
+      { "alt": "Porträt eines stilvollen Mannes, im Freien fotografiert" },
+      { "alt": "Studioporträt einer Frau" },
+      { "alt": "Ruhige, gelassene Porträtstudie" }
+    ],
+    "stickyTitle": "Denken. Bauen. Wachsen."
+  },
+  "philosophy": {
+    "lead": "Circles",
+    "boldText": "Jenseits von Identität gebaut. Vision definiert. Marke geformt. Systeme entwickelt. Intelligenz integriert.",
+    "grayText": "Wir schaffen Struktur, wo Lärm herrscht, Klarheit, wo Komplexität herrscht, und Richtung, wo Reibung herrscht. Marke, KI, Produkt und Wachstum bewegen sich gemeinsam. Nichts steht für sich allein. Gebaut, um zu skalieren. Gebaut, um zu bestehen.",
+    "values": [
+      {
+        "title": "Klarheit©",
+        "number": "(01)",
+        "description": "Wir beseitigen Störgeräusche und geben die Richtung vor. Jedes Projekt beginnt mit einem klaren Verständnis des Problems, nicht mit Annahmen."
+      },
+      {
+        "title": "Struktur©",
+        "number": "(02)",
+        "description": "Wir bauen Systeme, keine Fragmente. Marke, Produkt und KI in einem einzigen stimmigen Ablauf vereint, statt vier getrennter Dienstleister."
+      },
+      {
+        "title": "Präzision©",
+        "number": "(03)",
+        "description": "Jedes Detail zählt. Vom ersten Workflow-Diagramm bis zur letzten Codezeile ist nichts dem Zufall überlassen."
+      },
+      {
+        "title": "Performance©",
+        "number": "(04)",
+        "description": "Wenn es keine Kennzahl bewegt, geht es nicht live. Alles, was wir bauen, wird gemessen, überwacht und auf nachhaltiges Wachstum ausgelegt."
+      }
+    ]
+  },
+  "team": {
+    "prefix": "Team",
+    "boldText": "Keine Hierarchie zur Show. Keine losgelösten Rollen.",
+    "grayText": "Nur abgestimmte Köpfe, strukturierte Zusammenarbeit und Umsetzung, die liefert. Darauf ausgelegt, sich als Einheit zu bewegen.",
+    "members": [
+      {
+        "image": "/assets/images/circles-team-01.webp",
+        "role": "Gründer & Creative Director",
+        "alt": "Porträt des Gründers & Creative Directors von Circles"
+      },
+      {
+        "image": "/assets/images/circles-team-03.webp",
+        "role": "Leitender Produktingenieur",
+        "alt": "Porträt des Leitenden Produktingenieurs von Circles"
+      },
+      {
+        "image": "/assets/images/circles-team-02.webp",
+        "role": "KI- und Automatisierungsleitung",
+        "alt": "Porträt der KI- und Automatisierungsleitung von Circles"
+      },
+      {
+        "image": "/assets/images/circles-team-04.webp",
+        "role": "Kundenerfolg",
+        "alt": "Porträt der Kundenerfolgsleitung von Circles"
+      }
+    ],
+    "ctaLabel": "Mit uns arbeiten"
+  },
+  "stack": {
+    "prefix": "Stack",
+    "boldText": "Keine Dekoration. Nur Tools, die sich ihren Platz verdienen.",
+    "grayText": "Das greifen wir, wenn Marke, Produkt und KI gemeinsam live gehen müssen.",
+    "columns": {
+      "category": "Kategorie",
+      "tools": "Tools",
+      "focus": "Fokus"
+    },
+    "rows": [
+      { "category": "KI & Automatisierung", "tools": "LangChain, OpenAI API, n8n", "focus": "Agenten©" },
+      { "category": "Produktentwicklung", "tools": "Next.js, Astro, React Native", "focus": "Produkt©" },
+      { "category": "Handel", "tools": "Shopify, Medusa", "focus": "Handel©" },
+      { "category": "Automatisierung", "tools": "Zapier, Make, n8n", "focus": "Systeme©" },
+      { "category": "Marketing", "tools": "GA4, Search Console, HubSpot", "focus": "Wachstum©" },
+      { "category": "Marke", "tools": "Figma, Adobe CC", "focus": "Identität©" },
+      { "category": "Infrastruktur", "tools": "Railway, Vercel, Resend", "focus": "Auslieferung©" }
+    ]
+  }
+}

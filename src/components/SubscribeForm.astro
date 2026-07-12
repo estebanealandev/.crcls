@@ -1,0 +1,40 @@
+---
+interface Props {
+  t: {
+    emailPlaceholder: string;
+    submitLabel: string;
+    waitLabel: string;
+    successMessage: string;
+    errorMessage: string;
+    ariaLabel: string;
+  };
+}
+
+const { t } = Astro.props;
+---
+
+<div class="footer-form w-form">
+  <form id="subscribe-form" name="subscribe-form" class="subscribe-form" data-crcls-form="subscribe" aria-label={t.ariaLabel}>
+    <input
+      class="subscribe-field-main w-node-_6f2a5ed0-00ce-d254-aebb-476337852d93-37852d76 w-input"
+      maxlength="256"
+      name="email"
+      placeholder={t.emailPlaceholder}
+      type="email"
+      id="Subscribe"
+      autocomplete="email"
+      required
+    />
+    <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+      <label for="subscribe-company">Company</label>
+      <input type="text" id="subscribe-company" name="company" tabindex="-1" autocomplete="off" />
+    </div>
+    <input type="submit" data-wait={t.waitLabel} class="button-sbc for-sbc w-button" value={t.submitLabel} />
+  </form>
+  <div id="subscribe-form-success" class="success-message-main w-form-done" role="status">
+    <div>{t.successMessage}</div>
+  </div>
+  <div id="subscribe-form-error" class="error-message w-form-fail" role="alert">
+    <div>{t.errorMessage}</div>
+  </div>
+</div>

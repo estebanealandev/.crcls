@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "work": "Travaux",
+    "journal": "Journal",
+    "contact": "Contact",
+    "licensing": "Licences",
+    "menuOpen": "Menu",
+    "menuClose": "Fermer",
+    "location": "Pérez Zeledón, CR",
+    "logoAriaLabel": "Circles — accueil",
+    "menuToggleAriaLabel": "Afficher/masquer le menu de navigation"
+  },
+  "footer": {
+    "ctaTitle": "©Conçu une fois. Fait dans les règles.",
+    "ctaButton": "Discutons",
+    "logoLabel": "Studio",
+    "newBusinessLabel": "Nouveaux projets :",
+    "newsletterLabel": "Des actualités pertinentes, rien de plus.",
+    "copyright": "© Circles. Tous droits réservés.",
+    "addressLabel": "Adresse :",
+    "addressLines": ["Pérez Zeledón,", "Costa Rica"],
+    "phoneLabel": "Téléphone :",
+    "socialAriaLabels": {
+      "x": "Circles sur X",
+      "instagram": "Circles sur Instagram",
+      "linkedin": "Circles sur LinkedIn"
+    }
+  },
+  "forms": {
+    "subscribe": {
+      "emailPlaceholder": "E-mail",
+      "submitLabel": "S'abonner",
+      "waitLabel": "Envoi en cours...",
+      "successMessage": "Merci pour votre inscription.",
+      "errorMessage": "Une erreur est survenue. Veuillez réessayer dans un instant.",
+      "ariaLabel": "S'abonner à la newsletter"
+    }
+  },
+  "languageSwitcher": {
+    "ariaLabel": "Choisir la langue"
+  },
+  "tooltip": {
+    "viewProject": ["Voir", "le projet"],
+    "readMore": ["Lire", "la suite"]
+  },
+  "misc": {
+    "backToHome": "Retour à l'accueil"
+  },
+  "projectMeta": {
+    "descriptionLabel": "Description du projet",
+    "typeLabel": "Type",
+    "caseStudyValue": "Étude de cas",
+    "dateLabel": "Date",
+    "dateValue": "2026",
+    "servicesLabel": "Services",
+    "relatedWork": {
+      "prefix": "Projets similaires",
+      "boldText": "Des preuves, pas des promesses.",
+      "grayText": "Une sélection de projets où marque, design et performance avancent d'un seul mouvement."
+    }
+  },
+  "postMeta": {
+    "relatedStory": {
+      "prefix": "Article similaire",
+      "boldText": "Là où les histoires deviennent des systèmes.",
+      "grayText": "Réflexion, narration et diffusion, en parfaite cohérence."
+    }
+  }
+}

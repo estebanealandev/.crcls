@@ -1,0 +1,33 @@
+---
+import type { ProjectImage } from '../data/projects';
+
+interface Props {
+  href: string;
+  title: string;
+  image: ProjectImage;
+  imageWrapId?: string;
+}
+
+const { href, title, image, imageWrapId } = Astro.props;
+---
+
+<div role="listitem" class="w-dyn-item">
+  <a href={href} class="blog-main-wrapper w-inline-block">
+    <div class="arrow-blog-icon">
+      <div class="buton-icon-svg w-embed">
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div class="buton-icon-svg is-absolute w-embed">
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+    </div>
+    <div data-w-id={imageWrapId} class="image-wrap auto">
+      <img loading="lazy" src={image.src} alt="" sizes={image.sizes} srcset={image.srcset} class="paralax-image" />
+    </div>
+    <div class="margin-10"><div>{title}</div></div>
+  </a>
+</div>

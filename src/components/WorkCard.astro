@@ -1,0 +1,45 @@
+---
+import type { ProjectImage } from '../data/projects';
+
+interface Props {
+  href: string;
+  title: string;
+  serviceLabel: string;
+  image: ProjectImage;
+  logoImage: string | null;
+  video: string | null;
+  /** Single-project pages (few cards, already-loaded context) autoplay eagerly; listing pages (many cards) lazy-load on view. */
+  eagerVideo?: boolean;
+}
+
+const { href, title, serviceLabel, image, logoImage, video, eagerVideo = true } = Astro.props;
+---
+
+<div role="listitem" class="collection-item w-dyn-item">
+  <a href={href} aria-label={title} class="work-wrapper-main w-inline-block">
+    <div class="image-wrapper">
+      <div class="project-circle-text">
+        <img loading="lazy" src={logoImage ?? '/assets/images/placeholder.svg'} alt="" class={logoImage ? 'logo-image' : 'logo-image w-dyn-bind-empty'} />
+      </div>
+      <img loading="lazy" src={image.src} alt="" sizes={image.sizes} srcset={image.srcset} class="work-photo-first" />
+      {video && eagerVideo && (
+        <video autoplay="true" loop playsinline="true" preload="metadata" muted class="video">
+          <source src={video} type="video/mp4" data-format="mp4" class="source" />
+        </video>
+      )}
+      {video && !eagerVideo && (
+        <video preload="none" loop playsinline="true" muted class="video">
+          <source src={video} type="video/mp4" data-format="mp4" class="source" />
+        </video>
+      )}
+    </div>
+    <div class="work-overlay first half"></div>
+  </a>
+  <div class="work-text-wrapper">
+    <h2 class="work-text-main">{title}</h2>
+    <div class="txt-flex">
+      <h2 class="work-text-main other-font _01">©</h2>
+      <h2 class="work-text-main _01">{serviceLabel}</h2>
+    </div>
+  </div>
+</div>

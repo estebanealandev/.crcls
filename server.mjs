@@ -1,5 +1,8 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
+import { readFileSync, readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { join } from 'node:path';
 import sirv from 'sirv';
 import compression from 'compression';
 
@@ -10,25 +13,37 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'hello@circlescr.com';
 const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Circles <hello@circlescr.com>';
 
-const SCRIPT_HASHES = [
-  "'sha256-+zokMPH3KfV2XKAry/mw1pfn3KsbrjdoLwWTMG0SHOk='",
-  "'sha256-1zlmzh58m5a9/55ekVwjrSI56asQCcTfMXD/M8jZnco='",
-  "'sha256-3X2w7C9u77/eaGBbmmoR3VgH4f6y7Xludz3F4X3mf9I='",
-  "'sha256-3XQPlAspp/VYrkKicQ6nQGDU66jDwpnB4LER91ixQa4='",
-  "'sha256-7OBXxHEIWvzz3CPvyTn37nL5WJlgerErpoa7aBcQQmc='",
-  "'sha256-7lL7Q47mZ1NNVllE2mq8XrcCfUJitUsbPQm3kZfToXo='",
-  "'sha256-BhZBwkFoGhwlkZ4WSmEh6RJe5PZRbuqcu296YwPbY/Y='",
-  "'sha256-BvrPyvO5lXaYZG+As3tRqr8pC9PEbLvnBqsF088Hipo='",
-  "'sha256-Ir68yWyMEAlvA05EyvYv+4SIK+3hgTzKW4HBO9HOZKk='",
-  "'sha256-JvS4YS3Ko58G2lp0hrdmht24miTbEJCGo9xnhJGJHc8='",
-  "'sha256-R9QTmnpDvfpI6/EHHcvGNyCw06lYOP4lB/5rQ7ZNd9A='",
-  "'sha256-T3EtpoVjtrAVsRxhNLGezvCp4Q8Z5Bgin73c+iyFBFg='",
-  "'sha256-Tza0uoTv+PBWXXdGVm3ZLMmG3qSSyX3dODhIpMcZ+SU='",
-  "'sha256-V9SZ7X1l3+utQzTUIJhiaa2L8u3jdEt3xRm0z4EpD/Y='",
-  "'sha256-ikemCEw1D+VaYBleAUR/b6XbDPYYspvpHuAbuour9Hc='",
-  "'sha256-kq1Lb01+80kJWgn9PoV2iccjkqy6DSjbWU3gu327N/U='",
-  "'sha256-wWCf7aNqP4dMDFL+3JKRmwP50HSKkxt4EGr769FNP/g='",
-];
+// CSP script hashes are derived from the built HTML at startup, so a change
+// to any inline script can never drift out of sync with the policy. Data
+// blocks (application/ld+json) are not executable and are skipped — CSP
+// script-src does not apply to them.
+function collectInlineScriptHashes(root) {
+  const hashes = new Set();
+  const scriptRe = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
+  const walk = (dir) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(path);
+      } else if (entry.name.endsWith('.html')) {
+        const html = readFileSync(path, 'utf8');
+        for (const match of html.matchAll(scriptRe)) {
+          const attrs = match[1] || '';
+          if (/\bsrc\s*=/i.test(attrs)) continue;
+          if (/type\s*=\s*["']application\/(ld\+)?json["']/i.test(attrs)) continue;
+          const body = match[2];
+          if (!body.trim()) continue;
+          hashes.add(`'sha256-${createHash('sha256').update(body).digest('base64')}'`);
+        }
+      }
+    }
+  };
+  walk(root);
+  return [...hashes].sort();
+}
+
+const SCRIPT_HASHES = collectInlineScriptHashes('dist');
+console.log(`CSP: allowing ${SCRIPT_HASHES.length} inline script hash(es) found in dist/`);
 
 const CSP = [
   "default-src 'self'",
@@ -52,8 +67,13 @@ const assets = sirv('dist', {
   setHeaders(res, pathname) {
     if (HASHED_ASSET_RE.test(pathname)) {
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    } else if (pathname.endsWith('.html') || pathname === '/') {
+    } else if (pathname.endsWith('.html') || pathname.endsWith('/') || !/\.[a-z0-9]+$/i.test(pathname)) {
+      // HTML documents (served as /, /path/, /path, or explicit .html) must
+      // revalidate on every request so deploys propagate immediately.
       res.setHeader('Cache-Control', 'no-cache');
+    } else if (pathname.startsWith('/assets/')) {
+      // Fonts, images, and videos change rarely and only alongside a deploy.
+      res.setHeader('Cache-Control', 'public, max-age=86400, must-revalidate');
     } else {
       res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
     }

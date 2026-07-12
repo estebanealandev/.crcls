@@ -1,0 +1,45 @@
+---
+// Shared "button-link" pattern: an underlined text link with a two-line
+// hover-swap effect. `variant="dark"` is the style used on dark backgrounds
+// (e.g. the footer); `active` marks the link as the current page. The
+// data-wf-* attributes are read by the interaction runtime and must stay.
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'base' | 'dark';
+  active?: boolean;
+  target?: string;
+  rel?: string;
+}
+
+const { href, label, variant = 'base', active = false, target, rel } = Astro.props;
+const DARK_VARIANT_STATE = 'a0738c45-fa83-d48e-37c1-365c7c35110a';
+const variantState = variant === 'dark' ? DARK_VARIANT_STATE : 'base';
+const classes = [
+  'button-link',
+  variant === 'dark' ? `w-variant-${DARK_VARIANT_STATE}` : null,
+  'w-inline-block',
+  active ? 'w--current' : null,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<a
+  href={href}
+  target={target}
+  rel={rel}
+  data-wf--button-line--variant={variant}
+  data-wf-component-id="64524c8d-f2ce-d90a-bb23-2f13e9a4e1bb"
+  data-wf-variant-state={variantState}
+  aria-current={active ? 'page' : undefined}
+  class={classes}
+>
+  <div class="button-flex">
+    <div class="text-overflow">
+      <div class="navigation-text-main _01">{label}</div>
+      <div class="navigation-text-main _02">{label}</div>
+    </div>
+    <div class="line-divider"><div class="line-absolute"></div></div>
+  </div>
+</a>

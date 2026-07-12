@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+import PlusLineGrid from '../components/PlusLineGrid.astro';
+import HoverTooltip from '../components/HoverTooltip.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import RichText from '../components/RichText.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { localizedPath, type Locale } from '../i18n/utils';
+import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
+import { absoluteUrl, localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { POSTS, requirePost, otherPosts, postImageSrcset } from '../data/posts';
+import commonEn from '../i18n/locales/common/en.json';
+import postEn from '../i18n/locales/posts/designing-digital-systems-that-scale-with-intention/en.json';
+
+const COMMON = dictionaries<typeof commonEn>('common');
+const POST_COPY = slugDictionaries<typeof postEn>('posts', POSTS.map((p) => p.slug));
+
+interface Props {
+  locale: Locale;
+  slug: string;
+}
+
+const { locale, slug } = Astro.props;
+const post = requirePost(slug);
+const t = POST_COPY(slug)[locale];
+const common = COMMON[locale];
+const canonicalPath = `/post/${slug}`;
+const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+const heroImage = postImageSrcset(post.heroImageBase);
+
+// Related cards zip the other posts with this post's interaction anchor ids.
+const related = otherPosts(slug).map((other, i) => {
+  const imageWrapId = post.ids.relatedImageWrapIds[i];
+  if (!imageWrapId) throw new Error(`Post "${slug}" has no relatedImageWrapIds[${i}]`);
+  return { ...other, imageWrapId };
+});
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  dataWfPage={post.dataWfPage}
+  wfScript={post.wfScript}
+  canonicalPath={canonicalPath}
+  locale={locale}
+  ogType="article"
+>
+  <script is:inline type="application/ld+json" slot="head" set:html={jsonLdString({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": t.title,
+    "description": t.seo.description,
+    "url": pageUrl,
+    "image": absoluteUrl(heroImage.src),
+    "author": { "@id": "https://www.circlescr.com/#business" },
+    "publisher": { "@id": "https://www.circlescr.com/#business" },
+    "inLanguage": locale,
+    "thumbnailUrl": absoluteUrl(heroImage.src),
+    "mainEntityOfPage": pageUrl,
+    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+  })} />
+
+  <Navbar locale={locale} currentPath={canonicalPath} blurEffectId={post.ids.blurEffect} />
+  <main style="display:contents">
+
+  <div class="main-content">
+    <div class="main-hero-wrapper">
+      <div class="hero-main for-inner">
+        <div data-w-id={post.ids.heroSlider} class="hero-slider">
+          <div class="block-center">
+            <div class="hero-content">
+              <div style={`background-image:url("${heroImage.src}")`} class="hero-photo _05"><div class="overlay"></div></div>
+            </div>
+            <div class="container for-inner">
+              <div><h1 class="h1-inner half">{t.title}</h1></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-w-id={post.ids.midAnchor1}></div>
+
+  <div class="content-effect _01">
+    <section class="section _01">
+      <div class="container">
+        <div>
+          <div class="blog-wrapper">
+            <RichText blocks={t.body} />
+            <div class="divider-s"></div>
+            <div class="button-flex">
+              <ButtonLink href={localizedPath(locale, '/journal')} label={t.backToBlogLabel} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div data-w-id={post.ids.midAnchor2}></div>
+
+  <div class="content-effect _02">
+    <section class="section _02">
+      <div class="container">
+        <div>
+          <div>
+            <h2 class="page-title">
+              {common.postMeta.relatedStory.prefix}© — {common.postMeta.relatedStory.boldText} <span class="gray-color">{common.postMeta.relatedStory.grayText}</span>
+            </h2>
+          </div>
+          <div class="divider-m"></div>
+          <div data-w-id={post.ids.relatedListWNode}>
+            <div class="w-dyn-list">
+              <div role="list" class="collection-list _2-column w-dyn-items">
+                {related.map((other) => (
+                  <BlogCard
+                    href={localizedPath(locale, `/post/${other.slug}`)}
+                    title={POST_COPY(other.slug)[locale].title}
+                    image={postImageSrcset(other.heroImageBase)}
+                    imageWrapId={other.imageWrapId}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  </main>
+  <Footer locale={locale} currentPath={canonicalPath} />
+  <PlusLineGrid />
+  <Preloader />
+  <HoverTooltip locale={locale} hoverCards="post" />
+</Layout>

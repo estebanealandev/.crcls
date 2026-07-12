@@ -1,0 +1,60 @@
+{
+  "seo": {
+    "title": "Contact Circles — Web, Brand & AI Studio in Pérez Zeledón",
+    "description": "Tell us what you're building. Circles responds to every serious inquiry within one business day from Pérez Zeledón, Costa Rica.",
+    "jsonLdName": "Contact Circles",
+    "jsonLdDescription": "Share your idea. We'll shape the direction. Contact Circles for new business inquiries."
+  },
+  "hero": {
+    "title": "say hi"
+  },
+  "pageTitle": {
+    "prefix": "Contact",
+    "boldText": "Built beyond conversation.",
+    "grayText": "We align vision, strategy, and execution from the first message."
+  },
+  "form": {
+    "nameLabel": "Name",
+    "firstNamePlaceholder": "First name",
+    "lastNamePlaceholder": "Last name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Your email",
+    "messageLabel": "Message",
+    "messagePlaceholder": "How can we help?...",
+    "companyLabel": "Company",
+    "privacyNotice": "*By submitting this form, you agree to be contacted by Circles about your inquiry. We don't share your information with anyone else.",
+    "submitLabel": "Contact Us",
+    "waitLabel": "Sending...",
+    "successTitle": "Thank you.",
+    "successMessage": "Your message is in. We reply to every serious inquiry within one business day.",
+    "errorMessage": "Something went wrong on our end. Please try again, or email us directly at hello@circlescr.com."
+  },
+  "faq": {
+    "prefix": "FAQ",
+    "boldText": "Questions, resolved.",
+    "grayText": "Insight, structure, and execution aligned from the start.",
+    "emailUsLabel": "Email us",
+    "items": [
+      {
+        "question": "What does Circles actually build?",
+        "answer": "Four connected practices: AI agents and automation, product and ecommerce engineering, brand strategy and identity, and performance marketing. Most engagements combine two or three of these: an AI support agent wired into a new storefront, or a rebrand that ships alongside the site that carries it."
+      },
+      {
+        "question": "Do we need an AI strategy, or just an AI feature?",
+        "answer": "Usually neither, at first. We start with an audit of where manual work is actually costing you time or money, then recommend the smallest system that solves it, sometimes a single automation, sometimes a full agent. We'd rather ship something narrow that works than something broad that doesn't."
+      },
+      {
+        "question": "How do you scope a new engagement?",
+        "answer": "Every project starts with a discovery call, followed by a short written scope: goals, timeline, and what \"done\" looks like in measurable terms. You approve that before any design or build work starts, so there are no surprises once the invoice arrives."
+      },
+      {
+        "question": "How long does a typical project take?",
+        "answer": "A brand or web engagement typically runs 4–8 weeks. AI automation projects range from a two-week single workflow to a multi-month agent build. Performance marketing and ongoing product work are retainer-based, with monthly reporting built in from day one."
+      },
+      {
+        "question": "Do you work with teams outside Costa Rica?",
+        "answer": "Most of our engagements are remote-first. We're based in Pérez Zeledón, and we work with teams across North America and Latin America on the same time-zone-friendly schedule. If it helps to talk it through first, a call costs nothing."
+      }
+    ]
+  }
+}
