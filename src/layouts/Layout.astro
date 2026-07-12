@@ -3,6 +3,7 @@ import '../styles/fonts.css';
 import '../styles/crcls.shared.css';
 import SEOHead from '../components/SEOHead.astro';
 import StructuredData from '../components/StructuredData.astro';
+import Clarity from '../components/analytics/Clarity.astro';
 import { DEFAULT_LOCALE, LOCALE_META, type Locale } from '../i18n/utils';
 
 interface Props {
@@ -99,6 +100,8 @@ const preloadImages = Array.isArray(preloadImage)
 
   <link href="/assets/images/favicon.svg" rel="shortcut icon" type="image/svg+xml" />
   <link href="/assets/images/favicon.svg" rel="apple-touch-icon" />
+
+  <Clarity />
 
   <slot name="head" />
 </head>

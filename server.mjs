@@ -45,14 +45,21 @@ function collectInlineScriptHashes(root) {
 const SCRIPT_HASHES = collectInlineScriptHashes('dist');
 console.log(`CSP: allowing ${SCRIPT_HASHES.length} inline script hash(es) found in dist/`);
 
+// Microsoft Clarity load-balances across multiple environments in production
+// (https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-csp),
+// so the wildcard subdomain is required rather than a fixed host list.
+const CLARITY_SCRIPT_SRC = 'https://*.clarity.ms https://c.bing.com';
+const CLARITY_CONNECT_SRC = 'https://*.clarity.ms https://c.bing.com';
+const CLARITY_IMG_SRC = 'https://*.clarity.ms';
+
 const CSP = [
   "default-src 'self'",
-  `script-src 'self' ${SCRIPT_HASHES.join(' ')}`,
+  `script-src 'self' ${SCRIPT_HASHES.join(' ')} ${CLARITY_SCRIPT_SRC}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data:",
+  `img-src 'self' data: ${CLARITY_IMG_SRC}`,
   "font-src 'self' data:",
   "media-src 'self' data: https://videos.pexels.com",
-  "connect-src 'self'",
+  `connect-src 'self' ${CLARITY_CONNECT_SRC}`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'none'",

@@ -39,10 +39,10 @@ const POST_COPY = slugDictionaries<{ title: string }>('posts', JOURNAL_SLUGS);
 
 // Service cards: structural (non-translatable) ids/classes/numbers, zipped by index with t.services.cards.
 const SERVICE_CARDS = [
-  { id: '03e8d322-fa65-c83a-1494-de81e392097b', cardClass: '_02', number: '(02)' },
-  { id: '5be1a0e4-80cc-d391-e0ac-1023f6fe72bf', cardClass: '_04', number: '(04)' },
-  { id: '61aeaeac-9eea-9402-3da6-bfcd9385ff20', cardClass: '_03', number: '(03)' },
-  { id: '5fba5656-a942-3b54-dd2c-c48361763b21', cardClass: '_01', number: '(01)' },
+  { id: '03e8d322-fa65-c83a-1494-de81e392097b', cardClass: '_02', number: '(02)', service: 'performance-marketing' },
+  { id: '5be1a0e4-80cc-d391-e0ac-1023f6fe72bf', cardClass: '_04', number: '(04)', service: 'ai-systems' },
+  { id: '61aeaeac-9eea-9402-3da6-bfcd9385ff20', cardClass: '_03', number: '(03)', service: 'product-commerce' },
+  { id: '5fba5656-a942-3b54-dd2c-c48361763b21', cardClass: '_01', number: '(01)', service: 'brand-direction' },
 ] as const;
 
 // Testimonial slides: locale-independent portrait assets, zipped by index with t.testimonials.
@@ -222,7 +222,7 @@ const testimonials = t.testimonials.map((testimonial, i) => {
             </h3>
           </div>
           {serviceCards.map((card) => (
-            <div id={`w-node-_${card.id}-8da19968`} data-w-id={card.id} style="opacity:0" class={`service-card ${card.cardClass}`}>
+            <div id={`w-node-_${card.id}-8da19968`} data-w-id={card.id} data-crcls-service={card.service} style="opacity:0" class={`service-card ${card.cardClass}`}>
               <h3 class="service-title">{card.copy.titleLine1}<br />{card.copy.titleLine2}</h3>
               <p class="font-change">{card.copy.items.map((item, j) => <>{item}{j < card.copy.items.length - 1 && <br />}</>)}</p>
               <h3 class="service-title second">{card.number}</h3>
