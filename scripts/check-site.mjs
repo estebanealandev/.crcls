@@ -18,7 +18,7 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 
 const DIST = 'dist';
-const SITE_URL = 'https://www.circlescr.com';
+const SITE_URL = 'https://circlescr.com';
 const LOCALES = ['en', 'es', 'fr', 'de', 'pt'];
 
 const failures = [];

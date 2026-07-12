@@ -10,7 +10,7 @@ import FaqAccordion from '../components/FaqAccordion.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { type Locale } from '../i18n/utils';
 import { dictionaries } from '../i18n/dictionaries';
-import { localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { localizedAbsoluteUrl, jsonLdString, BUSINESS_ID, WEBSITE_ID } from '../lib/seo';
 import contactEn from '../i18n/locales/contact/en.json';
 
 const DICT = dictionaries<typeof contactEn>('contact');
@@ -41,8 +41,8 @@ const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
     "url": pageUrl,
     "inLanguage": locale,
     "description": t.seo.jsonLdDescription,
-    "mainEntity": { "@id": "https://www.circlescr.com/#business" },
-    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+    "mainEntity": { "@id": BUSINESS_ID },
+    "isPartOf": { "@id": WEBSITE_ID },
   })} />
 
   <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="0af327c3-bf7e-eb75-b2a7-d44d7a6d6f28" />

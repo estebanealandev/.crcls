@@ -5,7 +5,7 @@ import PlusLineGrid from '../components/PlusLineGrid.astro';
 import ButtonLink from '../components/ButtonLink.astro';
 import { localizedPath, type Locale } from '../i18n/utils';
 import { dictionaries } from '../i18n/dictionaries';
-import { localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { localizedAbsoluteUrl, jsonLdString, WEBSITE_ID } from '../lib/seo';
 import notFoundEn from '../i18n/locales/notFound/en.json';
 
 const DICT = dictionaries<typeof notFoundEn>('notFound');
@@ -36,7 +36,7 @@ const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
     "description": t.jsonLdDescription,
     "url": pageUrl,
     "inLanguage": locale,
-    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+    "isPartOf": { "@id": WEBSITE_ID },
   })} />
 
   <Navbar locale={locale} currentPath={canonicalPath} />

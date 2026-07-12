@@ -1,6 +1,6 @@
 import { localizedPath, type Locale } from '../i18n/utils';
 
-export const SITE_URL = "https://www.circlescr.com";
+export const SITE_URL = "https://circlescr.com";
 export const SITE_NAME = "Circles";
 
 export const BUSINESS_ID = `${SITE_URL}/#business`;

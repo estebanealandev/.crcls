@@ -8,7 +8,7 @@ import HoverTooltip from '../components/HoverTooltip.astro';
 import WorkCard from '../components/WorkCard.astro';
 import { localizedPath, type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
-import { absoluteUrl, localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { absoluteUrl, localizedAbsoluteUrl, jsonLdString, BUSINESS_ID, WEBSITE_ID } from '../lib/seo';
 import { PROJECTS, requireProject, otherProjects } from '../data/projects';
 import commonEn from '../i18n/locales/common/en.json';
 import projectEn from '../i18n/locales/projects/atlas/en.json';
@@ -47,7 +47,7 @@ const others = otherProjects(slug);
     "url": pageUrl,
     "image": absoluteUrl(project.logoImage ?? project.heroImage.src),
     "inLanguage": locale,
-    "creator": { "@id": "https://www.circlescr.com/#business" },
+    "creator": { "@id": BUSINESS_ID },
     "about": {
       "@type": "Service",
       "name": t.servicesValue,
@@ -58,7 +58,7 @@ const others = otherProjects(slug);
       "url": absoluteUrl(img.src),
     })),
     ...(project.video ? { video: { "@type": "VideoObject", url: project.video } } : {}),
-    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+    "isPartOf": { "@id": WEBSITE_ID },
   })} />
 
   <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="2c6d055c-3822-5e83-74c0-a9ee4eb30d6c" />

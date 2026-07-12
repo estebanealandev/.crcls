@@ -9,7 +9,7 @@ import WorkCard from '../components/WorkCard.astro';
 import BlogCard from '../components/BlogCard.astro';
 import { localizedPath, type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
-import { localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { localizedAbsoluteUrl, jsonLdString, BUSINESS_ID, WEBSITE_ID } from '../lib/seo';
 import { PROJECTS, requireProject } from '../data/projects';
 import { requirePost, postImageSrcset } from '../data/posts';
 import homeEn from '../i18n/locales/home/en.json';
@@ -103,8 +103,8 @@ const testimonials = t.testimonials.map((testimonial, i) => {
     "description": t.seo.jsonLdDescription,
     "url": pageUrl,
     "inLanguage": locale,
-    "about": { "@id": "https://www.circlescr.com/#business" },
-    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+    "about": { "@id": BUSINESS_ID },
+    "isPartOf": { "@id": WEBSITE_ID },
     "mainEntity": {
       "@type": "ItemList",
       "name": t.seo.servicesListName,

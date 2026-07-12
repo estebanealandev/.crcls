@@ -10,7 +10,7 @@ import RichText from '../components/RichText.astro';
 import BlogCard from '../components/BlogCard.astro';
 import { localizedPath, type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
-import { absoluteUrl, localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { absoluteUrl, localizedAbsoluteUrl, jsonLdString, BUSINESS_ID, WEBSITE_ID } from '../lib/seo';
 import { POSTS, requirePost, otherPosts, postImageSrcset } from '../data/posts';
 import commonEn from '../i18n/locales/common/en.json';
 import postEn from '../i18n/locales/posts/designing-digital-systems-that-scale-with-intention/en.json';
@@ -55,12 +55,12 @@ const related = otherPosts(slug).map((other, i) => {
     "description": t.seo.description,
     "url": pageUrl,
     "image": absoluteUrl(heroImage.src),
-    "author": { "@id": "https://www.circlescr.com/#business" },
-    "publisher": { "@id": "https://www.circlescr.com/#business" },
+    "author": { "@id": BUSINESS_ID },
+    "publisher": { "@id": BUSINESS_ID },
     "inLanguage": locale,
     "thumbnailUrl": absoluteUrl(heroImage.src),
     "mainEntityOfPage": pageUrl,
-    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+    "isPartOf": { "@id": WEBSITE_ID },
   })} />
 
   <Navbar locale={locale} currentPath={canonicalPath} blurEffectId={post.ids.blurEffect} />

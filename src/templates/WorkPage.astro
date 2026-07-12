@@ -8,7 +8,7 @@ import HoverTooltip from '../components/HoverTooltip.astro';
 import WorkCard from '../components/WorkCard.astro';
 import { localizedPath, type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
-import { absoluteUrl, localizedAbsoluteUrl, jsonLdString } from '../lib/seo';
+import { absoluteUrl, localizedAbsoluteUrl, jsonLdString, WEBSITE_ID } from '../lib/seo';
 import { PROJECTS } from '../data/projects';
 import workEn from '../i18n/locales/work/en.json';
 
@@ -44,10 +44,10 @@ const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
     "description": t.jsonLdDescription,
     "url": pageUrl,
     "inLanguage": locale,
-    "isPartOf": { "@id": "https://www.circlescr.com/#website" },
+    "isPartOf": { "@id": WEBSITE_ID },
     "hasPart": PROJECTS.map((p) => ({
       "@type": "CreativeWork",
-      "@id": `https://www.circlescr.com/project/${p.slug}`,
+      "@id": absoluteUrl(`/project/${p.slug}`),
       "name": PROJECT_COPY(p.slug)[locale].title,
       "url": localizedAbsoluteUrl(locale, `/project/${p.slug}`),
       "image": absoluteUrl(p.heroImage.src),
