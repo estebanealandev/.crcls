@@ -1,0 +1,40 @@
+---
+/**
+ * Circles — Google Analytics 4 (gtag.js) loader, Consent Mode v2 ready.
+ * Mounted once in the base layout's <head>, alongside Clarity.
+ * .env:
+ *   PUBLIC_GA4_MEASUREMENT_ID=G-X46ZHXCXSW
+ *   PUBLIC_ANALYTICS_DEFAULT_CONSENT=denied   # 'granted' once a CMP exists
+ *   PUBLIC_GA4_ENABLE_DEV=false               # true => also load under astro dev
+ *
+ * No CMP exists yet, so consent starts denied: gtag.js loads (cookieless,
+ * modeled measurement) but stores nothing until grantAnalyticsConsent()
+ * (src/lib/analytics/ga4.ts) is called by a future consent banner.
+ */
+const measurementId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
+const enableInDev = import.meta.env.PUBLIC_GA4_ENABLE_DEV === 'true';
+const shouldLoad = Boolean(measurementId) && (import.meta.env.PROD || enableInDev);
+const defaultConsent = import.meta.env.PUBLIC_ANALYTICS_DEFAULT_CONSENT === 'granted' ? 'granted' : 'denied';
+---
+
+{shouldLoad && (
+  <>
+    <script is:inline define:vars={{ defaultConsent }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: defaultConsent,
+        wait_for_update: 500,
+      });
+    </script>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
+    <script is:inline define:vars={{ measurementId }}>
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId);
+    </script>
+  </>
+)}

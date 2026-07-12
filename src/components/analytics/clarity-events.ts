@@ -1,8 +1,9 @@
 /**
- * Circles — Microsoft Clarity custom-event wiring. Browser-only. Binds to
- * elements that already exist on circlescr.com. Never reads field values.
+ * Circles — unified Clarity + GA4 custom-event wiring. Browser-only. Binds
+ * to elements that already exist on circlescr.com. Never reads field values.
  */
 import { trackClarityEvent, setClarityTag, type ClarityEventName } from '../../lib/analytics/clarity';
+import { trackGA4 } from '../../lib/analytics/ga4';
 
 const SOCIAL_HOSTS = [
   'instagram.com', 'facebook.com', 'linkedin.com', 'x.com', 'twitter.com',
@@ -44,12 +45,29 @@ function ctaEventFor(link: HTMLAnchorElement): ClarityEventName | null {
   return null;
 }
 
+function emitCtaEvent(evt: ClarityEventName): void {
+  trackClarityEvent(evt);
+  switch (evt) {
+    case 'crcls_email_click':
+      trackGA4('click_email');
+      break;
+    case 'crcls_phone_click':
+      trackGA4('click_phone');
+      break;
+    case 'crcls_social_click':
+      trackGA4('click_social');
+      break;
+    default:
+      trackGA4('cta_click', { cta_location: evt.replace(/^crcls_/, '').replace(/_cta_click$/, '') });
+  }
+}
+
 function wireCtaClicks(): void {
   document.addEventListener('click', (e) => {
     const link = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
     if (!link) return;
     const evt = ctaEventFor(link);
-    if (evt) trackClarityEvent(evt);
+    if (evt) emitCtaEvent(evt);
   }, { capture: true, passive: true });
 }
 
@@ -70,12 +88,18 @@ function wireForms(): void {
     form.addEventListener('change', onStart, { once: true });
     form.addEventListener('submit', () => trackClarityEvent(submitEvt), { passive: true });
 
+    const fireSuccess = () => {
+      trackClarityEvent(successEvt);
+      if (kind === 'contact') trackGA4('generate_lead');
+      else if (kind === 'subscribe') trackGA4('sign_up', { method: 'newsletter' });
+    };
+
     const wrapper = form.closest('.w-form') || form.parentElement || form;
     const done = wrapper?.querySelector<HTMLElement>('.w-form-done');
     if (done) {
       const obs = new MutationObserver(() => {
         if (getComputedStyle(done).display !== 'none') {
-          trackClarityEvent(successEvt);
+          fireSuccess();
           obs.disconnect();
         }
       });
@@ -83,7 +107,7 @@ function wireForms(): void {
     }
     window.addEventListener('crcls:form-success', (ev) => {
       const detail = (ev as CustomEvent).detail as { form?: string } | undefined;
-      if (!detail?.form || detail.form.toLowerCase() === kind) trackClarityEvent(successEvt);
+      if (!detail?.form || detail.form.toLowerCase() === kind) fireSuccess();
     });
   });
 }
@@ -110,6 +134,7 @@ function tagProjectView(): void {
   if (!slug) return;
   setClarityTag('project', slug);
   trackClarityEvent('crcls_project_view');
+  trackGA4('view_project', { project: slug });
 }
 
 function wireServiceViews(): void {

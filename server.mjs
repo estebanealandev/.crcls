@@ -50,16 +50,22 @@ console.log(`CSP: allowing ${SCRIPT_HASHES.length} inline script hash(es) found 
 // so the wildcard subdomain is required rather than a fixed host list.
 const CLARITY_SCRIPT_SRC = 'https://*.clarity.ms https://c.bing.com';
 const CLARITY_CONNECT_SRC = 'https://*.clarity.ms https://c.bing.com';
-const CLARITY_IMG_SRC = 'https://*.clarity.ms';
+const CLARITY_IMG_SRC = 'https://*.clarity.ms https://c.bing.com';
+
+// Google Analytics 4 (gtag.js, no GTM). google-analytics.com/analytics.google.com
+// receive the actual measurement pings; googletagmanager.com serves gtag.js itself.
+const GA4_SCRIPT_SRC = 'https://www.googletagmanager.com';
+const GA4_CONNECT_SRC = 'https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com';
+const GA4_IMG_SRC = 'https://*.google-analytics.com';
 
 const CSP = [
   "default-src 'self'",
-  `script-src 'self' ${SCRIPT_HASHES.join(' ')} ${CLARITY_SCRIPT_SRC}`,
+  `script-src 'self' ${SCRIPT_HASHES.join(' ')} ${CLARITY_SCRIPT_SRC} ${GA4_SCRIPT_SRC}`,
   "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' data: ${CLARITY_IMG_SRC}`,
+  `img-src 'self' data: ${CLARITY_IMG_SRC} ${GA4_IMG_SRC}`,
   "font-src 'self' data:",
   "media-src 'self' data: https://videos.pexels.com",
-  `connect-src 'self' ${CLARITY_CONNECT_SRC}`,
+  `connect-src 'self' ${CLARITY_CONNECT_SRC} ${GA4_CONNECT_SRC}`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'none'",
