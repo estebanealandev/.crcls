@@ -17,7 +17,6 @@ const STATIC_PAGES: SitemapPage[] = [
   { path: '/journal', priority: '0.7' },
   ...PROJECTS.map((p) => ({ path: `/project/${p.slug}`, priority: '0.6' })),
   ...POSTS.map((p) => ({ path: `/post/${p.slug}`, priority: '0.5' })),
-  { path: '/legal/licensing', priority: '0.2' },
 ];
 
 function escapeXml(value: string): string {

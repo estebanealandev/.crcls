@@ -28,7 +28,6 @@ const footerNavItems = [
   { label: nav.work, path: '/work' },
   { label: nav.journal, path: '/journal' },
   { label: nav.contact, path: '/contact' },
-  { label: nav.licensing, path: '/legal/licensing' },
 ].map((item) => ({ ...item, href: localizedPath(locale, item.path), active: item.path === currentPath }));
 
 const ctaHref = localizedPath(locale, '/contact');
