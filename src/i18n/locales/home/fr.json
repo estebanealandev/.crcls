@@ -14,10 +14,23 @@
   },
   "hero": {
     "imageAlt": "Studio Circles : systèmes d'IA, de produit et de commerce",
-    "strategyLine1": "Stratégie, design et code.",
-    "strategyLine2": "Pensés comme un seul système.",
-    "mainLine1": "Nous concevons des systèmes d'IA, de produit et de commerce qui se renforcent dans le temps.",
-    "mainLine2": "Basés au Costa Rica. Conçus pour les marques qui s'inscrivent dans la durée."
+    "eyebrow": "[ Nous sommes Circles ]",
+    "headline": "Nous concevons des systèmes d'IA, de produit et de commerce qui se renforcent dans le temps.",
+    "body": "Stratégie, design et code — pensés comme un seul système. Basés au Costa Rica. Conçus pour les marques qui s'inscrivent dans la durée.",
+    "stickyTitle": "C’est nous",
+    "cursorLabels": [
+      "DES SYSTÈMES QUI S'AMPLIFIENT",
+      "CONÇU POUR DURER",
+      "BASÉS AU COSTA RICA",
+      "UN STUDIO CONNECTÉ"
+    ],
+    "openShowreel": "Ouvrir le showreel",
+    "closeShowreel": "Fermer le showreel",
+    "play": "Lecture",
+    "pause": "Pause",
+    "mute": "Couper le son",
+    "unmute": "Activer le son",
+    "seek": "Parcourir la vidéo"
   },
   "works": {
     "title": "Réalisations"

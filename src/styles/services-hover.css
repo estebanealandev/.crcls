@@ -1,0 +1,47 @@
+/* Home services hover — owned by services-hover.js (no Webflow IX). */
+
+.section._01 .service-grid {
+  position: relative;
+  z-index: 2;
+}
+
+.section._01 .service-card {
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important;
+  cursor: default;
+}
+
+.section._01 .service-card .font-change {
+  opacity: 0 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: none;
+  transition: none !important;
+}
+
+.section._01 .service-card.is-active .font-change {
+  opacity: 0.75 !important;
+}
+
+.section._01 .service-image-wrapper {
+  z-index: 0;
+}
+
+.section._01 .svc-background {
+  position: absolute;
+  inset: -2%;
+  width: 104%;
+  height: 104%;
+  object-fit: cover;
+  opacity: 0 !important;
+  visibility: visible !important;
+  filter: blur(14px);
+  transform: scale(1.03);
+  transition: none !important;
+  will-change: opacity;
+}
+
+.section._01 .svc-background.is-active {
+  opacity: 1 !important;
+}

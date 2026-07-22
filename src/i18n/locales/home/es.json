@@ -14,10 +14,23 @@
   },
   "hero": {
     "imageAlt": "Estudio Circles: sistemas de IA, producto y comercio",
-    "strategyLine1": "Estrategia, diseño y código.",
-    "strategyLine2": "Diseñados como un solo sistema.",
-    "mainLine1": "Creamos sistemas de IA, producto y comercio que se potencian con el tiempo.",
-    "mainLine2": "Con sede en Costa Rica. Hecho para marcas que planean quedarse."
+    "eyebrow": "[ Somos Circles ]",
+    "headline": "Creamos sistemas de IA, producto y comercio que se potencian con el tiempo.",
+    "body": "Estrategia, diseño y código — diseñados como un solo sistema. Con sede en Costa Rica. Hecho para marcas que planean quedarse.",
+    "stickyTitle": "Esto somos",
+    "cursorLabels": [
+      "SISTEMAS QUE SE POTENCIAN",
+      "HECHO PARA DURAR",
+      "DESDE COSTA RICA",
+      "UN ESTUDIO CONECTADO"
+    ],
+    "openShowreel": "Abrir showreel",
+    "closeShowreel": "Cerrar showreel",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "mute": "Silenciar",
+    "unmute": "Activar sonido",
+    "seek": "Buscar en el video"
   },
   "works": {
     "title": "Trabajos"

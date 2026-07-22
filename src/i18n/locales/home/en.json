@@ -14,10 +14,23 @@
   },
   "hero": {
     "imageAlt": "Circles studio: AI, product, and commerce systems",
-    "strategyLine1": "Strategy, design, and code.",
-    "strategyLine2": "Engineered as one system.",
-    "mainLine1": "We build AI, product, and commerce systems that compound.",
-    "mainLine2": "Costa Rica-based. Built for brands that plan to stay."
+    "eyebrow": "[ We are Circles ]",
+    "headline": "We build AI, product, and commerce systems that compound.",
+    "body": "Strategy, design, and code — engineered as one system. Costa Rica-based. Built for brands that plan to stay.",
+    "stickyTitle": "This is us",
+    "cursorLabels": [
+      "SYSTEMS THAT COMPOUND",
+      "BUILT TO LAST",
+      "COSTA RICA BASED",
+      "ONE CONNECTED STUDIO"
+    ],
+    "openShowreel": "Open showreel",
+    "closeShowreel": "Close showreel",
+    "play": "Play",
+    "pause": "Pause",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "seek": "Seek video"
   },
   "works": {
     "title": "Works"

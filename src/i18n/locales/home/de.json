@@ -14,10 +14,23 @@
   },
   "hero": {
     "imageAlt": "Circles Studio: KI-, Produkt- und Commerce-Systeme",
-    "strategyLine1": "Strategie, Design und Code.",
-    "strategyLine2": "Als ein System entwickelt.",
-    "mainLine1": "Wir entwickeln KI-, Produkt- und Commerce-Systeme, die sich gegenseitig verstärken.",
-    "mainLine2": "Mit Sitz in Costa Rica. Gebaut für Marken, die bleiben wollen."
+    "eyebrow": "[ Wir sind Circles ]",
+    "headline": "Wir entwickeln KI-, Produkt- und Commerce-Systeme, die sich gegenseitig verstärken.",
+    "body": "Strategie, Design und Code — als ein System entwickelt. Mit Sitz in Costa Rica. Gebaut für Marken, die bleiben wollen.",
+    "stickyTitle": "Das sind wir",
+    "cursorLabels": [
+      "SYSTEME DIE COMPOUNDIEREN",
+      "FÜR DIE DAUER GEBAUT",
+      "AUS COSTA RICA",
+      "EIN VERBUNDENES STUDIO"
+    ],
+    "openShowreel": "Showreel öffnen",
+    "closeShowreel": "Showreel schließen",
+    "play": "Abspielen",
+    "pause": "Pause",
+    "mute": "Stummschalten",
+    "unmute": "Ton an",
+    "seek": "Video suchen"
   },
   "works": {
     "title": "Arbeiten"

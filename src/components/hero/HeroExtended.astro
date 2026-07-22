@@ -1,0 +1,138 @@
+---
+import '../../styles/hero-extended.css';
+import type { Locale } from '../../i18n/utils';
+import { dictionaries } from '../../i18n/dictionaries';
+import homeEn from '../../i18n/locales/home/en.json';
+
+const DICT = dictionaries<typeof homeEn>('home');
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = DICT[locale].hero;
+const labelsJson = JSON.stringify(t.cursorLabels);
+---
+
+<section
+  class="hx-hero"
+  data-hx-hero
+  data-cursor-labels={labelsJson}
+  aria-label={t.headline}
+>
+  <div class="hx-hero__media" aria-hidden="true">
+    <video
+      class="hx-hero__video"
+      data-hx-backdrop
+      poster="/assets/videos/hero/backdrop-thumb.jpg"
+      muted
+      loop
+      playsinline
+      autoplay
+      preload="metadata"
+    >
+      <source src="/assets/videos/hero/backdrop.mp4" type="video/mp4" />
+    </video>
+    <canvas class="hx-hero__canvas" data-hx-canvas></canvas>
+    <div class="hx-hero__veil"></div>
+  </div>
+
+  <div class="hx-sticky-wrap" aria-hidden="false">
+    <aside class="hx-sticky" data-hx-sticky>
+      <button type="button" class="hx-sticky__title" data-hx-sticky-toggle aria-expanded="true">
+        <span>{t.stickyTitle}</span>
+        <span class="hx-sticky__toggle" aria-hidden="true">( <span data-hx-sticky-mark>-</span> )</span>
+      </button>
+      <button
+        type="button"
+        class="hx-sticky__preview"
+        data-hx-open-showreel
+        aria-label={t.openShowreel}
+      >
+        <div class="hx-sticky__preview-frame">
+          <video
+            class="hx-sticky__preview-video"
+            data-hx-preview
+            poster="/assets/videos/hero/showreel-preview-thumb.jpg"
+            muted
+            loop
+            playsinline
+            autoplay
+            preload="metadata"
+          >
+            <source src="/assets/videos/hero/showreel-preview.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </button>
+    </aside>
+  </div>
+
+  <div class="hx-hero__inner">
+    <div class="hx-hero__copy">
+      <p class="hx-hero__eyebrow" data-hx-reveal>{t.eyebrow}</p>
+      <h1 class="hx-hero__headline" data-hx-reveal>{t.headline}</h1>
+    </div>
+    <p class="hx-hero__body" data-hx-reveal>{t.body}</p>
+    <div class="hx-mobile-cta">
+      <button type="button" class="hx-mobile-cta__btn" data-hx-open-showreel>
+        {t.openShowreel}
+      </button>
+    </div>
+  </div>
+</section>
+
+<div
+  class="hx-cursor-label"
+  data-hx-cursor-label
+  aria-hidden="true"
+>
+  <div class="hx-cursor-label__chip" data-hx-cursor-text></div>
+</div>
+
+<div
+  class="hx-modal"
+  data-hx-modal
+  role="dialog"
+  aria-modal="true"
+  aria-label={t.openShowreel}
+  hidden
+>
+  <button type="button" class="hx-modal__close" data-hx-close-showreel aria-label={t.closeShowreel}>
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M4 15.314 15.314 4l1.414 1.414L5.414 16.728z"></path>
+      <path d="M16.729 15.314 5.415 4 4 5.414l11.313 11.314z"></path>
+    </svg>
+  </button>
+
+  <div class="hx-modal__stage">
+    <video
+      class="hx-modal__video"
+      data-hx-modal-video
+      playsinline
+      preload="metadata"
+      poster="/assets/videos/hero/showreel-desktop-thumb.jpg"
+      data-src-desktop="/assets/videos/hero/showreel-desktop.mp4"
+      data-src-mobile="/assets/videos/hero/showreel-mobile.mp4"
+    ></video>
+  </div>
+
+  <div class="hx-modal__controls">
+    <div class="hx-modal__buttons">
+      <button type="button" class="hx-modal__btn" data-hx-play-toggle data-label-play={t.play} data-label-pause={t.pause}>
+        {t.pause}
+      </button>
+      <button type="button" class="hx-modal__btn" data-hx-mute-toggle data-label-mute={t.mute} data-label-unmute={t.unmute}>
+        {t.unmute}
+      </button>
+      <span class="hx-modal__time" data-hx-time>0:00 / 0:00</span>
+    </div>
+    <button type="button" class="hx-modal__seek" data-hx-seek aria-label={t.seek}>
+      <span class="hx-modal__seek-track">
+        <span class="hx-modal__seek-fill" data-hx-seek-fill></span>
+      </span>
+    </button>
+  </div>
+</div>
+
+<script is:inline src="/js/hero-extended.js"></script>
