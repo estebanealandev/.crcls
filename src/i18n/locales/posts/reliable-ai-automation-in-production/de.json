@@ -1,0 +1,27 @@
+{
+  "title": "Von der KI-Idee zur Produktion: Kontrollen für zuverlässige Automatisierung",
+  "seo": {
+    "title": "Zuverlässige KI-Automatisierung für den Produktivbetrieb | Circles",
+    "description": "Ein praktischer Rahmen mit Evaluation, menschlicher Aufsicht, Sicherheit, Observability und sicheren Fehlerzuständen."
+  },
+  "backToBlogLabel": "Zurück zum Blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Primärquellen",
+  "body": [
+    { "type": "p", "text": "Eine KI-Demo beweist, dass ein Modell einmal ein nützliches Ergebnis liefern kann. Eine produktive Automatisierung muss wiederholt akzeptable Ergebnisse erzeugen, Grenzen erkennen, Daten schützen und sich erholen können, ohne Fehler zu verbergen." },
+    { "type": "p", "text": "Das NIST AI RMF strukturiert die Arbeit in Govern, Map, Measure und Manage: Verantwortung und akzeptables Risiko definieren, Kontext verstehen, Verhalten bewerten und Kontrollen kontinuierlich betreiben. Die Modellwahl ist nur eine Entscheidung im System." },
+    { "type": "h3", "text": "Mit einer begrenzten Entscheidung beginnen" },
+    { "type": "p", "text": "Zuverlässige Automatisierung braucht eine konkrete Aufgabe, bekannte Eingaben, einen expliziten Output-Vertrag und messbaren Erfolg. Eine Anfrage zu klassifizieren und eine Antwort vorzuschlagen ist besser evaluierbar als die offene Anweisung «Support übernehmen»." },
+    { "type": "blockquote", "text": "Fragen Sie nicht, ob das Modell intelligent ist. Fragen Sie, was das System tut, wenn das Modell falsch liegt." },
+    { "type": "p", "text": "Vor dem Launch braucht es ein repräsentatives Evaluationsset. Qualität, Ablehnung, Latenz und Kosten müssen gemessen sowie Prompt Injection, unsichere Tool-Nutzung, Datenlecks und nicht vertrauenswürdige Outputs getestet werden." },
+    { "type": "h3", "text": "Produktion bedeutet beobachtbar und reversibel" },
+    { "type": "p", "text": "Herkunft, Modell- und Prompt-Versionen, Tool-Aufrufe, Validierungen, Aktionen und menschliche Korrekturen gehören protokolliert, ohne sensible Daten unnötig zu speichern. Kritische oder unsichere Aktionen müssen an Menschen übergeben werden." },
+    { "type": "p", "text": "Bei Circles ist ein KI-Workflow bereit, wenn Fehler sichtbar, begrenzt und wiederherstellbar sind, nicht nur wenn der Happy Path beeindruckt." }
+  ],
+  "sources": [
+    { "label": "NIST — AI Risk Management Framework", "url": "https://www.nist.gov/itl/ai-risk-management-framework" },
+    { "label": "OWASP — Top 10 for Large Language Model Applications", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/" },
+    { "label": "Google SRE — Monitoring distributed systems", "url": "https://sre.google/sre-book/monitoring-distributed-systems/" }
+  ]
+}

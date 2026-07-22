@@ -13,10 +13,19 @@ import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
 import { absoluteUrl, localizedAbsoluteUrl, jsonLdString, BUSINESS_ID, WEBSITE_ID } from '../lib/seo';
 import { POSTS, requirePost, otherPosts, postImageSrcset } from '../data/posts';
 import commonEn from '../i18n/locales/common/en.json';
-import postEn from '../i18n/locales/posts/designing-digital-systems-that-scale-with-intention/en.json';
 
 const COMMON = dictionaries<typeof commonEn>('common');
-const POST_COPY = slugDictionaries<typeof postEn>('posts', POSTS.map((p) => p.slug));
+interface PostCopy {
+  title: string;
+  seo: { title: string; description: string };
+  backToBlogLabel: string;
+  publishedAt?: string;
+  updatedAt?: string;
+  sourcesLabel?: string;
+  body: { type: string; text: string }[];
+  sources?: { label: string; url: string }[];
+}
+const POST_COPY = slugDictionaries<PostCopy>('posts', POSTS.map((p) => p.slug));
 
 interface Props {
   locale: Locale;
@@ -61,6 +70,8 @@ const related = otherPosts(slug).map((other, i) => {
     "thumbnailUrl": absoluteUrl(heroImage.src),
     "mainEntityOfPage": pageUrl,
     "isPartOf": { "@id": WEBSITE_ID },
+    ...(t.publishedAt ? { datePublished: t.publishedAt } : {}),
+    ...(t.updatedAt ? { dateModified: t.updatedAt } : {}),
   })} />
 
   <Navbar locale={locale} currentPath={canonicalPath} blurEffectId={post.ids.blurEffect} />
@@ -90,6 +101,16 @@ const related = otherPosts(slug).map((other, i) => {
         <div>
           <div class="blog-wrapper">
             <RichText blocks={t.body} />
+            {t.sources && t.sources.length > 0 && (
+              <aside class="article-sources" aria-labelledby={`sources-${slug}`}>
+                <h3 id={`sources-${slug}`}>{t.sourcesLabel ?? 'Sources'}</h3>
+                <ol>
+                  {t.sources.map((source) => (
+                    <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a></li>
+                  ))}
+                </ol>
+              </aside>
+            )}
             <div class="divider-s"></div>
             <div class="button-flex">
               <ButtonLink href={localizedPath(locale, '/journal')} label={t.backToBlogLabel} />

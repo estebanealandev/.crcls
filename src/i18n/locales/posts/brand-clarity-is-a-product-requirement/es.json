@@ -1,0 +1,27 @@
+{
+  "title": "Por qué la claridad de marca debe sobrevivir al contacto con el producto",
+  "seo": {
+    "title": "Por qué la claridad de marca es un requisito de producto | Circles",
+    "description": "Una marca no es clara si su web, producto, onboarding y soporte cuentan historias diferentes. Así se diseña un sistema coherente."
+  },
+  "backToBlogLabel": "Volver al blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Referencias primarias",
+  "body": [
+    { "type": "p", "text": "Una identidad visual puede ser consistente y aun así confundir. La claridad de marca es la alineación entre lo que una organización promete, lo que explica la interfaz y lo que realmente entrega el servicio. Si esas capas se contradicen, una identidad pulida solo hace más visible el problema." },
+    { "type": "p", "text": "Por eso la claridad pertenece tanto al diseño de producto como a la estrategia de marca. W3C recomienda palabras claras, frases breves, encabezados útiles e instrucciones situadas donde se necesitan. Las heurísticas de Nielsen Norman Group convierten el mismo principio en operación: hablar el lenguaje del usuario, mantener consistencia y eliminar información irrelevante." },
+    { "type": "h3", "text": "El posicionamiento debe convertirse en arquitectura de interfaz" },
+    { "type": "p", "text": "Un posicionamiento útil define audiencia, problema, categoría, diferencia relevante y prueba. En una web se convierte en jerarquía de información. En un producto, en navegación, etiquetas, valores por defecto, estados vacíos y feedback. La estrategia solo es real cuando cambia lo que el usuario ve y hace." },
+    { "type": "blockquote", "text": "Un sistema de marca es claro cuando marketing, producto y servicio comparten el mismo modelo mental." },
+    { "type": "p", "text": "Consistencia no significa repetir el mismo eslogan. Significa conservar el significado entre contextos. Una campaña puede ser expresiva y un formulario clínico, sobrio; ambos pueden compartir voz, terminología, principios visuales y un estándar reconocible." },
+    { "type": "h3", "text": "Prueba comprensión, no preferencia" },
+    { "type": "p", "text": "Preguntas como «¿te gusta?» producen evidencia débil. Es mejor pedir a las personas que expliquen qué ofrece la empresa, elijan dónde completarían una tarea o predigan qué ocurrirá después de una acción. Si no construyen un modelo correcto, el trabajo necesita claridad antes que más personalidad." },
+    { "type": "p", "text": "Circles trata marca, web y producto como un único sistema conectado. El objetivo no es una marca que funcione en una presentación, sino una que siga siendo comprensible en onboarding, checkout, dashboards, notificaciones, soporte y cada estado intermedio." }
+  ],
+  "sources": [
+    { "label": "W3C Web Accessibility Initiative — Cómo escribir contenido claro", "url": "https://www.w3.org/WAI/tips/writing/" },
+    { "label": "Nielsen Norman Group — 10 heurísticas de usabilidad", "url": "https://www.nngroup.com/articles/ten-usability-heuristics/" },
+    { "label": "GOV.UK Service Manual — Writing for GOV.UK", "url": "https://www.gov.uk/guidance/content-design/writing-for-gov-uk" }
+  ]
+}

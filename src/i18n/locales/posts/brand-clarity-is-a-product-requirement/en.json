@@ -1,0 +1,27 @@
+{
+  "title": "Why Brand Clarity Must Survive Contact With the Product",
+  "seo": {
+    "title": "Why Brand Clarity Is a Product Requirement | Circles",
+    "description": "A brand is not clear if its website, product, onboarding, and support experience tell different stories. Here is how to design one coherent system."
+  },
+  "backToBlogLabel": "Back to Blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Primary references",
+  "body": [
+    { "type": "p", "text": "A visual identity can be consistent and still leave people confused. Brand clarity is the alignment between what an organisation promises, what the interface explains, and what the service actually does. If those layers disagree, a polished identity only makes the contradiction more visible." },
+    { "type": "p", "text": "This is why clarity belongs to product design as much as brand strategy. The W3C recommends clear words, short sentences, useful headings, and instructions placed where people need them. Nielsen Norman Group's usability heuristics make the same principle operational: interfaces should speak the user's language, remain consistent, and remove irrelevant information." },
+    { "type": "h3", "text": "Positioning should become interface architecture" },
+    { "type": "p", "text": "A useful positioning statement identifies the audience, the problem, the category, the meaningful difference, and the proof. On a website, that becomes information hierarchy. In a product, it becomes navigation, labels, defaults, empty states, and feedback. The strategy is only real when it changes what the user sees and does." },
+    { "type": "blockquote", "text": "A brand system is clear when marketing, product, and service use the same mental model." },
+    { "type": "p", "text": "Consistency does not mean repeating the same slogan everywhere. It means preserving meaning across contexts. A campaign can be expressive while a clinical form remains restrained; both can still share voice, terminology, visual principles, and a recognizable standard of care." },
+    { "type": "h3", "text": "Test comprehension, not preference" },
+    { "type": "p", "text": "Preference questions such as \"do you like this?\" produce weak evidence. Better tests ask people to explain what the company offers, choose where they would complete a task, or predict what will happen after an action. If users cannot form an accurate model, the work needs clarification before it needs more personality." },
+    { "type": "p", "text": "Circles treats brand, web, and product as one connected system for this reason. The goal is not a brand that performs in a presentation. It is a brand that remains understandable in onboarding, checkout, dashboards, notifications, support, and every state between them." }
+  ],
+  "sources": [
+    { "label": "W3C Web Accessibility Initiative — Writing clear content", "url": "https://www.w3.org/WAI/tips/writing/" },
+    { "label": "Nielsen Norman Group — 10 usability heuristics for user interface design", "url": "https://www.nngroup.com/articles/ten-usability-heuristics/" },
+    { "label": "GOV.UK Service Manual — Writing for GOV.UK", "url": "https://www.gov.uk/guidance/content-design/writing-for-gov-uk" }
+  ]
+}

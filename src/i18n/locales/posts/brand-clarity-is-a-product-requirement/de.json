@@ -1,0 +1,26 @@
+{
+  "title": "Warum Markenklarheit den Kontakt mit dem Produkt bestehen muss",
+  "seo": {
+    "title": "Warum Markenklarheit eine Produktanforderung ist | Circles",
+    "description": "Eine Marke ist nicht klar, wenn Website, Produkt, Onboarding und Support unterschiedliche Geschichten erzählen."
+  },
+  "backToBlogLabel": "Zurück zum Blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Primärquellen",
+  "body": [
+    { "type": "p", "text": "Eine visuelle Identität kann konsistent und trotzdem verwirrend sein. Markenklarheit bedeutet, dass Versprechen, Interface und tatsächliche Serviceleistung übereinstimmen. Widersprechen sich diese Ebenen, macht eine polierte Identität das Problem nur sichtbarer." },
+    { "type": "p", "text": "Klarheit gehört deshalb ebenso zum Product Design wie zur Markenstrategie. Das W3C empfiehlt klare Wörter, kurze Sätze, hilfreiche Überschriften und Anweisungen am richtigen Ort. Die Heuristiken der Nielsen Norman Group fordern dieselben Prinzipien: Nutzersprache, Konsistenz und relevante Information." },
+    { "type": "h3", "text": "Positionierung muss Interface-Architektur werden" },
+    { "type": "p", "text": "Eine brauchbare Positionierung benennt Zielgruppe, Problem, Kategorie, Unterschied und Beleg. Auf einer Website wird sie zur Informationshierarchie; im Produkt zu Navigation, Benennungen, Defaults, Leerzuständen und Feedback." },
+    { "type": "blockquote", "text": "Ein Markensystem ist klar, wenn Marketing, Produkt und Service dasselbe mentale Modell verwenden." },
+    { "type": "h3", "text": "Verständnis testen, nicht Geschmack" },
+    { "type": "p", "text": "Die Frage «Gefällt Ihnen das?» liefert schwache Evidenz. Besser ist es, Menschen das Angebot erklären, einen Aufgabenweg wählen oder das Ergebnis einer Aktion vorhersagen zu lassen. Ein falsches mentales Modell braucht mehr Klarheit, nicht mehr Persönlichkeit." },
+    { "type": "p", "text": "Circles behandelt Marke, Web und Produkt als verbundenes System, damit Bedeutung in Onboarding, Checkout, Dashboards, Benachrichtigungen und Support erhalten bleibt." }
+  ],
+  "sources": [
+    { "label": "W3C WAI — Writing clear content", "url": "https://www.w3.org/WAI/tips/writing/" },
+    { "label": "Nielsen Norman Group — 10 usability heuristics", "url": "https://www.nngroup.com/articles/ten-usability-heuristics/" },
+    { "label": "GOV.UK — Writing for GOV.UK", "url": "https://www.gov.uk/guidance/content-design/writing-for-gov-uk" }
+  ]
+}

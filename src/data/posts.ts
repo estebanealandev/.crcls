@@ -39,17 +39,17 @@ const SHARED_IDS: PostIds = {
 
 export const POSTS: PostData[] = [
   {
-    slug: 'designing-digital-systems-that-scale-with-intention',
+    slug: 'custom-software-vs-saas-what-to-build',
     dataWfPage: '69ea3b293f46d55a8da19973',
     wfScript: '/js/webflow.e6aeb930.103a96742c08bc67.js',
-    heroImageBase: 'blog-4',
+    heroImageBase: 'journal-build-buy',
     ids: SHARED_IDS,
   },
   {
-    slug: 'from-idea-to-execution-building-with-precision',
+    slug: 'reliable-ai-automation-in-production',
     dataWfPage: '69ea3b293f46d55a8da19973',
     wfScript: '/js/webflow.e6aeb930.103a96742c08bc67.js',
-    heroImageBase: 'blog-2',
+    heroImageBase: 'journal-ai-production',
     ids: SHARED_IDS,
   },
   {
@@ -71,10 +71,10 @@ export const POSTS: PostData[] = [
     },
   },
   {
-    slug: 'why-clarity-is-the-foundation-of-modern-brands',
+    slug: 'brand-clarity-is-a-product-requirement',
     dataWfPage: '69ea3b293f46d55a8da19973',
     wfScript: '/js/webflow.e6aeb930.103a96742c08bc67.js',
-    heroImageBase: 'blog-3',
+    heroImageBase: 'journal-brand-clarity',
     ids: SHARED_IDS,
   },
 ];

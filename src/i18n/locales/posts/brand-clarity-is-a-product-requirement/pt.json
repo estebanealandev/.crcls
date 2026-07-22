@@ -1,0 +1,26 @@
+{
+  "title": "Porque a clareza da marca deve resistir ao contacto com o produto",
+  "seo": {
+    "title": "Porque a clareza da marca é um requisito de produto | Circles",
+    "description": "Uma marca não é clara quando site, produto, onboarding e suporte contam histórias diferentes."
+  },
+  "backToBlogLabel": "Voltar ao blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Referências principais",
+  "body": [
+    { "type": "p", "text": "Uma identidade visual pode ser consistente e ainda assim confundir. Clareza de marca é o alinhamento entre a promessa, o que a interface explica e o que o serviço realmente entrega. Se estas camadas discordam, uma identidade polida apenas torna o problema mais visível." },
+    { "type": "p", "text": "Por isso, clareza pertence tanto ao product design como à estratégia de marca. O W3C recomenda palavras claras, frases curtas, títulos úteis e instruções colocadas onde são necessárias. As heurísticas da Nielsen Norman Group aplicam o mesmo princípio: linguagem do utilizador, consistência e informação relevante." },
+    { "type": "h3", "text": "O posicionamento deve tornar-se arquitetura de interface" },
+    { "type": "p", "text": "Um posicionamento útil define público, problema, categoria, diferença e prova. Num site torna-se hierarquia da informação. Num produto torna-se navegação, etiquetas, valores predefinidos, estados vazios e feedback." },
+    { "type": "blockquote", "text": "Um sistema de marca é claro quando marketing, produto e serviço partilham o mesmo modelo mental." },
+    { "type": "h3", "text": "Teste compreensão, não preferência" },
+    { "type": "p", "text": "Perguntar «gosta disto?» produz evidência fraca. É melhor pedir às pessoas que expliquem a oferta, escolham onde concluiriam uma tarefa ou prevejam o resultado de uma ação. Um modelo mental incorreto precisa de clareza antes de personalidade." },
+    { "type": "p", "text": "A Circles trata marca, web e produto como um sistema conectado para preservar significado no onboarding, checkout, dashboards, notificações e suporte." }
+  ],
+  "sources": [
+    { "label": "W3C WAI — Writing clear content", "url": "https://www.w3.org/WAI/tips/writing/" },
+    { "label": "Nielsen Norman Group — 10 usability heuristics", "url": "https://www.nngroup.com/articles/ten-usability-heuristics/" },
+    { "label": "GOV.UK — Writing for GOV.UK", "url": "https://www.gov.uk/guidance/content-design/writing-for-gov-uk" }
+  ]
+}

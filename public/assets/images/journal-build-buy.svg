@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 2400" role="img" aria-labelledby="title desc">
+  <title id="title">Build or buy editorial cover</title>
+  <desc id="desc">An architectural decision map for custom software and SaaS.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9f3ec"/>
+      <stop offset="1" stop-color="#74b8a8"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="30" stdDeviation="40" flood-color="#052027" flood-opacity=".22"/></filter>
+  </defs>
+  <rect width="2400" height="2400" fill="url(#bg)"/>
+  <g stroke="#09262d" stroke-opacity=".12">
+    <path d="M0 300H2400M0 600H2400M0 900H2400M0 1200H2400M0 1500H2400M0 1800H2400M0 2100H2400"/>
+    <path d="M300 0V2400M600 0V2400M900 0V2400M1200 0V2400M1500 0V2400M1800 0V2400M2100 0V2400"/>
+  </g>
+  <text x="140" y="170" fill="#09262d" font-family="Arial, sans-serif" font-size="34" letter-spacing="8">CIRCLES JOURNAL / 01</text>
+  <text x="140" y="590" fill="#09262d" font-family="Georgia, serif" font-size="340" letter-spacing="-20">BUILD</text>
+  <text x="140" y="950" fill="#09262d" font-family="Georgia, serif" font-size="340" letter-spacing="-20">OR BUY?</text>
+  <g transform="translate(140 1210)" filter="url(#shadow)">
+    <rect width="930" height="880" rx="34" fill="#09262d"/>
+    <text x="58" y="85" fill="#a8ddcf" font-family="Arial, sans-serif" font-size="28" letter-spacing="4">CUSTOM CORE</text>
+    <text x="58" y="210" fill="#fff" font-family="Arial, sans-serif" font-size="58">Unique workflows</text>
+    <text x="58" y="300" fill="#fff" font-family="Arial, sans-serif" font-size="58">Data ownership</text>
+    <text x="58" y="390" fill="#fff" font-family="Arial, sans-serif" font-size="58">Product advantage</text>
+    <path d="M58 480H872" stroke="#fff" stroke-opacity=".25"/>
+    <text x="58" y="580" fill="#fff" fill-opacity=".58" font-family="Arial, sans-serif" font-size="32">BUILD WHAT DIFFERENTIATES.</text>
+    <circle cx="756" cy="710" r="92" fill="#a8ddcf"/>
+    <path d="M716 710H796M772 686L796 710 772 734" fill="none" stroke="#09262d" stroke-width="12"/>
+  </g>
+  <g transform="translate(1180 1210)" filter="url(#shadow)">
+    <rect width="1080" height="880" rx="34" fill="#f6f1eb"/>
+    <text x="58" y="85" fill="#607174" font-family="Arial, sans-serif" font-size="28" letter-spacing="4">MANAGED LAYER</text>
+    <text x="58" y="210" fill="#09262d" font-family="Arial, sans-serif" font-size="58">Payments</text>
+    <text x="58" y="300" fill="#09262d" font-family="Arial, sans-serif" font-size="58">Identity</text>
+    <text x="58" y="390" fill="#09262d" font-family="Arial, sans-serif" font-size="58">Infrastructure</text>
+    <path d="M58 480H1022" stroke="#09262d" stroke-opacity=".18"/>
+    <text x="58" y="580" fill="#09262d" fill-opacity=".58" font-family="Arial, sans-serif" font-size="32">BUY THE COMMODITY.</text>
+    <g transform="translate(820 620)">
+      <rect width="150" height="150" rx="75" fill="#09262d"/>
+      <path d="M45 75H105M81 51L105 75 81 99" fill="none" stroke="#a8ddcf" stroke-width="12"/>
+    </g>
+  </g>
+  <text x="140" y="2280" fill="#09262d" font-family="Arial, sans-serif" font-size="34">CUSTOM SOFTWARE / SaaS / HYBRID ARCHITECTURE</text>
+</svg>

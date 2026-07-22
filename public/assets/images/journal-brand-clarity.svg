@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 2400" role="img" aria-labelledby="title desc">
+  <title id="title">Brand clarity editorial cover</title>
+  <desc id="desc">Typography connecting brand, interface, and service.</desc>
+  <defs>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#ff735f"/>
+      <stop offset=".46" stop-color="#c62d2c"/>
+      <stop offset="1" stop-color="#210f14"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="36"/></filter>
+  </defs>
+  <rect width="2400" height="2400" fill="#170c10"/>
+  <circle cx="1750" cy="580" r="720" fill="url(#glow)" opacity=".9"/>
+  <circle cx="1750" cy="580" r="330" fill="#ffb092" opacity=".2" filter="url(#blur)"/>
+  <text x="140" y="170" fill="#f6eae3" font-family="Arial, sans-serif" font-size="34" letter-spacing="8">CIRCLES JOURNAL / 02</text>
+  <text x="140" y="680" fill="#f6eae3" font-family="Georgia, serif" font-size="315" letter-spacing="-18">CLARITY</text>
+  <text x="140" y="1010" fill="#f6eae3" font-family="Georgia, serif" font-size="315" letter-spacing="-18">IS THE</text>
+  <text x="140" y="1340" fill="#ff8c77" font-family="Georgia, serif" font-size="315" letter-spacing="-18">SYSTEM.</text>
+  <g transform="translate(140 1550)">
+    <rect width="2120" height="560" rx="28" fill="#f6eae3"/>
+    <g font-family="Arial, sans-serif">
+      <text x="68" y="92" fill="#7b6264" font-size="26" letter-spacing="4">ONE MENTAL MODEL</text>
+      <text x="68" y="225" fill="#1d1115" font-size="65">Brand</text>
+      <text x="790" y="225" fill="#1d1115" font-size="65">Product</text>
+      <text x="1515" y="225" fill="#1d1115" font-size="65">Service</text>
+      <path d="M68 290H2052" stroke="#1d1115" stroke-opacity=".18" stroke-width="3"/>
+      <circle cx="145" cy="405" r="34" fill="#cc3a35"/>
+      <path d="M179 405H750" stroke="#cc3a35" stroke-width="8"/>
+      <circle cx="865" cy="405" r="34" fill="#cc3a35"/>
+      <path d="M899 405H1470" stroke="#cc3a35" stroke-width="8"/>
+      <circle cx="1585" cy="405" r="34" fill="#cc3a35"/>
+      <path d="M1619 405H1980" stroke="#cc3a35" stroke-width="8"/>
+    </g>
+  </g>
+  <text x="140" y="2280" fill="#f6eae3" font-family="Arial, sans-serif" font-size="34">POSITIONING / UX WRITING / PRODUCT DESIGN</text>
+</svg>

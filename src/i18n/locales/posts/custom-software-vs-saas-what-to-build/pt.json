@@ -1,0 +1,26 @@
+{
+  "title": "Desenhar sistemas que escalam: o que construir e o que comprar",
+  "seo": {
+    "title": "Software à medida ou SaaS: o que deve construir? | Circles",
+    "description": "Um enquadramento baseado em critérios concretos para decidir entre SaaS, software à medida e arquitetura híbrida."
+  },
+  "backToBlogLabel": "Voltar ao blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Referências principais",
+  "body": [
+    { "type": "p", "text": "Construir ou comprar não é um debate sobre qualidade de engenharia. É uma decisão de design de serviço, determinada pelas necessidades dos utilizadores, valor estratégico do fluxo, integrações, custo total e capacidade de operar a solução escolhida." },
+    { "type": "p", "text": "A orientação digital do governo britânico é clara: compreender o problema durante discovery antes de assumir uma tecnologia. Comprar cedo demais pode impor o modelo de um fornecedor; construir cedo demais pode recriar desnecessariamente uma capacidade comum." },
+    { "type": "h3", "text": "Compre o padrão. Construa a diferença." },
+    { "type": "p", "text": "Software comercial costuma ser preferível quando os requisitos são comuns e a configuração é suficiente. Software à medida torna-se racional quando o fluxo é central para o negócio, os produtos existentes não integram sem alterações profundas, a propriedade dos dados é crítica ou o próprio software constitui o valor vendido." },
+    { "type": "blockquote", "text": "A decisão sénior raramente é construir tudo ou comprar tudo. É decidir que capacidades merecem ser propriedade da organização." },
+    { "type": "h3", "text": "Uma arquitetura híbrida é muitas vezes a resposta honesta" },
+    { "type": "p", "text": "Serviços geridos podem cobrir capacidades padrão enquanto uma aplicação própria suporta os fluxos diferenciadores. Limites claros, APIs documentadas, dados portáveis e observabilidade permitem evoluir sem reconstruir todo o serviço." },
+    { "type": "p", "text": "Na Circles, discovery termina com um mapa de capacidades: o que comprar, configurar ou construir, quem assume cada decisão e como o serviço será operado depois do lançamento." }
+  ],
+  "sources": [
+    { "label": "GOV.UK — Choose the right tools and technology", "url": "https://www.gov.uk/service-manual/service-standard/point-11-choose-the-right-tools-and-technology" },
+    { "label": "GOV.UK — Commercial off-the-shelf products and services", "url": "https://www.gov.uk/service-manual/technology/commercial-off-the-shelf-products-and-services" },
+    { "label": "GOV.UK — Define your purchasing strategy", "url": "https://www.gov.uk/guidance/define-your-purchasing-strategy" }
+  ]
+}

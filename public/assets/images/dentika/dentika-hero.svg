@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Dentika CRM dashboard</title>
+  <desc id="desc">A premium editorial composition showing a dental clinic management dashboard.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9f0ea"/>
+      <stop offset=".52" stop-color="#9ed8cb"/>
+      <stop offset="1" stop-color="#6cae9f"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#80c7b7" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#80c7b7" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="45" stdDeviation="55" flood-color="#06212a" flood-opacity=".25"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1600" fill="url(#bg)"/>
+  <circle cx="1280" cy="230" r="360" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="2"/>
+  <circle cx="1280" cy="230" r="510" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="2"/>
+  <text x="92" y="126" fill="#08242c" font-family="Arial, sans-serif" font-size="25" letter-spacing="5">CUSTOM WEB + PROPRIETARY CRM</text>
+  <text x="92" y="305" fill="#08242c" font-family="Georgia, serif" font-size="186" letter-spacing="-10">Dentika</text>
+  <text x="96" y="372" fill="#17363d" fill-opacity=".7" font-family="Arial, sans-serif" font-size="31">One connected digital ecosystem. Built from the ground up.</text>
+
+  <g transform="translate(92 470) rotate(-2 710 500)" filter="url(#shadow)">
+    <rect width="1416" height="960" rx="26" fill="#f4f8f7"/>
+    <rect width="1416" height="64" rx="26" fill="#fff"/>
+    <rect y="42" width="1416" height="22" fill="#fff"/>
+    <circle cx="31" cy="31" r="7" fill="#d9dfdd"/>
+    <circle cx="54" cy="31" r="7" fill="#d9dfdd"/>
+    <circle cx="77" cy="31" r="7" fill="#d9dfdd"/>
+    <text x="630" y="39" fill="#748388" font-family="monospace" font-size="16">app.dentika / overview</text>
+
+    <rect y="64" width="244" height="896" fill="#fff"/>
+    <circle cx="42" cy="111" r="18" fill="#08242c"/>
+    <text x="72" y="121" fill="#08242c" font-family="Georgia, serif" font-weight="bold" font-size="36">Dentika</text>
+
+    <g font-family="Arial, sans-serif" font-size="18">
+      <rect x="20" y="190" width="204" height="52" rx="12" fill="#e3f1ee"/>
+      <text x="50" y="224" fill="#08242c" font-weight="bold">Resumen</text>
+      <text x="50" y="292" fill="#738287">Agenda</text>
+      <text x="50" y="360" fill="#738287">Pacientes</text>
+      <text x="50" y="428" fill="#738287">Tratamientos</text>
+      <text x="50" y="496" fill="#738287">Estadisticas</text>
+    </g>
+
+    <g transform="translate(292 120)">
+      <text x="0" y="0" fill="#7d898d" font-family="Arial, sans-serif" font-size="17">Martes, 21 de julio</text>
+      <text x="0" y="48" fill="#08242c" font-family="Georgia, serif" font-weight="bold" font-size="44">Buenos dias, equipo.</text>
+      <rect x="920" y="0" width="154" height="48" rx="24" fill="#08242c"/>
+      <text x="949" y="31" fill="#fff" font-family="Arial, sans-serif" font-size="16">+ Nueva cita</text>
+
+      <g transform="translate(0 95)">
+        <g>
+          <rect width="250" height="160" rx="17" fill="#fff"/>
+          <text x="22" y="34" fill="#7d898d" font-family="Arial, sans-serif" font-size="15">Pacientes hoy</text>
+          <text x="22" y="112" fill="#08242c" font-family="Arial, sans-serif" font-size="56">18</text>
+          <text x="178" y="112" fill="#4c9988" font-family="Arial, sans-serif" font-size="15">+12%</text>
+        </g>
+        <g transform="translate(270)">
+          <rect width="250" height="160" rx="17" fill="#fff"/>
+          <text x="22" y="34" fill="#7d898d" font-family="Arial, sans-serif" font-size="15">Ocupacion</text>
+          <text x="22" y="112" fill="#08242c" font-family="Arial, sans-serif" font-size="56">87%</text>
+          <text x="183" y="112" fill="#4c9988" font-family="Arial, sans-serif" font-size="15">Optima</text>
+        </g>
+        <g transform="translate(540)">
+          <rect width="250" height="160" rx="17" fill="#fff"/>
+          <text x="22" y="34" fill="#7d898d" font-family="Arial, sans-serif" font-size="15">Por confirmar</text>
+          <text x="22" y="112" fill="#08242c" font-family="Arial, sans-serif" font-size="56">04</text>
+          <text x="157" y="112" fill="#b67d62" font-family="Arial, sans-serif" font-size="15">2 urgentes</text>
+        </g>
+        <g transform="translate(810)">
+          <rect width="274" height="160" rx="17" fill="#fff"/>
+          <text x="22" y="34" fill="#7d898d" font-family="Arial, sans-serif" font-size="15">Ingresos del mes</text>
+          <text x="22" y="112" fill="#08242c" font-family="Arial, sans-serif" font-size="48">CRC 8.4M</text>
+        </g>
+      </g>
+
+      <g transform="translate(0 278)">
+        <rect width="720" height="490" rx="17" fill="#fff"/>
+        <text x="24" y="42" fill="#08242c" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Agenda de hoy</text>
+        <text x="600" y="42" fill="#7d898d" font-family="Arial, sans-serif" font-size="14">Ver agenda</text>
+        <g stroke="#e6ecea" stroke-width="1">
+          <path d="M72 92H690M72 170H690M72 248H690M72 326H690M72 404H690"/>
+        </g>
+        <g fill="#849095" font-family="Arial, sans-serif" font-size="12">
+          <text x="20" y="98">09:00</text><text x="20" y="176">10:00</text><text x="20" y="254">11:00</text><text x="20" y="332">12:00</text><text x="20" y="410">13:00</text>
+        </g>
+        <g font-family="Arial, sans-serif">
+          <rect x="94" y="106" width="252" height="92" rx="12" fill="#def1ed"/>
+          <rect x="94" y="106" width="5" height="92" rx="2" fill="#4c9988"/>
+          <text x="114" y="134" fill="#4c7970" font-size="12">09:15 / SALA 01</text>
+          <text x="114" y="163" fill="#08242c" font-size="16" font-weight="bold">Valoracion inicial</text>
+          <text x="114" y="184" fill="#678078" font-size="12">Paciente 0248</text>
+          <rect x="377" y="211" width="270" height="92" rx="12" fill="#eee8fa"/>
+          <rect x="377" y="211" width="5" height="92" rx="2" fill="#9a82c6"/>
+          <text x="397" y="239" fill="#76689a" font-size="12">10:30 / SALA 03</text>
+          <text x="397" y="268" fill="#08242c" font-size="16" font-weight="bold">Ortodoncia</text>
+          <text x="397" y="289" fill="#776c91" font-size="12">Paciente 0186</text>
+        </g>
+      </g>
+
+      <g transform="translate(740 278)">
+        <rect width="344" height="490" rx="17" fill="#fff"/>
+        <text x="24" y="42" fill="#08242c" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Rendimiento</text>
+        <text x="24" y="128" fill="#08242c" font-family="Arial, sans-serif" font-size="52">92.4%</text>
+        <text x="24" y="154" fill="#7d898d" font-family="Arial, sans-serif" font-size="14">Conversion de agenda</text>
+        <path d="M24 390 C70 370 87 310 132 326 S198 386 232 281 S291 235 320 192 V440 H24Z" fill="url(#chart)"/>
+        <path d="M24 390 C70 370 87 310 132 326 S198 386 232 281 S291 235 320 192" fill="none" stroke="#4f9f8d" stroke-width="5"/>
+      </g>
+    </g>
+  </g>
+</svg>

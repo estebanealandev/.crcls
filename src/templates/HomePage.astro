@@ -25,16 +25,16 @@ const PROJECT_COPY = slugDictionaries<{ title: string; servicesValue: string }>(
 
 // Featured work grid: three visual rows, exactly as originally authored.
 const WORK_ROWS = [
-  { slugs: ['atlas', 'aether'], gridClass: 'work-grid-main w-dyn-items' },
+  { slugs: ['dentika', 'aether'], gridClass: 'work-grid-main w-dyn-items' },
   { slugs: ['nova'], gridClass: 'work-grid-main _01 w-dyn-items' },
   { slugs: ['pulse', 'vertex'], gridClass: 'work-grid-main w-dyn-items' },
 ] as const;
 
 // Featured journal grid: a 3-post subset of POSTS, in the order authored in the original export.
 const JOURNAL_SLUGS = [
-  'designing-digital-systems-that-scale-with-intention',
-  'why-clarity-is-the-foundation-of-modern-brands',
-  'from-idea-to-execution-building-with-precision',
+  'custom-software-vs-saas-what-to-build',
+  'brand-clarity-is-a-product-requirement',
+  'reliable-ai-automation-in-production',
 ] as const;
 const JOURNAL_IMAGE_WRAP_ID = 'd3b3af6e-4d1d-6513-f03c-603d82b3f68e';
 const POST_COPY = slugDictionaries<{ title: string }>('posts', JOURNAL_SLUGS);
@@ -316,7 +316,7 @@ const testimonials = t.testimonials.map((testimonial, i) => {
   <div data-w-id="3baec6d3-ce0b-e7ff-4e7d-ac3ed62a37eb"></div>
 
   <div class="content-effect _05">
-    <section class="section _03">
+    <section id="journal" class="section _03">
       <div class="container">
         <div>
           <h2 class="page-title">{t.journal.prefix}© — {t.journal.boldText} <span class="gray-color">{t.journal.grayText}</span></h2>

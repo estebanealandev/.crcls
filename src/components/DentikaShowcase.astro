@@ -1,0 +1,352 @@
+---
+import '../styles/dentika-showcase.css';
+
+interface DentikaCopy {
+  title: string;
+  imageAlt: string;
+  showcase: {
+    eyebrow: string;
+    heroDescription: string;
+    categories: string[];
+    visitSite: string;
+    problemLabel: string;
+    problemTitle: string;
+    problemBody: string;
+    solutionLabel: string;
+    solutionTitle: string;
+    solutionBody: string;
+    systemLabel: string;
+    systemTitle: string;
+    systemBody: string;
+    agendaTitle: string;
+    agendaBody: string;
+    patientsTitle: string;
+    patientsBody: string;
+    odontogramTitle: string;
+    odontogramBody: string;
+    insightsTitle: string;
+    insightsBody: string;
+    recordsTitle: string;
+    recordsBody: string;
+    settingsTitle: string;
+    settingsBody: string;
+    experienceLabel: string;
+    experienceTitle: string;
+    experienceBody: string;
+    responsiveLabel: string;
+    responsiveTitle: string;
+    responsiveBody: string;
+    outcomeLabel: string;
+    outcomeTitle: string;
+    outcomeBody: string;
+    finalTitle: string;
+  };
+}
+
+interface Props {
+  copy: DentikaCopy;
+}
+
+const { copy } = Astro.props;
+const s = copy.showcase;
+const siteHref = 'https://dentikacr.com';
+---
+
+<article class="dentika-case" data-dentika-case>
+  <header class="dentika-hero">
+    <div class="dentika-hero__glow" aria-hidden="true"></div>
+    <div class="dentika-shell dentika-hero__copy">
+      <p class="dentika-kicker">{s.eyebrow} <span>©26</span></p>
+      <h1 class="dentika-wordmark" aria-label={copy.title}>
+        <span>Den</span><span>tika</span>
+      </h1>
+      <div class="dentika-hero__footer">
+        <div>
+          <p>{s.heroDescription}</p>
+          <ul class="dentika-services" aria-label="Project services">
+            {s.categories.map((category) => <li>{category}</li>)}
+          </ul>
+        </div>
+        <a href={siteHref} target="_blank" rel="noopener noreferrer">
+          {s.visitSite}
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="dentika-shell dentika-dashboard-wrap" data-reveal>
+      <div class="dentika-macbook">
+        <div class="dentika-macbook__display">
+          <div class="dentika-macbook__camera" aria-hidden="true"><i></i></div>
+          <div class="dentika-browser dentika-browser--hero">
+        <div class="dentika-browser__bar">
+          <div class="dentika-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span>app.dentika / overview</span>
+          <span class="dentika-live"><i></i> Live</span>
+        </div>
+        <div class="dentika-app">
+          <aside class="dentika-sidebar">
+            <div class="dentika-app-logo"><i aria-hidden="true"></i>Dentika</div>
+            <nav aria-label="Dentika product preview">
+              <span class="is-active"><b>⌂</b>Resumen</span>
+              <span><b>□</b>Agenda</span>
+              <span><b>○</b>Pacientes</span>
+              <span><b>◇</b>Tratamientos</span>
+              <span><b>↗</b>Estadísticas</span>
+            </nav>
+            <div class="dentika-profile"><i>DR</i><span>Clínica Dentika<small>Administración</small></span></div>
+          </aside>
+          <div class="dentika-app-main">
+            <div class="dentika-app-head">
+              <div><small>Martes, 21 de julio</small><strong>Buenos días, equipo.</strong></div>
+              <button type="button" tabindex="-1">+ Nueva cita</button>
+            </div>
+            <div class="dentika-metrics">
+              <div><small>Pacientes hoy</small><strong>18</strong><em>+12%</em></div>
+              <div><small>Ocupación</small><strong>87%</strong><em>Óptima</em></div>
+              <div><small>Por confirmar</small><strong>04</strong><em>2 urgentes</em></div>
+              <div><small>Ingresos del mes</small><strong>₡8.4M</strong><em>+8.2%</em></div>
+            </div>
+            <div class="dentika-app-grid">
+              <section class="dentika-agenda-card">
+                <div class="dentika-card-title"><strong>Agenda de hoy</strong><span>Ver agenda →</span></div>
+                <div class="dentika-schedule">
+                  <div class="dentika-hours"><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span></div>
+                  <div class="dentika-calendar">
+                    <div class="dentika-appointment appt-a"><small>09:15 · Sala 01</small><b>Valoración inicial</b><span>Paciente 0248</span></div>
+                    <div class="dentika-appointment appt-b"><small>10:30 · Sala 03</small><b>Ortodoncia</b><span>Paciente 0186</span></div>
+                    <div class="dentika-appointment appt-c"><small>12:10 · Sala 02</small><b>Control clínico</b><span>Paciente 0312</span></div>
+                  </div>
+                </div>
+              </section>
+              <section class="dentika-chart-card">
+                <div class="dentika-card-title"><strong>Rendimiento</strong><span>30 días</span></div>
+                <div class="dentika-chart-value"><strong>92.4%</strong><small>Conversión de agenda</small></div>
+                <svg viewBox="0 0 320 128" role="img" aria-label="Upward performance trend">
+                  <defs>
+                    <linearGradient id="dentika-chart-fill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0" stop-color="#a6dfd2" stop-opacity=".55"/>
+                      <stop offset="1" stop-color="#a6dfd2" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 108 C35 102 46 84 75 88 S116 110 145 72 S187 42 215 56 S265 30 320 18 V128 H0Z" fill="url(#dentika-chart-fill)"/>
+                  <path d="M0 108 C35 102 46 84 75 88 S116 110 145 72 S187 42 215 56 S265 30 320 18" fill="none" stroke="#4fa895" stroke-width="3"/>
+                </svg>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="dentika-macbook__base" aria-hidden="true"><i></i></div>
+        <div class="dentika-macbook__shadow" aria-hidden="true"></div>
+      </div>
+      <div class="dentika-device-caption">
+        <span>01 / MacBook Pro</span>
+        <p>Proprietary CRM · Custom full-stack platform</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="dentika-editorial dentika-shell" data-reveal>
+    <div class="dentika-section-index"><span>01</span><p>{s.problemLabel}</p></div>
+    <div class="dentika-editorial__copy">
+      <h2>{s.problemTitle}</h2>
+      <p>{s.problemBody}</p>
+    </div>
+    <div class="dentika-editorial__copy dentika-editorial__copy--offset">
+      <p class="dentika-kicker">{s.solutionLabel}</p>
+      <h3>{s.solutionTitle}</h3>
+      <p>{s.solutionBody}</p>
+    </div>
+  </section>
+
+  <section class="dentika-system" data-reveal>
+    <div class="dentika-shell">
+      <div class="dentika-section-heading">
+        <div class="dentika-section-index"><span>02</span><p>{s.systemLabel}</p></div>
+        <div><h2>{s.systemTitle}</h2><p>{s.systemBody}</p></div>
+      </div>
+
+      <div class="dentika-modules">
+        <article class="dentika-module dentika-module--agenda">
+          <div class="dentika-module__number">01</div>
+          <div><h3>{s.agendaTitle}</h3><p>{s.agendaBody}</p></div>
+          <div class="dentika-mini-calendar" aria-hidden="true">
+            <div class="dentika-mini-calendar__head"><b>Julio 2026</b><span>‹ &nbsp; ›</span></div>
+            <div class="dentika-week"><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+            <div class="dentika-days">
+              {Array.from({ length: 28 }, (_, i) => <span class:list={{ 'is-today': i === 14, 'has-visit': [3, 9, 13, 18, 23].includes(i) }}>{i + 1}</span>)}
+            </div>
+          </div>
+        </article>
+        <article class="dentika-module dentika-module--patients">
+          <div class="dentika-module__number">02</div>
+          <div><h3>{s.patientsTitle}</h3><p>{s.patientsBody}</p></div>
+          <div class="dentika-patient-list" aria-hidden="true">
+            <div><i>AM</i><span><b>Paciente 0312</b><small>Control · 12:10</small></span><em>Confirmada</em></div>
+            <div><i>JR</i><span><b>Paciente 0248</b><small>Valoración · 09:15</small></span><em>En clínica</em></div>
+            <div><i>LC</i><span><b>Paciente 0186</b><small>Ortodoncia · 10:30</small></span><em>Pendiente</em></div>
+          </div>
+        </article>
+        <article class="dentika-module dentika-module--odontogram">
+          <div class="dentika-module__number">03</div>
+          <div><h3>{s.odontogramTitle}</h3><p>{s.odontogramBody}</p></div>
+          <div class="dentika-teeth" aria-label="Stylized odontogram">
+            {Array.from({ length: 16 }, (_, i) => <i class:list={{ 'has-treatment': [2, 6, 11, 14].includes(i) }}></i>)}
+          </div>
+        </article>
+        <article class="dentika-module dentika-module--insights">
+          <div class="dentika-module__number">04</div>
+          <div><h3>{s.insightsTitle}</h3><p>{s.insightsBody}</p></div>
+          <div class="dentika-ring" aria-hidden="true"><span>87<small>%</small></span></div>
+        </article>
+        <article class="dentika-module dentika-module--records">
+          <div class="dentika-module__number">05</div>
+          <div><h3>{s.recordsTitle}</h3><p>{s.recordsBody}</p></div>
+          <div class="dentika-record" aria-hidden="true">
+            <div class="dentika-record__head"><i>JR</i><span><b>Paciente 0248</b><small>Expediente activo · Última visita 14 Jul</small></span><em>•••</em></div>
+            <div class="dentika-record__tabs"><b>Resumen</b><span>Tratamientos</span><span>Documentos</span></div>
+            <div class="dentika-record__timeline">
+              <div><time>14 JUL</time><span><b>Valoración inicial</b><small>Diagnóstico actualizado y plan de tratamiento aprobado.</small></span></div>
+              <div><time>02 JUN</time><span><b>Radiografía panorámica</b><small>Archivo clínico incorporado al expediente.</small></span></div>
+              <div><time>18 MAY</time><span><b>Registro de paciente</b><small>Consentimiento y antecedentes completados.</small></span></div>
+            </div>
+          </div>
+        </article>
+        <article class="dentika-module dentika-module--settings">
+          <div class="dentika-module__number">06</div>
+          <div><h3>{s.settingsTitle}</h3><p>{s.settingsBody}</p></div>
+          <div class="dentika-settings" aria-hidden="true">
+            <div><span><b>Recordatorios automáticos</b><small>WhatsApp y correo · 24 h antes</small></span><i class="is-on"></i></div>
+            <div><span><b>Confirmación de citas</b><small>Actualizar agenda en tiempo real</small></span><i class="is-on"></i></div>
+            <div><span><b>Acceso clínico</b><small>Roles y permisos por especialidad</small></span><i></i></div>
+            <div><span><b>Reportes mensuales</b><small>Resumen ejecutivo automático</small></span><i class="is-on"></i></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="dentika-product dentika-shell" data-reveal>
+    <div class="dentika-section-heading">
+      <div class="dentika-section-index"><span>03</span><p>{s.experienceLabel}</p></div>
+      <div><h2>{s.experienceTitle}</h2><p>{s.experienceBody}</p></div>
+    </div>
+    <div class="dentika-product-stage dentika-product-stage--iphone">
+      <figure class="dentika-site-panel dentika-site-panel--hero">
+        <div><i></i><i></i><i></i><span>dentikacr.com</span></div>
+        <img src="/assets/images/dentika/source-site-desktop.webp" alt={copy.imageAlt} loading="lazy" width="1600" height="1000" />
+      </figure>
+      <figure class="dentika-site-panel dentika-site-panel--services">
+        <div><i></i><i></i><i></i><span>Treatments / Dentika</span></div>
+        <img src="/assets/images/dentika/source-site-services.webp" alt={copy.imageAlt} loading="lazy" width="1600" height="1000" />
+      </figure>
+      <div class="dentika-iphone17" aria-label="Dentika public website on iPhone 17 Pro">
+        <span class="dentika-iphone17__action" aria-hidden="true"></span>
+        <span class="dentika-iphone17__volume dentika-iphone17__volume--up" aria-hidden="true"></span>
+        <span class="dentika-iphone17__volume dentika-iphone17__volume--down" aria-hidden="true"></span>
+        <span class="dentika-iphone17__camera-control" aria-hidden="true"></span>
+        <div class="dentika-iphone17__frame">
+          <div class="dentika-iphone17__island" aria-hidden="true"><i></i></div>
+          <img src="/assets/images/dentika/source-site-mobile.webp" alt={copy.imageAlt} loading="lazy" width="393" height="852" />
+          <div class="dentika-iphone17__home" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="dentika-device-caption dentika-device-caption--light">
+        <span>02 / iPhone 17 Pro</span>
+        <p>Public website · Custom responsive frontend</p>
+      </div>
+      <span class="dentika-orbit dentika-orbit--one" aria-hidden="true">Patient first</span>
+      <span class="dentika-orbit dentika-orbit--two" aria-hidden="true">Custom frontend</span>
+    </div>
+  </section>
+
+  <section class="dentika-responsive" data-reveal>
+    <div class="dentika-shell">
+      <div class="dentika-section-heading">
+        <div class="dentika-section-index"><span>04</span><p>{s.responsiveLabel}</p></div>
+        <div><h2>{s.responsiveTitle}</h2><p>{s.responsiveBody}</p></div>
+      </div>
+      <div class="dentika-ipad-stage">
+        <div class="dentika-ipad-glow" aria-hidden="true"></div>
+        <div class="dentika-ipad-air" aria-label="Dentika clinical agenda on iPad Air">
+          <span class="dentika-ipad-air__volume" aria-hidden="true"></span>
+          <span class="dentika-ipad-air__power" aria-hidden="true"></span>
+          <div class="dentika-ipad-air__frame">
+            <i class="dentika-ipad-air__camera" aria-hidden="true"></i>
+            <div class="dentika-ipad-screen">
+              <header>
+                <div class="dentika-app-logo"><i aria-hidden="true"></i>Dentika</div>
+                <nav><b>Agenda</b><span>Pacientes</span><span>Reportes</span></nav>
+                <div class="dentika-ipad-avatar">DR</div>
+              </header>
+              <div class="dentika-ipad-toolbar">
+                <div><small>Agenda clínica</small><strong>21 — 25 Julio</strong></div>
+                <div><button type="button" tabindex="-1">Hoy</button><button type="button" tabindex="-1">+ Nueva cita</button></div>
+              </div>
+              <div class="dentika-ipad-calendar">
+                <div class="dentika-ipad-hours"><span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span></div>
+                <div class="dentika-ipad-days">
+                  <div><small>LUN <b>21</b></small><i class="slot slot--mint">Valoración<em>Sala 01</em></i><i class="slot slot--sand">Control<em>Sala 02</em></i></div>
+                  <div><small>MAR <b>22</b></small><i class="slot slot--purple">Ortodoncia<em>Sala 03</em></i></div>
+                  <div class="is-current"><small>MIÉ <b>23</b></small><i class="slot slot--mint slot--long">Cirugía oral<em>Sala 01</em></i><i class="slot slot--sand">Revisión<em>Sala 02</em></i></div>
+                  <div><small>JUE <b>24</b></small><i class="slot slot--purple">Invisalign<em>Sala 03</em></i><i class="slot slot--mint">Limpieza<em>Sala 01</em></i></div>
+                  <div><small>VIE <b>25</b></small><i class="slot slot--sand slot--long">Rehabilitación<em>Sala 02</em></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="dentika-ipad-float dentika-ipad-float--patient" aria-hidden="true">
+          <small>Siguiente paciente</small><div><i>AM</i><span><b>Paciente 0312</b><em>Control · 12:10</em></span></div>
+        </aside>
+        <aside class="dentika-ipad-float dentika-ipad-float--report" aria-hidden="true">
+          <small>Ocupación semanal</small><strong>87%</strong><span>+8.2% vs. semana anterior</span>
+        </aside>
+        <div class="dentika-device-caption dentika-device-caption--ipad">
+          <span>03 / iPad Air</span>
+          <p>Clinical agenda · Adaptive product interface</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dentika-outcome" data-reveal>
+    <div class="dentika-shell">
+      <div class="dentika-section-index"><span>05</span><p>{s.outcomeLabel}</p></div>
+      <h2>{s.outcomeTitle}</h2>
+      <div class="dentika-outcome__grid">
+        <p>{s.outcomeBody}</p>
+        <div class="dentika-outcome__metric"><strong>01</strong><span>Unified<br />workspace</span></div>
+        <div class="dentika-outcome__metric"><strong>360°</strong><span>Patient<br />context</span></div>
+        <div class="dentika-outcome__metric"><strong>24/7</strong><span>Operational<br />clarity</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dentika-final" data-reveal>
+    <div class="dentika-final__mark" aria-hidden="true">D</div>
+    <div class="dentika-shell">
+      <p class="dentika-kicker">Custom Web Development · Custom CRM Development</p>
+      <h2>{s.finalTitle}</h2>
+      <a href={siteHref} target="_blank" rel="noopener noreferrer">{s.visitSite}<span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</article>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector('[data-dentika-case]');
+    if (!root || !('IntersectionObserver' in window)) return;
+    root.classList.add('has-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    root.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
+  })();
+</script>

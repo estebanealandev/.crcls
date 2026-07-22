@@ -1,0 +1,27 @@
+{
+  "title": "De una idea de IA a producción: los controles que hacen fiable la automatización",
+  "seo": {
+    "title": "Cómo construir automatización con IA fiable en producción | Circles",
+    "description": "Un marco práctico para llevar automatizaciones con IA a producción mediante evaluación, supervisión humana, seguridad, observabilidad y fallos seguros."
+  },
+  "backToBlogLabel": "Volver al blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Referencias primarias",
+  "body": [
+    { "type": "p", "text": "Una demo de IA prueba que un modelo puede generar un resultado útil una vez. Una automatización en producción debe demostrar algo más difícil: que el sistema completo produce resultados aceptables de forma repetida, detecta cuándo no puede hacerlo, protege los datos y se recupera sin ocultar el fallo." },
+    { "type": "p", "text": "El marco AI RMF de NIST organiza el trabajo en cuatro funciones: gobernar, mapear, medir y gestionar. El orden importa: definir responsabilidad y riesgo aceptable, comprender el contexto, evaluar el comportamiento y operar los controles de forma continua. Elegir un modelo es solo una decisión dentro del sistema." },
+    { "type": "h3", "text": "Empieza con una decisión acotada" },
+    { "type": "p", "text": "Una automatización fiable comienza con una tarea específica, entradas conocidas, un contrato de salida explícito y una definición medible del éxito. Clasificar una solicitud y proponer una respuesta es más evaluable que una instrucción abierta como «gestiona soporte». El alcance es un control de seguridad." },
+    { "type": "blockquote", "text": "No preguntes si el modelo es inteligente. Pregunta qué hace el sistema cuando el modelo se equivoca." },
+    { "type": "p", "text": "Antes del lanzamiento, crea un conjunto de evaluación con casos representativos y difíciles. Mide calidad, rechazos, latencia y costo. Prueba inyección de prompts, uso inseguro de herramientas, exposición de datos y manejo de salidas no confiables, riesgos destacados por OWASP." },
+    { "type": "h3", "text": "Producción significa observable y reversible" },
+    { "type": "p", "text": "Registra el origen de las entradas, versiones de modelo y prompt, llamadas a herramientas, validaciones, acción final y correcciones humanas sin conservar datos sensibles innecesarios. Supervisa resultados del servicio, no solo uptime: un sistema puede responder HTTP 200 mientras toma malas decisiones." },
+    { "type": "p", "text": "Las acciones de alto impacto o baja confianza deben pasar a una persona. Las acciones externas necesitan permisos, límites, idempotencia y auditoría. En Circles, un flujo de IA está listo cuando el fallo es visible, contenido y recuperable, no cuando el camino feliz impresiona." }
+  ],
+  "sources": [
+    { "label": "NIST — Artificial Intelligence Risk Management Framework", "url": "https://www.nist.gov/itl/ai-risk-management-framework" },
+    { "label": "OWASP — Top 10 para aplicaciones con modelos de lenguaje", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/" },
+    { "label": "Google SRE Book — Monitorización de sistemas distribuidos", "url": "https://sre.google/sre-book/monitoring-distributed-systems/" }
+  ]
+}

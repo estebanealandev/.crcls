@@ -87,183 +87,307 @@
     window.clearInterval(labelTimer);
   };
 
-  /* ---------- WebGL grid / cursor ---------- */
-  const webgl = (() => {
+  /* ---------- Cursor grid reveal (WebGL2 → WebGL1 → Canvas2D) ---------- */
+  const createMouseFx = () => {
     if (!canvas || reduceMotion || coarsePointer) return null;
-    const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: false, antialias: false });
-    if (!gl) return null;
 
-    const vs = `#version 300 es
+    let w = 0;
+    let h = 0;
+    let dpr = 1;
+    let cssW = 0;
+    let cssH = 0;
+    let mx = 0.5;
+    let my = 0.45;
+    let tx = 0.5;
+    let ty = 0.45;
+    let px = 0.5;
+    let py = 0.45;
+    let raf = 0;
+    let running = false;
+    let inside = false;
+
+    const setTargetFromEvent = (e) => {
+      const rect = hero.getBoundingClientRect();
+      if (rect.width <= 0 || rect.height <= 0) return;
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      const nextInside = x >= 0 && x <= 1 && y >= 0 && y <= 1;
+      if (!nextInside) {
+        if (inside) {
+          inside = false;
+          hideCursorLabel();
+        }
+        return;
+      }
+      inside = true;
+      tx = Math.min(1, Math.max(0, x));
+      ty = Math.min(1, Math.max(0, y));
+      showCursorLabel(e.clientX, e.clientY);
+    };
+
+    const resize = () => {
+      const rect = hero.getBoundingClientRect();
+      cssW = Math.max(1, rect.width);
+      cssH = Math.max(1, rect.height);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      w = Math.max(1, Math.floor(cssW * dpr));
+      h = Math.max(1, Math.floor(cssH * dpr));
+      canvas.width = w;
+      canvas.height = h;
+      canvas.style.width = `${cssW}px`;
+      canvas.style.height = `${cssH}px`;
+    };
+
+    const makeWebGL = (version) => {
+      const gl = canvas.getContext(version === 2 ? 'webgl2' : 'webgl', {
+        alpha: true,
+        antialias: false,
+        premultipliedAlpha: true,
+        preserveDrawingBuffer: false,
+      });
+      if (!gl) return null;
+
+      const is2 = version === 2;
+      const vs = is2
+        ? `#version 300 es
 precision highp float;
 layout(location=0) in vec2 a_pos;
 out vec2 v_uv;
 void main(){
   v_uv = a_pos * 0.5 + 0.5;
   gl_Position = vec4(a_pos, 0.0, 1.0);
+}`
+        : `attribute vec2 a_pos;
+varying vec2 v_uv;
+void main(){
+  v_uv = a_pos * 0.5 + 0.5;
+  gl_Position = vec4(a_pos, 0.0, 1.0);
 }`;
 
-    const fs = `#version 300 es
+      const fs = is2
+        ? `#version 300 es
 precision highp float;
 in vec2 v_uv;
 uniform vec2 u_res;
 uniform vec2 u_mouse;
 uniform vec2 u_mouse_prev;
 uniform float u_time;
-uniform float u_strength;
+uniform float u_active;
 out vec4 fragColor;
 
 float hash(vec2 p){
-  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
 }
 
 void main(){
-  vec2 uv = v_uv;
-  vec2 px = uv * u_res;
-  float cell = max(10.0, min(u_res.x, u_res.y) / 72.0);
+  vec2 px = v_uv * u_res;
+  float cell = max(8.0, min(u_res.x, u_res.y) / 64.0);
   vec2 gid = floor(px / cell);
-  vec2 guv = fract(px / cell);
+  vec2 guv = fract(px / cell) - 0.5;
 
-  // Circles mark: concentric ring cell pattern
-  vec2 c = guv - 0.5;
-  float ring = abs(length(c) - 0.28);
-  float disk = smoothstep(0.08, 0.02, ring);
-  float core = smoothstep(0.12, 0.0, length(c));
-  float glyph = max(disk, core * 0.35);
-  glyph *= step(0.08, hash(gid + 0.2));
+  float ring = abs(length(guv) - 0.22);
+  float glyph = smoothstep(0.08, 0.015, ring);
+  glyph = max(glyph, smoothstep(0.1, 0.0, length(guv)) * 0.35);
+  glyph *= step(0.18, hash(gid + 3.1));
 
-  float d1 = distance(px, u_mouse);
-  float d0 = distance(px, u_mouse_prev);
-  float trail = exp(-d1 * d1 / (2.0 * pow(140.0 + 40.0 * sin(u_time), 2.0)));
-  trail = max(trail, exp(-d0 * d0 / (2.0 * pow(90.0, 2.0))) * 0.65);
+  float line = step(0.46, abs(guv.x)) + step(0.46, abs(guv.y));
+  line = clamp(line, 0.0, 1.0) * 0.22;
 
-  float veil = 0.78 - trail * u_strength * 0.85;
-  veil = clamp(veil, 0.08, 0.86);
+  float d = distance(px, u_mouse * u_res);
+  float dPrev = distance(px, u_mouse_prev * u_res);
+  float radius = min(u_res.x, u_res.y) * 0.22;
+  float trail = exp(-d * d / (2.0 * radius * radius));
+  trail = max(trail, exp(-dPrev * dPrev / (2.0 * (radius * 0.55) * (radius * 0.55))) * 0.7);
+  trail *= u_active;
 
-  float gridLine = step(0.94, max(guv.x, guv.y)) * 0.08;
-  float ink = mix(0.04, 0.22, glyph) + gridLine;
-  float alpha = veil + ink * (1.0 - trail * 0.5);
+  float veil = mix(0.72, 0.08, trail);
+  float ink = (0.12 + glyph * 0.55 + line) * (1.0 - trail * 0.85);
+  float alpha = clamp(veil + ink * 0.35, 0.05, 0.88);
 
-  fragColor = vec4(vec3(0.04 + ink * 0.2), alpha);
+  vec3 col = mix(vec3(0.04, 0.045, 0.05), vec3(0.86, 0.82, 0.74), ink * 0.55);
+  fragColor = vec4(col, alpha);
+}`
+        : `precision highp float;
+varying vec2 v_uv;
+uniform vec2 u_res;
+uniform vec2 u_mouse;
+uniform vec2 u_mouse_prev;
+uniform float u_time;
+uniform float u_active;
+
+float hash(vec2 p){
+  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+}
+
+void main(){
+  vec2 px = v_uv * u_res;
+  float cell = max(8.0, min(u_res.x, u_res.y) / 64.0);
+  vec2 gid = floor(px / cell);
+  vec2 guv = fract(px / cell) - 0.5;
+
+  float ring = abs(length(guv) - 0.22);
+  float glyph = smoothstep(0.08, 0.015, ring);
+  glyph = max(glyph, smoothstep(0.1, 0.0, length(guv)) * 0.35);
+  glyph *= step(0.18, hash(gid + 3.1));
+
+  float line = step(0.46, abs(guv.x)) + step(0.46, abs(guv.y));
+  line = clamp(line, 0.0, 1.0) * 0.22;
+
+  float d = distance(px, u_mouse * u_res);
+  float dPrev = distance(px, u_mouse_prev * u_res);
+  float radius = min(u_res.x, u_res.y) * 0.22;
+  float trail = exp(-d * d / (2.0 * radius * radius));
+  trail = max(trail, exp(-dPrev * dPrev / (2.0 * (radius * 0.55) * (radius * 0.55))) * 0.7);
+  trail *= u_active;
+
+  float veil = mix(0.72, 0.08, trail);
+  float ink = (0.12 + glyph * 0.55 + line) * (1.0 - trail * 0.85);
+  float alpha = clamp(veil + ink * 0.35, 0.05, 0.88);
+
+  vec3 col = mix(vec3(0.04, 0.045, 0.05), vec3(0.86, 0.82, 0.74), ink * 0.55);
+  gl_FragColor = vec4(col, alpha);
 }`;
 
-    const compile = (type, src) => {
-      const sh = gl.createShader(type);
-      gl.shaderSource(sh, src);
-      gl.compileShader(sh);
-      if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
-        console.warn('[hx] shader', gl.getShaderInfoLog(sh));
-        gl.deleteShader(sh);
+      const compile = (type, src) => {
+        const sh = gl.createShader(type);
+        gl.shaderSource(sh, src);
+        gl.compileShader(sh);
+        if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+          console.warn('[hx] shader', gl.getShaderInfoLog(sh));
+          gl.deleteShader(sh);
+          return null;
+        }
+        return sh;
+      };
+
+      const vsh = compile(gl.VERTEX_SHADER, vs);
+      const fsh = compile(gl.FRAGMENT_SHADER, fs);
+      if (!vsh || !fsh) return null;
+
+      const prog = gl.createProgram();
+      gl.attachShader(prog, vsh);
+      gl.attachShader(prog, fsh);
+      gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+        console.warn('[hx] program', gl.getProgramInfoLog(prog));
         return null;
       }
-      return sh;
-    };
 
-    const vsh = compile(gl.VERTEX_SHADER, vs);
-    const fsh = compile(gl.FRAGMENT_SHADER, fs);
-    if (!vsh || !fsh) return null;
-
-    const prog = gl.createProgram();
-    gl.attachShader(prog, vsh);
-    gl.attachShader(prog, fsh);
-    gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-      console.warn('[hx] program', gl.getProgramInfoLog(prog));
-      return null;
-    }
-
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
-
-    const uRes = gl.getUniformLocation(prog, 'u_res');
-    const uMouse = gl.getUniformLocation(prog, 'u_mouse');
-    const uMousePrev = gl.getUniformLocation(prog, 'u_mouse_prev');
-    const uTime = gl.getUniformLocation(prog, 'u_time');
-    const uStrength = gl.getUniformLocation(prog, 'u_strength');
-
-    let w = 0;
-    let h = 0;
-    let dpr = 1;
-    let mx = 0;
-    let my = 0;
-    let mxPrev = 0;
-    let myPrev = 0;
-    let tx = 0;
-    let ty = 0;
-    let raf = 0;
-    let running = false;
-
-    const resize = () => {
-      const rect = hero.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 1.75);
-      w = Math.max(1, Math.floor(rect.width * dpr));
-      h = Math.max(1, Math.floor(rect.height * dpr));
-      canvas.width = w;
-      canvas.height = h;
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
-      gl.viewport(0, 0, w, h);
-      if (!mx && !my) {
-        mx = w * 0.5;
-        my = h * 0.45;
-        tx = mx;
-        ty = my;
-        mxPrev = mx;
-        myPrev = my;
-      }
-    };
-
-    const draw = (t) => {
-      mxPrev += (mx - mxPrev) * 0.08;
-      myPrev += (my - myPrev) * 0.08;
-      mx += (tx - mx) * 0.18;
-      my += (ty - my) * 0.18;
-
-      gl.useProgram(prog);
+      const buf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-      gl.enableVertexAttribArray(0);
-      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-      gl.uniform2f(uRes, w, h);
-      gl.uniform2f(uMouse, mx, h - my);
-      gl.uniform2f(uMousePrev, mxPrev, h - myPrev);
-      gl.uniform1f(uTime, t * 0.001);
-      gl.uniform1f(uStrength, 1);
-      gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-      gl.clearColor(0, 0, 0, 0);
-      gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      raf = requestAnimationFrame(draw);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+
+      const aPos = gl.getAttribLocation(prog, 'a_pos');
+      const uRes = gl.getUniformLocation(prog, 'u_res');
+      const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+      const uMousePrev = gl.getUniformLocation(prog, 'u_mouse_prev');
+      const uTime = gl.getUniformLocation(prog, 'u_time');
+      const uActive = gl.getUniformLocation(prog, 'u_active');
+
+      return {
+        resize() {
+          gl.viewport(0, 0, w, h);
+        },
+        draw(t) {
+          gl.useProgram(prog);
+          gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+          gl.enableVertexAttribArray(aPos);
+          gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+          gl.uniform2f(uRes, w, h);
+          gl.uniform2f(uMouse, mx, 1.0 - my);
+          gl.uniform2f(uMousePrev, px, 1.0 - py);
+          gl.uniform1f(uTime, t * 0.001);
+          gl.uniform1f(uActive, inside ? 1 : 0.35);
+          gl.enable(gl.BLEND);
+          gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+          gl.clearColor(0, 0, 0, 0);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        },
+      };
     };
 
-    const onMove = (e) => {
-      const rect = hero.getBoundingClientRect();
-      tx = (e.clientX - rect.left) * dpr;
-      ty = (e.clientY - rect.top) * dpr;
-      showCursorLabel(e.clientX, e.clientY);
+    const makeCanvas2D = () => {
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return null;
+      return {
+        resize() {},
+        draw() {
+          ctx.clearRect(0, 0, w, h);
+          const cell = Math.max(10, Math.min(w, h) / 64);
+          const cols = Math.ceil(w / cell);
+          const rows = Math.ceil(h / cell);
+          const cx = mx * w;
+          const cy = my * h;
+          const radius = Math.min(w, h) * 0.22;
+          const active = inside ? 1 : 0.35;
+
+          for (let y = 0; y < rows; y += 1) {
+            for (let x = 0; x < cols; x += 1) {
+              const px0 = x * cell;
+              const py0 = y * cell;
+              const dx = px0 + cell * 0.5 - cx;
+              const dy = py0 + cell * 0.5 - cy;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              const trail = Math.exp(-(dist * dist) / (2 * radius * radius)) * active;
+              const veil = 0.72 - trail * 0.64;
+              const ink = (0.1 + ((x * 13 + y * 7) % 5 === 0 ? 0.35 : 0.08)) * (1 - trail * 0.85);
+              ctx.fillStyle = `rgba(12, 13, 14, ${Math.min(0.88, Math.max(0.08, veil + ink * 0.25))})`;
+              ctx.fillRect(px0, py0, cell + 0.5, cell + 0.5);
+              if (ink > 0.2 && trail < 0.75) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(220, 210, 190, ${0.18 * (1 - trail)})`;
+                ctx.lineWidth = Math.max(1, cell * 0.06);
+                ctx.arc(px0 + cell * 0.5, py0 + cell * 0.5, cell * 0.18, 0, Math.PI * 2);
+                ctx.stroke();
+              }
+            }
+          }
+        },
+      };
     };
 
-    const start = () => {
-      if (running) return;
-      running = true;
-      resize();
-      hero.addEventListener('pointermove', onMove, { passive: true });
-      hero.addEventListener('pointerleave', hideCursorLabel, { passive: true });
-      window.addEventListener('resize', resize, { passive: true });
-      raf = requestAnimationFrame(draw);
+    const renderer = makeWebGL(2) || makeWebGL(1) || makeCanvas2D();
+    if (!renderer) return null;
+
+    const tick = (t) => {
+      px += (mx - px) * 0.12;
+      py += (my - py) * 0.12;
+      mx += (tx - mx) * 0.22;
+      my += (ty - my) * 0.22;
+      renderer.draw(t);
+      raf = requestAnimationFrame(tick);
     };
 
-    const stop = () => {
-      running = false;
-      cancelAnimationFrame(raf);
-      hero.removeEventListener('pointermove', onMove);
-      hero.removeEventListener('pointerleave', hideCursorLabel);
-      window.removeEventListener('resize', resize);
+    const onMove = (e) => setTargetFromEvent(e);
+    const onLeaveWindow = () => {
+      inside = false;
       hideCursorLabel();
     };
 
-    return { start, stop, resize };
-  })();
+    return {
+      start() {
+        if (running) return;
+        running = true;
+        resize();
+        renderer.resize();
+        window.addEventListener('pointermove', onMove, { passive: true });
+        window.addEventListener('blur', onLeaveWindow, { passive: true });
+        window.addEventListener('resize', () => {
+          resize();
+          renderer.resize();
+        }, { passive: true });
+        raf = requestAnimationFrame(tick);
+      },
+      stop() {
+        running = false;
+        cancelAnimationFrame(raf);
+        window.removeEventListener('pointermove', onMove);
+        window.removeEventListener('blur', onLeaveWindow);
+        hideCursorLabel();
+      },
+    };
+  };
 
   /* ---------- Modal / showreel ---------- */
   const formatTime = (s) => {
@@ -372,6 +496,7 @@ void main(){
   /* ---------- Boot ---------- */
   readyVideos();
   revealHero();
-  if (webgl) webgl.start();
+  const mouseFx = createMouseFx();
+  if (mouseFx) mouseFx.start();
   else if (canvas) canvas.style.display = 'none';
 })();

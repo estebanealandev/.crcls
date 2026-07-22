@@ -6,12 +6,13 @@ import Preloader from '../components/Preloader.astro';
 import PlusLineGrid from '../components/PlusLineGrid.astro';
 import HoverTooltip from '../components/HoverTooltip.astro';
 import WorkCard from '../components/WorkCard.astro';
+import DentikaShowcase from '../components/DentikaShowcase.astro';
 import { localizedPath, type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
 import { absoluteUrl, localizedAbsoluteUrl, jsonLdString, BUSINESS_ID, WEBSITE_ID } from '../lib/seo';
 import { PROJECTS, requireProject, otherProjects } from '../data/projects';
 import commonEn from '../i18n/locales/common/en.json';
-import projectEn from '../i18n/locales/projects/atlas/en.json';
+import projectEn from '../i18n/locales/projects/dentika/en.json';
 
 const COMMON = dictionaries<typeof commonEn>('common');
 const PROJECT_COPY = slugDictionaries<typeof projectEn>('projects', PROJECTS.map((p) => p.slug));
@@ -64,6 +65,10 @@ const others = otherProjects(slug);
   <Navbar locale={locale} currentPath={canonicalPath} blurEffectId="2c6d055c-3822-5e83-74c0-a9ee4eb30d6c" />
   <main style="display:contents">
 
+  {slug === 'dentika' ? (
+    <DentikaShowcase copy={t} />
+  ) : (
+  <>
   <div class="main-content">
     <div class="main-hero-wrapper">
       <div class="hero-main for-inner">
@@ -128,6 +133,8 @@ const others = otherProjects(slug);
     </section>
   </div>
   <div data-w-id="60cee276-e239-4e34-cb62-d28de049fe42"></div>
+  </>
+  )}
 
   <div class="content-effect _02">
     <section class="section _02">

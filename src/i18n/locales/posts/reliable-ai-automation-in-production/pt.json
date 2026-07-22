@@ -1,0 +1,27 @@
+{
+  "title": "Da ideia de IA à produção: os controlos de uma automação fiável",
+  "seo": {
+    "title": "Como construir automação com IA fiável em produção | Circles",
+    "description": "Um enquadramento prático com avaliação, supervisão humana, segurança, observabilidade e modos de falha seguros."
+  },
+  "backToBlogLabel": "Voltar ao blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Referências principais",
+  "body": [
+    { "type": "p", "text": "Uma demo de IA prova que um modelo consegue gerar um resultado útil uma vez. Uma automação em produção tem de provar que o sistema completo produz resultados aceitáveis repetidamente, reconhece limites, protege dados e recupera sem esconder falhas." },
+    { "type": "p", "text": "O AI RMF do NIST organiza o trabalho em Govern, Map, Measure e Manage: definir responsabilidade e risco aceitável, compreender o contexto, avaliar o comportamento e operar controlos continuamente. Escolher o modelo é apenas uma decisão dentro do sistema." },
+    { "type": "h3", "text": "Comece com uma decisão delimitada" },
+    { "type": "p", "text": "Automação fiável exige uma tarefa específica, entradas conhecidas, um contrato de saída explícito e sucesso mensurável. Classificar um pedido e propor uma resposta é mais fácil de avaliar do que uma instrução aberta como «gerir o suporte»." },
+    { "type": "blockquote", "text": "Não pergunte se o modelo é inteligente. Pergunte o que o sistema faz quando o modelo está errado." },
+    { "type": "p", "text": "Antes do lançamento, crie um conjunto de avaliação representativo. Meça qualidade, recusas, latência e custo. Teste prompt injection, uso inseguro de ferramentas, exposição de dados e tratamento de saídas não confiáveis destacados pela OWASP." },
+    { "type": "h3", "text": "Produção significa observável e reversível" },
+    { "type": "p", "text": "Registe origem, versões de modelo e prompt, chamadas a ferramentas, validações, ação final e correções humanas sem guardar dados sensíveis desnecessários. Ações críticas ou de baixa confiança devem passar para uma pessoa." },
+    { "type": "p", "text": "Na Circles, um fluxo de IA está pronto quando a falha é visível, contida e recuperável, não apenas quando o caminho ideal impressiona." }
+  ],
+  "sources": [
+    { "label": "NIST — AI Risk Management Framework", "url": "https://www.nist.gov/itl/ai-risk-management-framework" },
+    { "label": "OWASP — Top 10 for Large Language Model Applications", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/" },
+    { "label": "Google SRE — Monitoring distributed systems", "url": "https://sre.google/sre-book/monitoring-distributed-systems/" }
+  ]
+}

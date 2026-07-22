@@ -1,0 +1,27 @@
+{
+  "title": "Designing Digital Systems That Scale: What to Build and What to Buy",
+  "seo": {
+    "title": "Custom Software or SaaS: What Should You Build? | Circles",
+    "description": "An evidence-based framework for deciding when to use SaaS, when to build custom software, and how a hybrid architecture can preserve speed and control."
+  },
+  "backToBlogLabel": "Back to Blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Primary references",
+  "body": [
+    { "type": "p", "text": "Build versus buy is not a referendum on engineering quality. It is a service-design decision. The right answer depends on user needs, the strategic value of the workflow, integration constraints, total cost of ownership, and the organisation's ability to operate what it chooses." },
+    { "type": "p", "text": "Government digital guidance makes the sequence explicit: understand the problem in discovery before committing to a technology. Buying too early can force users into a vendor's model. Building too early can spend months recreating a commodity capability that already works." },
+    { "type": "h3", "text": "Buy the commodity. Build the differentiator." },
+    { "type": "p", "text": "Off-the-shelf software is usually the stronger choice when requirements are common, configuration is sufficient, and specialist support already exists. Email delivery, payments, identity, and commodity infrastructure rarely become better business advantages because a team rebuilds them." },
+    { "type": "p", "text": "Custom software becomes rational when a workflow is unique to the business, commercial products cannot adapt or integrate without heavy modification, data ownership is material, or the software itself is part of the value customers buy. In those cases, forcing the operation into a generic tool can create more long-term cost than owning the core product." },
+    { "type": "blockquote", "text": "The senior decision is rarely build everything or buy everything. It is deciding which capabilities deserve ownership." },
+    { "type": "h3", "text": "A hybrid architecture is often the honest answer" },
+    { "type": "p", "text": "A durable system can combine managed services for standard capabilities with a custom application for the workflows that differentiate the organisation. Clear boundaries, documented APIs, portable data, and observability preserve the ability to replace a supplier or evolve the custom layer without rebuilding the entire service." },
+    { "type": "p", "text": "At Circles, discovery therefore ends with a capability map rather than a feature wishlist: what to buy, what to configure, what to build, who owns each decision, and how the whole service will be operated after launch. Scale begins with that clarity." }
+  ],
+  "sources": [
+    { "label": "GOV.UK Service Manual — Choose the right tools and technology", "url": "https://www.gov.uk/service-manual/service-standard/point-11-choose-the-right-tools-and-technology" },
+    { "label": "GOV.UK Service Manual — Using commercial off-the-shelf products and services", "url": "https://www.gov.uk/service-manual/technology/commercial-off-the-shelf-products-and-services" },
+    { "label": "GOV.UK — Define your purchasing strategy", "url": "https://www.gov.uk/guidance/define-your-purchasing-strategy" }
+  ]
+}

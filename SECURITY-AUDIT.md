@@ -49,7 +49,7 @@ También se corrigieron los hallazgos informativos: H-06 (`_headers` expuesto �
 
 ### [PHISHING] — Hallazgo H-02
 - **Severidad:** MEDIA
-- **Archivo(s):** 55 ocurrencias en `src/pages/**` (ej. `work.astro`, `licensing.astro`, `atlas.astro`, posts). Todas con `target="_blank"` y **0** con `rel="noopener"`.
+- **Archivo(s):** 55 ocurrencias históricas en `src/pages/**` (ej. páginas de trabajo, licencias y posts). Todas con `target="_blank"` y **0** con `rel="noopener"`.
 - **Descripción:** Enlaces externos (dell.com, instagram.com, linkedin.com, x.com, webflow.com, fontshare.com, lummi.ai, fonts.google.com) abren en pestaña nueva sin `rel="noopener noreferrer"`.
 - **Riesgo:** *Tab-nabbing* — la página destino puede acceder a `window.opener` y redirigir la pestaña original a un sitio de phishing. (Mitigado parcialmente: navegadores modernos aplican `noopener` implícito a `target="_blank"` desde 2021, por eso es MEDIA y no ALTA. Pero no depender del navegador.)
 - **Remediación:** Añadir `rel="noopener noreferrer"` a cada `<a target="_blank">`. Fix masivo posible con sed sobre `src/`. También cierra fuga de `Referer` a terceros.

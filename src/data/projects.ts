@@ -25,29 +25,27 @@ export interface ProjectData {
 
 export const PROJECTS: ProjectData[] = [
   {
-    slug: 'atlas',
+    slug: 'dentika',
     dataWfPage: '69ea3b293f46d55a8da1996c',
     wfScript: '/js/webflow.e6aeb930.103a96742c08bc67.js',
     heroImage: {
-      src: '/assets/images/work-4.webp',
+      src: '/assets/images/dentika/dentika-hero-1600.webp',
       sizes: '100vw',
       srcset:
-        '/assets/images/work-4-p-500.webp 500w, /assets/images/work-4-p-800.webp 800w, /assets/images/work-4-p-1080.webp 1080w, /assets/images/work-4-p-1600.webp 1600w, /assets/images/work-4-p-2000.webp 2000w, /assets/images/work-4.webp 2400w',
+        '/assets/images/dentika/dentika-hero-500.webp 500w, /assets/images/dentika/dentika-hero-800.webp 800w, /assets/images/dentika/dentika-hero-1080.webp 1080w, /assets/images/dentika/dentika-hero-1600.webp 1600w',
     },
-    logoImage: '/assets/images/logo-1.webp',
+    logoImage: '/assets/images/dentika/dentika-hero-500.webp',
     video: null,
     galleryImages: [
       {
-        src: '/assets/images/project-atlas-01.webp',
-        sizes: '100vw',
-        srcset:
-          '/assets/images/project-atlas-01-p-500.webp 500w, /assets/images/project-atlas-01-p-800.webp 800w, /assets/images/project-atlas-01-p-1080.webp 1080w, /assets/images/project-atlas-01.webp 1254w',
+        src: '/assets/images/dentika/source-site-desktop.webp',
+        sizes: '(max-width: 767px) 100vw, 80vw',
+        srcset: '/assets/images/dentika/source-site-desktop.webp 1600w',
       },
       {
-        src: '/assets/images/project-atlas-02.webp',
-        sizes: '100vw',
-        srcset:
-          '/assets/images/project-atlas-02-p-500.webp 500w, /assets/images/project-atlas-02-p-800.webp 800w, /assets/images/project-atlas-02-p-1080.webp 1080w, /assets/images/project-atlas-02.webp 1254w',
+        src: '/assets/images/dentika/source-site-mobile.webp',
+        sizes: '(max-width: 767px) 80vw, 30vw',
+        srcset: '/assets/images/dentika/source-site-mobile.webp 393w',
       },
     ],
   },

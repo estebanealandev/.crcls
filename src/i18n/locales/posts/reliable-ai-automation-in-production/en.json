@@ -1,0 +1,27 @@
+{
+  "title": "From AI Idea to Production: The Controls That Make Automation Reliable",
+  "seo": {
+    "title": "How to Build Reliable AI Automation in Production | Circles",
+    "description": "A practical framework for taking AI automation from prototype to production with evaluation, human oversight, security, observability, and safe failure modes."
+  },
+  "backToBlogLabel": "Back to Blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Primary references",
+  "body": [
+    { "type": "p", "text": "An AI demo proves that a model can produce a useful result once. A production automation must prove something harder: that the whole system can produce acceptable outcomes repeatedly, detect when it cannot, protect the data it touches, and recover without hiding failure." },
+    { "type": "p", "text": "NIST's AI Risk Management Framework organises the work into four functions: Govern, Map, Measure, and Manage. That order is useful. Define ownership and acceptable risk, understand the use context, evaluate behaviour, then operate the controls continuously. Choosing a model is only one decision inside that system." },
+    { "type": "h3", "text": "Start with a bounded decision" },
+    { "type": "p", "text": "Reliable automation begins with a specific task, known inputs, an explicit output contract, and a measurable definition of success. A workflow that classifies an inbound request and proposes a response is easier to evaluate and supervise than an open-ended instruction to \"handle support.\" Scope is a safety control." },
+    { "type": "blockquote", "text": "Do not ask whether the model is intelligent. Ask what the system does when the model is wrong." },
+    { "type": "p", "text": "Before launch, build an evaluation set from representative and difficult cases. Measure task quality, refusal behaviour, latency, and cost. Test prompt injection, unsafe tool use, sensitive-data exposure, and untrusted output handling—the classes of risk highlighted by OWASP for LLM applications." },
+    { "type": "h3", "text": "Production means observable and reversible" },
+    { "type": "p", "text": "Log the input lineage, model and prompt version, tool calls, validation results, final action, and human overrides without retaining sensitive data unnecessarily. Monitor outcomes that matter to the service, not only uptime. A system can return HTTP 200 while making consistently poor decisions." },
+    { "type": "p", "text": "High-impact or low-confidence actions should route to a human. External actions need permissions, limits, idempotency, and an audit trail. Rollouts need versioning and rollback. At Circles, an AI workflow is ready when failure is visible, contained, and recoverable—not when the happy path looks impressive." }
+  ],
+  "sources": [
+    { "label": "NIST — Artificial Intelligence Risk Management Framework (AI RMF 1.0)", "url": "https://www.nist.gov/itl/ai-risk-management-framework" },
+    { "label": "OWASP — Top 10 for Large Language Model Applications", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/" },
+    { "label": "Google SRE Book — Monitoring distributed systems", "url": "https://sre.google/sre-book/monitoring-distributed-systems/" }
+  ]
+}

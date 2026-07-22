@@ -1,0 +1,26 @@
+{
+  "title": "Pourquoi la clarté de marque doit résister au contact du produit",
+  "seo": {
+    "title": "Pourquoi la clarté de marque est une exigence produit | Circles",
+    "description": "Une marque n'est pas claire si son site, son produit, son onboarding et son support racontent des histoires différentes."
+  },
+  "backToBlogLabel": "Retour au blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Références principales",
+  "body": [
+    { "type": "p", "text": "Une identité visuelle peut être cohérente tout en restant confuse. La clarté de marque aligne la promesse, ce que l'interface explique et ce que le service délivre réellement. Si ces couches se contredisent, une identité soignée ne fait que rendre le problème plus visible." },
+    { "type": "p", "text": "La clarté relève donc autant du product design que de la stratégie. Le W3C recommande des mots simples, des phrases courtes, des titres utiles et des instructions placées au bon moment. Les heuristiques de Nielsen Norman Group traduisent le même principe : parler le langage de l'utilisateur, rester cohérent et supprimer l'information inutile." },
+    { "type": "h3", "text": "Le positionnement doit devenir architecture d'interface" },
+    { "type": "p", "text": "Un bon positionnement précise l'audience, le problème, la catégorie, la différence et la preuve. Sur un site, il devient hiérarchie de l'information. Dans un produit, il devient navigation, libellés, valeurs par défaut, états vides et feedback." },
+    { "type": "blockquote", "text": "Un système de marque est clair lorsque marketing, produit et service partagent le même modèle mental." },
+    { "type": "h3", "text": "Tester la compréhension, pas la préférence" },
+    { "type": "p", "text": "Demander « aimez-vous ceci ? » produit peu de preuves. Il vaut mieux demander aux personnes d'expliquer l'offre, de trouver où accomplir une tâche ou de prévoir le résultat d'une action. Un mauvais modèle mental exige plus de clarté, pas plus de personnalité." },
+    { "type": "p", "text": "Circles traite la marque, le web et le produit comme un seul système afin que le sens reste intact dans l'onboarding, le checkout, les dashboards, les notifications et le support." }
+  ],
+  "sources": [
+    { "label": "W3C WAI — Writing clear content", "url": "https://www.w3.org/WAI/tips/writing/" },
+    { "label": "Nielsen Norman Group — 10 usability heuristics", "url": "https://www.nngroup.com/articles/ten-usability-heuristics/" },
+    { "label": "GOV.UK — Writing for GOV.UK", "url": "https://www.gov.uk/guidance/content-design/writing-for-gov-uk" }
+  ]
+}

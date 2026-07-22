@@ -1,0 +1,27 @@
+{
+  "title": "Diseñar sistemas digitales que escalan: qué construir y qué comprar",
+  "seo": {
+    "title": "Software a medida o SaaS: ¿qué conviene construir? | Circles",
+    "description": "Un marco basado en evidencia para decidir cuándo usar SaaS, cuándo desarrollar software a medida y cómo una arquitectura híbrida preserva velocidad y control."
+  },
+  "backToBlogLabel": "Volver al blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Referencias primarias",
+  "body": [
+    { "type": "p", "text": "Construir o comprar no es un debate sobre la calidad de la ingeniería. Es una decisión de diseño de servicio. La respuesta depende de las necesidades del usuario, el valor estratégico del flujo, las integraciones, el costo total de propiedad y la capacidad de operar la solución elegida." },
+    { "type": "p", "text": "La guía digital del gobierno británico establece una secuencia clara: comprender el problema durante discovery antes de comprometerse con una tecnología. Comprar demasiado pronto puede forzar a los usuarios al modelo de un proveedor. Construir demasiado pronto puede dedicar meses a recrear una capacidad estándar." },
+    { "type": "h3", "text": "Compra lo genérico. Construye lo que te diferencia." },
+    { "type": "p", "text": "El software comercial suele ser la mejor opción cuando los requisitos son comunes, la configuración es suficiente y ya existe soporte especializado. Correo, pagos, identidad e infraestructura básica rara vez se vuelven una ventaja porque el equipo los reconstruya." },
+    { "type": "p", "text": "El software a medida tiene sentido cuando el flujo es propio del negocio, los productos disponibles no se adaptan o integran sin modificaciones profundas, la propiedad de los datos es crítica o el software forma parte del valor que compra el cliente." },
+    { "type": "blockquote", "text": "La decisión senior casi nunca es construir todo o comprar todo. Es decidir qué capacidades merece la pena poseer." },
+    { "type": "h3", "text": "Una arquitectura híbrida suele ser la respuesta honesta" },
+    { "type": "p", "text": "Un sistema duradero puede combinar servicios gestionados para capacidades estándar con una aplicación propia para los flujos diferenciadores. Límites claros, APIs documentadas, datos portables y observabilidad permiten sustituir proveedores o evolucionar el producto sin reconstruir el servicio completo." },
+    { "type": "p", "text": "Por eso, en Circles el discovery termina con un mapa de capacidades: qué comprar, qué configurar, qué construir, quién asume cada decisión y cómo se operará el servicio después del lanzamiento. La escala comienza con esa claridad." }
+  ],
+  "sources": [
+    { "label": "GOV.UK Service Manual — Elegir las herramientas y la tecnología correctas", "url": "https://www.gov.uk/service-manual/service-standard/point-11-choose-the-right-tools-and-technology" },
+    { "label": "GOV.UK Service Manual — Productos y servicios comerciales", "url": "https://www.gov.uk/service-manual/technology/commercial-off-the-shelf-products-and-services" },
+    { "label": "GOV.UK — Definir una estrategia de compra tecnológica", "url": "https://www.gov.uk/guidance/define-your-purchasing-strategy" }
+  ]
+}

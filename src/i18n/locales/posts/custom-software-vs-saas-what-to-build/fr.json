@@ -1,0 +1,26 @@
+{
+  "title": "Concevoir des systèmes qui évoluent : que construire et que choisir",
+  "seo": {
+    "title": "Logiciel sur mesure ou SaaS : que faut-il construire ? | Circles",
+    "description": "Un cadre fondé sur des critères concrets pour choisir entre SaaS, logiciel sur mesure et architecture hybride."
+  },
+  "backToBlogLabel": "Retour au blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Références principales",
+  "body": [
+    { "type": "p", "text": "Construire ou acheter n'est pas un débat sur la qualité de l'ingénierie. C'est une décision de conception de service, guidée par les besoins des utilisateurs, la valeur stratégique du workflow, les intégrations, le coût total et la capacité à exploiter la solution." },
+    { "type": "p", "text": "Les recommandations numériques du gouvernement britannique sont explicites : comprendre le problème en phase de discovery avant de choisir une technologie. Acheter trop tôt impose parfois le modèle d'un fournisseur ; construire trop tôt recrée inutilement une capacité standard." },
+    { "type": "h3", "text": "Acheter le standard. Construire la différence." },
+    { "type": "p", "text": "Un produit du marché est souvent préférable lorsque les besoins sont courants et que la configuration suffit. Le sur-mesure devient rationnel lorsque le workflow est propre au métier, que les intégrations exigent de lourdes modifications, que la maîtrise des données est essentielle ou que le logiciel constitue la valeur vendue." },
+    { "type": "blockquote", "text": "La décision mature n'est presque jamais tout construire ou tout acheter, mais choisir les capacités qui méritent d'être possédées." },
+    { "type": "h3", "text": "L'architecture hybride est souvent la réponse honnête" },
+    { "type": "p", "text": "Des services gérés peuvent couvrir les fonctions standard tandis qu'une application sur mesure porte les workflows différenciants. Des frontières claires, des API documentées, des données portables et l'observabilité permettent d'évoluer sans tout reconstruire." },
+    { "type": "p", "text": "Chez Circles, la discovery se conclut donc par une carte des capacités : quoi acheter, configurer ou construire, qui en est responsable et comment le service sera exploité après son lancement." }
+  ],
+  "sources": [
+    { "label": "GOV.UK — Choose the right tools and technology", "url": "https://www.gov.uk/service-manual/service-standard/point-11-choose-the-right-tools-and-technology" },
+    { "label": "GOV.UK — Commercial off-the-shelf products and services", "url": "https://www.gov.uk/service-manual/technology/commercial-off-the-shelf-products-and-services" },
+    { "label": "GOV.UK — Define your purchasing strategy", "url": "https://www.gov.uk/guidance/define-your-purchasing-strategy" }
+  ]
+}

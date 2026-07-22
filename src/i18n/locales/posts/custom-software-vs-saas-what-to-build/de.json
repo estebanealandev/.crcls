@@ -1,0 +1,26 @@
+{
+  "title": "Skalierbare digitale Systeme: Was bauen, was kaufen?",
+  "seo": {
+    "title": "Individuelle Software oder SaaS: Was sollte man bauen? | Circles",
+    "description": "Ein evidenzbasierter Rahmen für die Entscheidung zwischen SaaS, individueller Software und einer hybriden Architektur."
+  },
+  "backToBlogLabel": "Zurück zum Blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Primärquellen",
+  "body": [
+    { "type": "p", "text": "Bauen oder kaufen ist keine Abstimmung über Engineering-Qualität. Es ist eine Service-Design-Entscheidung, abhängig von Nutzerbedürfnissen, strategischem Wert, Integrationen, Gesamtbetriebskosten und der Fähigkeit, die gewählte Lösung dauerhaft zu betreiben." },
+    { "type": "p", "text": "Die britische Government-Digital-Guidance empfiehlt, das Problem in einer Discovery-Phase zu verstehen, bevor eine Technologie festgelegt wird. Zu frühes Kaufen zwingt Nutzer in das Modell eines Anbieters; zu frühes Bauen erzeugt unnötig Standardfunktionen neu." },
+    { "type": "h3", "text": "Standard kaufen. Differenzierung bauen." },
+    { "type": "p", "text": "Standardsoftware ist meist stärker, wenn Anforderungen verbreitet sind und Konfiguration ausreicht. Individuelle Software ist sinnvoll, wenn ein Workflow zum Kerngeschäft gehört, Produkte sich nur mit tiefen Änderungen integrieren lassen, Datenhoheit wesentlich ist oder die Software selbst Teil des verkauften Werts ist." },
+    { "type": "blockquote", "text": "Die reife Entscheidung lautet selten alles bauen oder alles kaufen. Sie bestimmt, welche Fähigkeiten Eigentum verdienen." },
+    { "type": "h3", "text": "Eine hybride Architektur ist oft die ehrliche Antwort" },
+    { "type": "p", "text": "Managed Services können Standardfunktionen übernehmen, während eine eigene Anwendung die differenzierenden Abläufe trägt. Klare Grenzen, dokumentierte APIs, portable Daten und Observability ermöglichen Veränderung ohne vollständigen Neubau." },
+    { "type": "p", "text": "Bei Circles endet Discovery deshalb mit einer Capability Map: Was wird gekauft, konfiguriert oder gebaut, wer trägt Verantwortung und wie wird der Service nach dem Launch betrieben?" }
+  ],
+  "sources": [
+    { "label": "GOV.UK — Choose the right tools and technology", "url": "https://www.gov.uk/service-manual/service-standard/point-11-choose-the-right-tools-and-technology" },
+    { "label": "GOV.UK — Commercial off-the-shelf products and services", "url": "https://www.gov.uk/service-manual/technology/commercial-off-the-shelf-products-and-services" },
+    { "label": "GOV.UK — Define your purchasing strategy", "url": "https://www.gov.uk/guidance/define-your-purchasing-strategy" }
+  ]
+}

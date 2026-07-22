@@ -1,0 +1,27 @@
+{
+  "title": "De l'idée IA à la production : les contrôles d'une automatisation fiable",
+  "seo": {
+    "title": "Construire une automatisation IA fiable en production | Circles",
+    "description": "Un cadre pratique fondé sur l'évaluation, la supervision humaine, la sécurité, l'observabilité et des modes de défaillance maîtrisés."
+  },
+  "backToBlogLabel": "Retour au blog",
+  "publishedAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "sourcesLabel": "Références principales",
+  "body": [
+    { "type": "p", "text": "Une démo prouve qu'un modèle peut produire une réponse utile une fois. Une automatisation en production doit prouver que le système complet obtient des résultats acceptables de façon répétée, détecte ses limites, protège les données et récupère sans masquer l'échec." },
+    { "type": "p", "text": "Le cadre AI RMF du NIST organise ce travail en quatre fonctions : Govern, Map, Measure et Manage. Il faut définir la responsabilité et le risque acceptable, comprendre le contexte, évaluer le comportement puis exploiter les contrôles en continu." },
+    { "type": "h3", "text": "Commencer par une décision délimitée" },
+    { "type": "p", "text": "Une automatisation fiable exige une tâche précise, des entrées connues, un contrat de sortie explicite et une définition mesurable du succès. Classer une demande et proposer une réponse est plus évaluable qu'une consigne ouverte comme « gérer le support »." },
+    { "type": "blockquote", "text": "Ne demandez pas si le modèle est intelligent. Demandez ce que fait le système lorsque le modèle se trompe." },
+    { "type": "p", "text": "Avant le lancement, créez un jeu d'évaluation représentatif. Mesurez qualité, refus, latence et coût. Testez l'injection de prompts, l'usage dangereux d'outils, l'exposition de données et les sorties non fiables signalées par OWASP." },
+    { "type": "h3", "text": "La production doit être observable et réversible" },
+    { "type": "p", "text": "Journalisez la provenance, les versions, les appels d'outils, les validations, l'action finale et les corrections humaines sans conserver inutilement de données sensibles. Les actions critiques ou incertaines doivent être transférées à une personne." },
+    { "type": "p", "text": "Chez Circles, un workflow IA est prêt lorsque l'échec est visible, contenu et récupérable, pas seulement lorsque le scénario idéal est impressionnant." }
+  ],
+  "sources": [
+    { "label": "NIST — AI Risk Management Framework", "url": "https://www.nist.gov/itl/ai-risk-management-framework" },
+    { "label": "OWASP — Top 10 for Large Language Model Applications", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/" },
+    { "label": "Google SRE — Monitoring distributed systems", "url": "https://sre.google/sre-book/monitoring-distributed-systems/" }
+  ]
+}

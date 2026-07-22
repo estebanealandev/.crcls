@@ -3,7 +3,7 @@ import { LOCALES, type Locale } from './locales.config';
 /**
  * Every locale JSON in src/i18n/locales, loaded eagerly at build time.
  * Keys look like "./locales/<namespace>/<locale>.json"; namespaces may be
- * nested (e.g. "projects/atlas").
+ * nested (e.g. "projects/dentika").
  */
 const modules = import.meta.glob('./locales/**/*.json', {
   eager: true,

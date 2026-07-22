@@ -3,7 +3,7 @@ import { LOCALES, LOCALE_META, DEFAULT_LOCALE, SECONDARY_LOCALES, type Locale } 
 
 /**
  * Builds the localized href for a locale-agnostic canonical path (e.g. "/about",
- * "/project/atlas", "/"), using Astro's official i18n URL builder. Page slugs are
+ * "/project/dentika", "/"), using Astro's official i18n URL builder. Page slugs are
  * intentionally left untranslated across locales, so the same canonical path maps
  * to every locale's URL.
  */

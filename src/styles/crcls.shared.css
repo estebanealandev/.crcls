@@ -6,6 +6,36 @@ html {
   font-family: sans-serif;
 }
 
+.article-sources {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ffffff30;
+}
+
+.article-sources h3 {
+  font-size: var(--font--h5);
+  margin: 0 0 1.25rem;
+}
+
+.article-sources ol {
+  display: grid;
+  gap: .8rem;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.article-sources li,
+.article-sources a {
+  color: #ffffffa8;
+  font-size: var(--font--work-title);
+  line-height: 1.4;
+}
+
+.article-sources a {
+  cursor: pointer;
+  text-underline-offset: .2em;
+}
+
 body {
   margin: 0;
 }
