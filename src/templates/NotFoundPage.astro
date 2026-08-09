@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import PlusLineGrid from '../components/PlusLineGrid.astro';
 import ButtonLink from '../components/ButtonLink.astro';
-import { localizedPath, type Locale } from '../i18n/utils';
+import { localizedPath, LOCALES, LOCALE_META, type Locale } from '../i18n/utils';
 import { dictionaries } from '../i18n/dictionaries';
 import { localizedAbsoluteUrl, jsonLdString, WEBSITE_ID } from '../lib/seo';
 import notFoundEn from '../i18n/locales/notFound/en.json';
@@ -18,6 +18,22 @@ const { locale } = Astro.props;
 const t = DICT[locale];
 const canonicalPath = '/404';
 const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
+
+// Firebase Hosting resolves every unmatched URL to the single root 404.html,
+// so a visitor on /es/broken-link would otherwise be answered in English.
+// This table lets the served page relabel itself from the URL's locale prefix
+// at runtime. The page is noindex, so this is purely a UX fallback — the
+// 404 status code still comes from Hosting, not from a redirect.
+const LOCALIZED_404: Record<string, Record<string, string>> = {};
+for (const l of LOCALES) {
+  LOCALIZED_404[l] = {
+    lang: LOCALE_META[l].tag,
+    title: DICT[l].seo.title,
+    message: DICT[l].message,
+    backToHomeLabel: DICT[l].backToHomeLabel,
+    homeHref: localizedPath(l, '/'),
+  };
+}
 ---
 
 <Layout
@@ -44,12 +60,35 @@ const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
   <main class="utility-page-wrap">
     <div class="utility-page-content">
       <h2 class="_404">{t.code}</h2>
-      <div><p>{t.message}</p></div>
+      <div><p data-404-message>{t.message}</p></div>
       <div class="divider-s"></div>
-      <div>
+      <div data-404-home>
         <ButtonLink href={localizedPath(locale, '/')} label={t.backToHomeLabel} />
       </div>
     </div>
   </main>
   <PlusLineGrid />
+
+  <script is:inline define:vars={{ LOCALIZED_404 }}>
+    // Relabel the shared 404 page from the URL's locale prefix — see the
+    // comment on LOCALIZED_404 in this template.
+    (function () {
+      var match = window.location.pathname.match(/^\/(es|fr|de|pt)(\/|$)/);
+      var t = match && LOCALIZED_404[match[1]];
+      if (!t) return;
+
+      document.documentElement.lang = t.lang;
+      document.title = t.title;
+
+      var message = document.querySelector('[data-404-message]');
+      if (message) message.textContent = t.message;
+
+      var home = document.querySelector('[data-404-home] a');
+      if (home) {
+        home.setAttribute('href', t.homeHref);
+        var labels = home.querySelectorAll('.navigation-text-main');
+        for (var i = 0; i < labels.length; i++) labels[i].textContent = t.backToHomeLabel;
+      }
+    })();
+  </script>
 </Layout>

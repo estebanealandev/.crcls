@@ -91,7 +91,7 @@
       { "category": "Automatisierung", "tools": "Zapier, Make, n8n", "focus": "Systeme©" },
       { "category": "Marketing", "tools": "GA4, Search Console, HubSpot", "focus": "Wachstum©" },
       { "category": "Marke", "tools": "Figma, Adobe CC", "focus": "Identität©" },
-      { "category": "Infrastruktur", "tools": "Railway, Vercel, Resend", "focus": "Auslieferung©" }
+      { "category": "Infrastruktur", "tools": "Firebase, Vercel, Resend", "focus": "Auslieferung©" }
     ]
   }
 }

@@ -2,23 +2,24 @@
   "name": "circles-website",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/gen-csp.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "start": "node server.mjs",
     "typecheck": "astro check",
     "audit": "npm audit",
-    "check": "node scripts/check-site.mjs"
+    "check": "node scripts/check-site.mjs",
+    "serve": "firebase emulators:start --only hosting,functions",
+    "deploy": "npm run build && npm run check && firebase deploy",
+    "deploy:hosting": "npm run build && npm run check && firebase deploy --only hosting"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
-    "astro": "^7.0.7",
-    "compression": "^1.8.1",
-    "sirv": "^3.0.2"
+    "astro": "^7.0.7"
   },
   "overrides": {
     "esbuild": "^0.25.0"
