@@ -1,4 +1,4 @@
-/* Project index (ProjectList.astro) — behavior in public/js/project-list.js. */
+/* Project index (ProjectList.astro) — behavior in src/scripts/project-list.js. */
 
 .pl {
   --pl-ease: cubic-bezier(.19, 1, .22, 1);

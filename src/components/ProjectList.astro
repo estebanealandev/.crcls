@@ -1,7 +1,7 @@
 ---
 // Editorial index of projects: one row per project, linking out to the
 // project's live site. On fine pointers a 16:9 thumbnail follows the cursor and
-// bends like a liquid while dragged (WebGL, public/js/project-list.js); on
+// bends like a liquid while dragged (WebGL, src/scripts/project-list.js); on
 // touch it is inlined at the start of each row.
 import '../styles/project-list.css';
 import { type Locale } from '../i18n/utils';
@@ -94,3 +94,9 @@ const rows = projects.map((p, i) => {
     </span>
   </div>
 </div>
+
+<script>
+  // Bundled by Astro into a content-hashed /_astro/ file, so a deploy can never
+  // be masked by an edge or browser cache still holding an older copy.
+  import '../scripts/project-list.js';
+</script>
