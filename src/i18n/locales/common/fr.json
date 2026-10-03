@@ -60,6 +60,14 @@
       "grayText": "Une sélection de projets où marque, design et performance avancent d'un seul mouvement."
     }
   },
+  "projectList": {
+    "projectLabel": "Projet",
+    "servicesLabel": "Services",
+    "websiteLabel": "Site web",
+    "yearLabel": "Année",
+    "visitSite": "Voir le site",
+    "newTab": "s’ouvre dans un nouvel onglet"
+  },
   "postMeta": {
     "relatedStory": {
       "prefix": "Article similaire",

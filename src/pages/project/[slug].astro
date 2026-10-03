@@ -1,11 +1,11 @@
 ---
 import type { InferGetStaticPropsType } from 'astro';
 import ProjectPage from '../../templates/ProjectPage.astro';
-import { PROJECTS } from '../../data/projects';
+import { PROJECT_PAGES } from '../../data/projects';
 import { slugPaths } from '../../i18n/utils';
 
 export function getStaticPaths() {
-  return slugPaths(PROJECTS);
+  return slugPaths(PROJECT_PAGES);
 }
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;

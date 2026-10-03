@@ -5,31 +5,17 @@ import Footer from '../components/Footer.astro';
 import Preloader from '../components/Preloader.astro';
 import PlusLineGrid from '../components/PlusLineGrid.astro';
 import HoverTooltip from '../components/HoverTooltip.astro';
-import WorkCard from '../components/WorkCard.astro';
+import ProjectList from '../components/ProjectList.astro';
 import BlogCard from '../components/BlogCard.astro';
 import HeroExtended from '../components/hero/HeroExtended.astro';
 import '../styles/services-hover.css';
 import { localizedPath, type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
 import { localizedAbsoluteUrl, jsonLdString, BUSINESS_ID, WEBSITE_ID } from '../lib/seo';
-import { PROJECTS, requireProject } from '../data/projects';
 import { requirePost, postImageSrcset } from '../data/posts';
 import homeEn from '../i18n/locales/home/en.json';
 
 const DICT = dictionaries<typeof homeEn>('home');
-// This page only needs the card-level copy of each project/post.
-const PROJECT_COPY = slugDictionaries<{ title: string; servicesValue: string }>(
-  'projects',
-  PROJECTS.map((p) => p.slug)
-);
-
-// Featured work grid: three visual rows, exactly as originally authored.
-const WORK_ROWS = [
-  { slugs: ['dentika', 'aether'], gridClass: 'work-grid-main w-dyn-items' },
-  { slugs: ['nova'], gridClass: 'work-grid-main _01 w-dyn-items' },
-  { slugs: ['pulse', 'vertex'], gridClass: 'work-grid-main w-dyn-items' },
-] as const;
-
 // Featured journal grid: a 3-post subset of POSTS, in the order authored in the original export.
 const JOURNAL_SLUGS = [
   'custom-software-vs-saas-what-to-build',
@@ -135,32 +121,7 @@ const testimonials = t.testimonials.map((testimonial, i) => {
     </section>
   </div>
   <section class="section-work">
-    <div data-w-id="22196faf-531d-9da9-629d-5fdd075cbf48" class="work-main">
-      {WORK_ROWS.map((row, rowIndex) => (
-        <>
-          {rowIndex > 0 && <div class="divider-10"></div>}
-          <div class="w-dyn-list">
-            <div role="list" class={row.gridClass}>
-              {row.slugs.map((slug) => {
-                const p = requireProject(slug);
-                const copy = PROJECT_COPY(slug)[locale];
-                return (
-                  <WorkCard
-                    href={localizedPath(locale, `/project/${p.slug}`)}
-                    title={copy.title}
-                    serviceLabel={copy.servicesValue}
-                    image={p.heroImage}
-                    logoImage={p.logoImage}
-                    video={p.video}
-                    eagerVideo={false}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </>
-      ))}
-    </div>
+    <ProjectList locale={locale} />
   </section>
   <div data-w-id="341b604c-50aa-f364-4667-c5c84c5dcf2d"></div>
 
@@ -360,6 +321,7 @@ const testimonials = t.testimonials.map((testimonial, i) => {
   <Footer locale={locale} currentPath={canonicalPath} />
   <PlusLineGrid />
   <Preloader showLogoAnimation />
-  <HoverTooltip locale={locale} hoverCards="both" />
+  <HoverTooltip locale={locale} hoverCards="post" />
   <script is:inline src="/js/services-hover.js"></script>
+  <script is:inline src="/js/project-list.js"></script>
 </Layout>

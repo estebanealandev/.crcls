@@ -1,0 +1,95 @@
+---
+// Editorial index of projects: one row per project, linking out to the
+// project's live site. On fine pointers a thumbnail follows the cursor
+// (public/js/project-list.js); on touch it is inlined at the start of each row.
+import '../styles/project-list.css';
+import { type Locale } from '../i18n/utils';
+import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
+import { PROJECTS, type ProjectData } from '../data/projects';
+import commonEn from '../i18n/locales/common/en.json';
+
+const COMMON = dictionaries<typeof commonEn>('common');
+const PROJECT_COPY = slugDictionaries<{ title: string; servicesValue: string; imageAlt: string }>(
+  'projects',
+  PROJECTS.map((p) => p.slug)
+);
+
+interface Props {
+  locale: Locale;
+  projects?: readonly ProjectData[];
+}
+
+const { locale, projects = PROJECTS } = Astro.props;
+const t = COMMON[locale];
+
+const rows = projects.map((p, i) => {
+  const copy = PROJECT_COPY(p.slug)[locale];
+  return {
+    ...p,
+    copy,
+    index: `(${String(i + 1).padStart(2, '0')})`,
+    host: p.siteUrl ? new URL(p.siteUrl).hostname.replace(/^www\./, '') : null,
+  };
+});
+---
+
+<div class="pl" data-project-list>
+  <div class="pl__head" aria-hidden="true">
+    <span class="pl__col pl__col--name">{t.projectList.projectLabel}</span>
+    <span class="pl__col pl__col--services">{t.projectList.servicesLabel}</span>
+    <span class="pl__col pl__col--site">{t.projectList.websiteLabel}</span>
+    <span class="pl__col pl__col--year">{t.projectList.yearLabel}</span>
+  </div>
+
+  <ul class="pl__list" role="list">
+    {rows.map((row, i) => {
+      const Tag = row.siteUrl ? 'a' : 'div';
+      const linkAttrs = row.siteUrl
+        ? { href: row.siteUrl, target: '_blank', rel: 'noopener noreferrer' }
+        : {};
+      return (
+        <li class="pl__item" style={`--pl-i:${i}`}>
+          <Tag class="pl__row" data-pl-row={i} {...linkAttrs}>
+            <span class="pl__index" aria-hidden="true">{row.index}</span>
+            <span class="pl__thumb" aria-hidden="true">
+              <img src={row.heroImage.src} srcset={row.heroImage.srcset} sizes="4.5rem" alt="" loading="lazy" decoding="async" />
+            </span>
+            <h3 class="pl__name">{row.copy.title}</h3>
+            <span class="pl__col pl__col--services">{row.copy.servicesValue}</span>
+            <span class="pl__col pl__col--site">
+              {row.host ?? <span class="pl__muted">{t.projectMeta.caseStudyValue}</span>}
+            </span>
+            <span class="pl__col pl__col--year">{row.year}</span>
+            {row.siteUrl ? (
+              <span class="pl__arrow" aria-hidden="true"><span>↗</span><span>↗</span></span>
+            ) : (
+              <span class="pl__arrow pl__arrow--none" aria-hidden="true"></span>
+            )}
+            {row.siteUrl && <span class="pl__sr">({t.projectList.newTab})</span>}
+          </Tag>
+        </li>
+      );
+    })}
+  </ul>
+
+  <div class="pl-preview" data-pl-preview hidden aria-hidden="true">
+    <div class="pl-preview__frame" data-pl-frame>
+      {rows.map((row) => (
+        <img
+          class="pl-preview__img"
+          data-pl-media
+          src={row.heroImage.src}
+          srcset={row.heroImage.srcset}
+          sizes="(min-width: 1600px) 24rem, 22vw"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      ))}
+      <span class="pl-preview__pill">
+        <span class="pl-preview__pill-text">{t.projectList.visitSite}</span>
+        <span aria-hidden="true">↗</span>
+      </span>
+    </div>
+  </div>
+</div>

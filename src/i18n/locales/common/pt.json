@@ -60,6 +60,14 @@
       "grayText": "Projetos selecionados onde marca, design e desempenho se movem como um só."
     }
   },
+  "projectList": {
+    "projectLabel": "Projeto",
+    "servicesLabel": "Serviços",
+    "websiteLabel": "Website",
+    "yearLabel": "Ano",
+    "visitSite": "Visitar site",
+    "newTab": "abre num novo separador"
+  },
   "postMeta": {
     "relatedStory": {
       "prefix": "Artigo Relacionado",

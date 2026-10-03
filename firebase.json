@@ -7,6 +7,18 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "regex": "^/project(?:/.*)?$",
+        "destination": "/work/",
+        "type": 301
+      },
+      {
+        "regex": "^/(?P<locale>es|fr|de|pt)/project(?:/.*)?$",
+        "destination": "/:locale/work/",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "/api/contact",

@@ -1,4 +1,5 @@
-// Locale-independent metadata for the case-study pages under /project/<slug>.
+// Locale-independent metadata for every project: the home/work index lists and
+// the case-study pages under /project/<slug>.
 // All five pages share one layout (identical dataWfPage, node ids, and
 // structure — verified structurally near-100% identical), so they render
 // through a single Astro template (ProjectPage.astro) and only this data plus
@@ -21,7 +22,18 @@ export interface ProjectData {
   /** Looping background video shown on this project's card in other pages' "Related Work" grids, if any. */
   video: string | null;
   galleryImages: ProjectImage[];
+  /** The project's official, live website. Index rows link here; rows without one render unlinked. */
+  siteUrl: string | null;
+  year: number;
 }
+
+/**
+ * Case-study pages (/project/<slug> in every locale) are switched off: no route
+ * is built, nothing links to them, the sitemap skips them, and firebase.json
+ * 301s the old URLs to /work. Flipping this back on (and removing those
+ * redirects) restores them; templates, copy and assets are kept intact.
+ */
+export const PROJECT_PAGES_ENABLED = false;
 
 export const PROJECTS: ProjectData[] = [
   {
@@ -48,6 +60,8 @@ export const PROJECTS: ProjectData[] = [
         srcset: '/assets/images/dentika/source-site-mobile.webp 393w',
       },
     ],
+    siteUrl: 'https://dentikacr.com',
+    year: 2026,
   },
   {
     slug: 'aether',
@@ -75,6 +89,8 @@ export const PROJECTS: ProjectData[] = [
           '/assets/images/pexels-cottonbro-10678363-p-500.webp 500w, /assets/images/pexels-cottonbro-10678363-p-800.webp 800w, /assets/images/pexels-cottonbro-10678363-p-1080.webp 1080w, /assets/images/pexels-cottonbro-10678363-p-1600.webp 1600w, /assets/images/pexels-cottonbro-10678363-p-2000.webp 2000w, /assets/images/pexels-cottonbro-10678363-p-2600.webp 2600w, /assets/images/pexels-cottonbro-10678363-p-3200.webp 3200w, /assets/images/pexels-cottonbro-10678363.webp 4000w',
       },
     ],
+    siteUrl: null,
+    year: 2026,
   },
   {
     slug: 'nova',
@@ -102,6 +118,8 @@ export const PROJECTS: ProjectData[] = [
           '/assets/images/project-nova-02-p-500.webp 500w, /assets/images/project-nova-02-p-800.webp 800w, /assets/images/project-nova-02-p-1080.webp 1080w, /assets/images/project-nova-02.webp 1536w',
       },
     ],
+    siteUrl: null,
+    year: 2026,
   },
   {
     slug: 'vertex',
@@ -129,6 +147,8 @@ export const PROJECTS: ProjectData[] = [
           '/assets/images/project-vertex-02-p-500.webp 500w, /assets/images/project-vertex-02-p-800.webp 800w, /assets/images/project-vertex-02-p-1080.webp 1080w, /assets/images/project-vertex-02.webp 1254w',
       },
     ],
+    siteUrl: null,
+    year: 2026,
   },
   {
     slug: 'pulse',
@@ -156,6 +176,8 @@ export const PROJECTS: ProjectData[] = [
           '/assets/images/project-pulse-02-p-500.webp 500w, /assets/images/project-pulse-02-p-800.webp 800w, /assets/images/project-pulse-02-p-1080.webp 1080w, /assets/images/project-pulse-02.webp 1402w',
       },
     ],
+    siteUrl: null,
+    year: 2026,
   },
 ];
 
@@ -173,3 +195,6 @@ export function requireProject(slug: string): ProjectData {
 export function otherProjects(slug: string): ProjectData[] {
   return PROJECTS.filter((p) => p.slug !== slug);
 }
+
+/** Projects that get a /project/<slug> page; empty while PROJECT_PAGES_ENABLED is off. */
+export const PROJECT_PAGES: ProjectData[] = PROJECT_PAGES_ENABLED ? PROJECTS : [];

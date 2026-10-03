@@ -60,6 +60,14 @@
       "grayText": "Ausgewählte Projekte, in denen Marke, Design und Leistung als Einheit wirken."
     }
   },
+  "projectList": {
+    "projectLabel": "Projekt",
+    "servicesLabel": "Leistungen",
+    "websiteLabel": "Website",
+    "yearLabel": "Jahr",
+    "visitSite": "Website besuchen",
+    "newTab": "öffnet in einem neuen Tab"
+  },
   "postMeta": {
     "relatedStory": {
       "prefix": "Verwandter Beitrag",

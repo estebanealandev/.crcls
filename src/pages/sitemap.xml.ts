@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { LOCALES, DEFAULT_LOCALE, localizedPath } from '../i18n/utils';
 import { SITE_URL } from '../lib/seo';
-import { PROJECTS } from '../data/projects';
+import { PROJECT_PAGES } from '../data/projects';
 import { POSTS } from '../data/posts';
 
 interface SitemapPage {
@@ -15,7 +15,7 @@ const STATIC_PAGES: SitemapPage[] = [
   { path: '/work', priority: '0.8' },
   { path: '/contact', priority: '0.8' },
   { path: '/journal', priority: '0.7' },
-  ...PROJECTS.map((p) => ({ path: `/project/${p.slug}`, priority: '0.6' })),
+  ...PROJECT_PAGES.map((p) => ({ path: `/project/${p.slug}`, priority: '0.6' })),
   ...POSTS.map((p) => ({ path: `/post/${p.slug}`, priority: '0.5' })),
 ];
 

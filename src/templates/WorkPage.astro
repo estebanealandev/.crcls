@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro';
 import Preloader from '../components/Preloader.astro';
 import PlusLineGrid from '../components/PlusLineGrid.astro';
 import HoverTooltip from '../components/HoverTooltip.astro';
-import WorkCard from '../components/WorkCard.astro';
-import { localizedPath, type Locale } from '../i18n/utils';
+import ProjectList from '../components/ProjectList.astro';
+import { type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
 import { absoluteUrl, localizedAbsoluteUrl, jsonLdString, WEBSITE_ID } from '../lib/seo';
 import { PROJECTS } from '../data/projects';
@@ -47,11 +47,12 @@ const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
     "isPartOf": { "@id": WEBSITE_ID },
     "hasPart": PROJECTS.map((p) => ({
       "@type": "CreativeWork",
-      "@id": absoluteUrl(`/project/${p.slug}`),
+      "@id": `${absoluteUrl('/work/')}#${p.slug}`,
       "name": PROJECT_COPY(p.slug)[locale].title,
-      "url": localizedAbsoluteUrl(locale, `/project/${p.slug}`),
+      ...(p.siteUrl ? { "url": p.siteUrl } : {}),
       "image": absoluteUrl(p.heroImage.src),
       "about": PROJECT_COPY(p.slug)[locale].servicesValue,
+      "dateCreated": String(p.year),
     })),
   })} />
 
@@ -77,23 +78,7 @@ const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
 
   <div class="content-effect _01">
     <section class="section">
-      <div data-w-id="04dcb905-14e9-c7a0-af4d-acd96d87c8b0" class="work-main">
-        <div class="w-dyn-list">
-          <div role="list" class="work-grid-main w-dyn-items">
-            {PROJECTS.map((p) => (
-              <WorkCard
-                href={localizedPath(locale, `/project/${p.slug}`)}
-                title={PROJECT_COPY(p.slug)[locale].title}
-                serviceLabel={PROJECT_COPY(p.slug)[locale].servicesValue}
-                image={p.heroImage}
-                logoImage={p.logoImage}
-                video={p.video}
-                eagerVideo={false}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      <ProjectList locale={locale} />
     </section>
   </div>
   <div data-w-id="04dcb905-14e9-c7a0-af4d-acd96d87c8c5"></div>
@@ -101,5 +86,6 @@ const pageUrl = localizedAbsoluteUrl(locale, canonicalPath);
   </main>
   <Footer locale={locale} currentPath={canonicalPath} />
   <Preloader />
-  <HoverTooltip locale={locale} hoverCards="work" />
+  <HoverTooltip locale={locale} />
+  <script is:inline src="/js/project-list.js"></script>
 </Layout>

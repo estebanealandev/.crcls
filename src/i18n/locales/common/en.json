@@ -60,6 +60,14 @@
       "grayText": "Selected projects where brand, design, and performance move as one."
     }
   },
+  "projectList": {
+    "projectLabel": "Project",
+    "servicesLabel": "Services",
+    "websiteLabel": "Website",
+    "yearLabel": "Year",
+    "visitSite": "Visit site",
+    "newTab": "opens in a new tab"
+  },
   "postMeta": {
     "relatedStory": {
       "prefix": "Related Story",

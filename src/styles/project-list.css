@@ -1,0 +1,409 @@
+/* Project index (ProjectList.astro) — behavior in public/js/project-list.js. */
+
+.pl {
+  --pl-ease: cubic-bezier(.19, 1, .22, 1);
+  --pl-line: #ffffff2e;
+  --pl-dim: .28;
+  position: relative;
+  width: 100%;
+}
+
+/* ---------- Grid ---------- */
+
+.pl__head,
+.pl__row {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1.1fr) minmax(0, 1.3fr) minmax(0, 1fr) 4.5rem 2.25rem;
+  grid-template-areas: "index name services site year arrow";
+  column-gap: clamp(1rem, 1.6vw, 2rem);
+  align-items: center;
+}
+
+.pl__index { grid-area: index; }
+.pl__thumb { grid-area: thumb; }
+.pl__col--name,
+.pl__name { grid-area: name; }
+.pl__col--services { grid-area: services; }
+.pl__col--site { grid-area: site; }
+.pl__col--year { grid-area: year; }
+.pl__arrow { grid-area: arrow; }
+
+/* ---------- Head ---------- */
+
+.pl__head {
+  padding-bottom: 1.1rem;
+  font-family: var(--font--second-font);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .45;
+}
+
+.pl__head .pl__col {
+  font-size: inherit;
+  opacity: 1;
+}
+
+/* ---------- Rows ---------- */
+
+.pl__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--pl-line);
+}
+
+.pl__item {
+  margin: 0;
+  opacity: 1;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.pl__row {
+  position: relative;
+  padding: clamp(1.4rem, 2.1vw, 2.15rem) 0;
+  color: var(--colors--first-color);
+  text-decoration: none;
+  transition: opacity .45s ease;
+}
+
+.pl__row::before,
+.pl__row::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+}
+
+.pl__row::before {
+  background: var(--pl-line);
+  transform-origin: left;
+  transition: transform 1.2s var(--pl-ease);
+}
+
+.pl__row::after {
+  background: var(--colors--first-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .8s var(--pl-ease);
+}
+
+.pl__index {
+  font-family: var(--font--second-font);
+  font-size: .72rem;
+  letter-spacing: .04em;
+  opacity: .4;
+  transition: opacity .45s ease;
+}
+
+.pl__name {
+  margin: 0;
+  font-family: var(--font--third-font);
+  font-size: clamp(1.35rem, .95rem + .95vw, 2rem);
+  font-weight: var(--font-weight--500);
+  line-height: 1;
+  letter-spacing: -.035em;
+  transition: transform .7s var(--pl-ease);
+}
+
+.pl__col {
+  font-size: clamp(1rem, .85rem + .3vw, 1.2rem);
+  line-height: var(--line-height--paragraph-line-height);
+  letter-spacing: -.3px;
+  opacity: .6;
+  transition: opacity .45s ease;
+}
+
+.pl__col--year {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.pl__muted {
+  opacity: .55;
+}
+
+/* Arrow roll: the visible glyph exits up-right as its twin enters from bottom-left. */
+.pl__arrow {
+  justify-self: end;
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  overflow: hidden;
+  font-size: 1.15rem;
+  line-height: 1.25rem;
+}
+
+.pl__arrow > span {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  transition: transform .6s var(--pl-ease);
+}
+
+.pl__arrow > span + span {
+  transform: translate(-110%, 110%);
+}
+
+.pl__thumb {
+  display: none;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #111;
+}
+
+.pl__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pl__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Active row (hover / keyboard) ---------- */
+
+.pl__row:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.pl__row:is(:hover, :focus-visible) .pl__name {
+  transform: translateX(.6rem);
+}
+
+.pl__row:is(:hover, :focus-visible) :is(.pl__col, .pl__index) {
+  opacity: .9;
+}
+
+.pl__row:is(:hover, :focus-visible) .pl__arrow > span:first-child {
+  transform: translate(110%, -110%);
+}
+
+.pl__row:is(:hover, :focus-visible) .pl__arrow > span + span {
+  transform: translate(0, 0);
+}
+
+.pl__row:focus-visible {
+  outline: 1px solid var(--colors--first-color);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pl__list:hover .pl__row {
+    opacity: var(--pl-dim);
+  }
+
+  .pl__list .pl__row:hover {
+    opacity: 1;
+  }
+}
+
+.pl__list:has(.pl__row:focus-visible) .pl__row:not(:focus-visible) {
+  opacity: var(--pl-dim);
+}
+
+/* ---------- Scroll reveal (armed by JS only, so content never depends on it) ---------- */
+
+.pl[data-reveal] .pl__item {
+  transition: opacity .9s ease, transform 1.1s var(--pl-ease);
+  transition-delay: calc(var(--pl-i, 0) * 70ms);
+}
+
+.pl[data-reveal] .pl__row::before {
+  transition-delay: calc(var(--pl-i, 0) * 70ms);
+}
+
+.pl[data-reveal]:not(.is-inview) .pl__item {
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+.pl[data-reveal]:not(.is-inview) .pl__row::before {
+  transform: scaleX(0);
+}
+
+/* ---------- Cursor preview ---------- */
+
+.pl-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: clamp(16rem, 22vw, 24rem);
+  aspect-ratio: 5 / 4;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.pl-preview__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #111;
+  translate: -50% -50%;
+  opacity: 0;
+  scale: .82;
+  clip-path: inset(14% 14% 14% 14%);
+  transition: opacity .3s ease, scale .8s var(--pl-ease, ease), clip-path .9s var(--pl-ease, ease);
+}
+
+.pl-preview.is-visible .pl-preview__frame {
+  opacity: 1;
+  scale: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+.pl-preview__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 50%), transparent 45%);
+}
+
+.pl-preview__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  scale: 1.15;
+  transition: opacity .45s ease, scale 1.2s cubic-bezier(.19, 1, .22, 1);
+}
+
+.pl-preview__img.is-active {
+  opacity: 1;
+  scale: 1;
+}
+
+/* Mirrors the site's cursor pill (.view-work / .pill-text). */
+.pl-preview__pill {
+  position: absolute;
+  left: .75rem;
+  bottom: .75rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .5rem .85rem;
+  background: #0003;
+  border: 1px solid #ffffff2e;
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  color: var(--colors--first-color);
+  font-size: var(--text-field);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  translate: 0 .6rem;
+  transition: opacity .35s ease, translate .7s cubic-bezier(.19, 1, .22, 1);
+}
+
+.pl-preview__pill-text {
+  font-family: var(--font--primary-font);
+  font-style: italic;
+  font-weight: var(--font-weight--300);
+  letter-spacing: -.1px;
+}
+
+.pl-preview[data-linked] .pl-preview__pill {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: .12s;
+}
+
+/* ---------- Touch: no cursor, so the thumbnail moves into the row ---------- */
+
+@media (hover: none) {
+  .pl-preview {
+    display: none !important;
+  }
+
+  .pl__head,
+  .pl__row {
+    grid-template-columns: 4.5rem minmax(0, 1.1fr) minmax(0, 1.3fr) minmax(0, 1fr) 4rem 1.75rem;
+    grid-template-areas: "thumb name services site year arrow";
+  }
+
+  .pl__index {
+    display: none;
+  }
+
+  .pl__thumb {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .pl__head,
+  .pl__row {
+    grid-template-columns: 2.75rem minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr) 3.5rem 1.5rem;
+  }
+}
+
+@media (hover: none) and (max-width: 991px) {
+  .pl__head,
+  .pl__row {
+    grid-template-columns: 3.75rem minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr) 3.5rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .pl__head {
+    display: none;
+  }
+
+  .pl__row,
+  .pl__head {
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+    grid-template-areas:
+      "thumb name     arrow"
+      "thumb services services"
+      "thumb site     year";
+    column-gap: 1rem;
+    row-gap: .35rem;
+    align-items: start;
+    padding: 1.25rem 0;
+  }
+
+  .pl__index {
+    display: none;
+  }
+
+  .pl__thumb {
+    display: block;
+    align-self: stretch;
+    aspect-ratio: auto;
+    min-height: 4.5rem;
+  }
+
+  .pl__name {
+    font-size: 1.45rem;
+    padding-top: .1rem;
+  }
+
+  .pl__col {
+    font-size: .95rem;
+  }
+
+  .pl__row:is(:hover, :focus-visible) .pl__name {
+    transform: none;
+  }
+}
