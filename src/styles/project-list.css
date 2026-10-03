@@ -249,8 +249,10 @@
   top: 0;
   left: 0;
   z-index: 1001;
-  width: clamp(18rem, 27vw, 30rem);
-  aspect-ratio: 16 / 9;
+  --pl-w: clamp(18rem, 27vw, 30rem);
+  --pl-h: calc(var(--pl-w) * 9 / 16);
+  width: var(--pl-w);
+  height: var(--pl-h);
   pointer-events: none;
   will-change: transform;
 }
@@ -305,11 +307,13 @@
   pointer-events: none;
 }
 
-/* Centred on the sheet; styled like the site's "View Project" pill (.view-work / .pill-text). */
+/* Bottom-left corner of the sheet, clear of the site's headline; styled like the
+   site's "View Project" pill (.view-work / .pill-text). The box's origin is the
+   sheet's centre, so the corner is half the box away. */
 .pl-preview__pill {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: calc(var(--pl-h) / 2 - .9rem);
+  left: calc(var(--pl-w) / -2 + .9rem);
   z-index: 1;
   display: inline-flex;
   align-items: center;
@@ -323,7 +327,9 @@
   font-size: var(--text-field);
   line-height: 1;
   white-space: nowrap;
-  translate: -50% -50%;
+  /* --pl-ox/--pl-oy (set by the script) follow the corner as the sheet bends. */
+  translate: var(--pl-ox, 0px) calc(-100% + var(--pl-oy, 0px));
+  transform-origin: 0 100%;
   opacity: 0;
   scale: .6;
   transition: opacity .25s ease, scale .6s cubic-bezier(.19, 1, .22, 1);

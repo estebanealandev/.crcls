@@ -311,6 +311,25 @@
       },
       needsFrame() { return mixT < 1; },
       planeSize() { return [planeW, planeH]; },
+      // How far the sheet's bottom-left corner sits from its resting place:
+      // the vertex shader's maths at p = (-0.5, 0.5), so the pill rides the bend.
+      cornerOffset(s) {
+        const grow = 0.82 + 0.18 * easeInOut(clamp(s.reveal, 0, 1));
+        const px = -0.5;
+        const py = 0.5;
+        const fx = 4 * px * px;
+        const fy = 4 * py * py;
+        const speed = Math.hypot(s.dx, s.dy);
+        const dirX = speed > 0.001 ? s.dx / speed : 0;
+        const dirY = speed > 0.001 ? s.dy / speed : 0;
+        const along = px * dirX + py * dirY;
+        const ripple = Math.sin(along * 8 - s.time * 7) * speed * 0.045 * (fx + fy);
+        const stretch = along * speed * 0.18;
+        return [
+          px * planeW * (grow - 1) - s.dx * fy + dirX * (ripple + stretch),
+          py * planeH * (grow - 1) - s.dy * fx + dirY * (ripple + stretch),
+        ];
+      },
       destroy() {
         window.removeEventListener('resize', resize);
         canvas.remove();
@@ -337,6 +356,13 @@
       planeSize() {
         const r = preview.getBoundingClientRect();
         return [r.width, r.height];
+      },
+      cornerOffset(s) {
+        const [w, h] = this.planeSize();
+        const a = (clamp(s.dx * 0.05, -8, 8) * Math.PI) / 180;
+        const cx = -w / 2;
+        const cy = h / 2;
+        return [cx * Math.cos(a) - cy * Math.sin(a) - cx, cx * Math.sin(a) + cy * Math.cos(a) - cy];
       },
     };
   };
@@ -525,6 +551,11 @@
       s.reveal += ((s.visible ? 1 : 0) - s.reveal) * approach(s.visible ? 0.1 : 0.16, dt);
 
       preview.style.transform = `translate3d(${s.cx.toFixed(2)}px, ${s.cy.toFixed(2)}px, 0)`;
+      if (renderer) {
+        const [ox, oy] = renderer.cornerOffset(s);
+        preview.style.setProperty('--pl-ox', `${ox.toFixed(2)}px`);
+        preview.style.setProperty('--pl-oy', `${oy.toFixed(2)}px`);
+      }
       const drawing = renderer ? renderer.draw(s, dt) : false;
       const moving = Math.abs(vx) + Math.abs(vy) > 0.5 || Math.abs(s.dx) + Math.abs(s.dy) > 0.25;
 

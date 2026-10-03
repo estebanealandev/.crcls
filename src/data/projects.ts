@@ -82,61 +82,37 @@ export const PROJECTS: ProjectData[] = [
     year: 2026,
   },
   {
-    slug: 'aether',
+    slug: 'lawyi',
     dataWfPage: '69ea3b293f46d55a8da1996c',
     wfScript: '/js/webflow.e6aeb930.103a96742c08bc67.js',
+    // Capture of the live site's home hero (lawyi.app, 1440x810 @2x).
     heroImage: {
-      src: '/assets/images/pexels-cottonbro-10678368.webp',
+      src: '/assets/images/lawyi/lawyi-site-hero-1600.webp',
       sizes: '100vw',
       srcset:
-        '/assets/images/pexels-cottonbro-10678368-p-500.webp 500w, /assets/images/pexels-cottonbro-10678368-p-800.webp 800w, /assets/images/pexels-cottonbro-10678368-p-1080.webp 1080w, /assets/images/pexels-cottonbro-10678368-p-1600.webp 1600w, /assets/images/pexels-cottonbro-10678368-p-2000.webp 2000w, /assets/images/pexels-cottonbro-10678368-p-2600.webp 2600w, /assets/images/pexels-cottonbro-10678368-p-3200.webp 3200w, /assets/images/pexels-cottonbro-10678368.webp 4000w',
+        '/assets/images/lawyi/lawyi-site-hero-500.webp 500w, /assets/images/lawyi/lawyi-site-hero-800.webp 800w, /assets/images/lawyi/lawyi-site-hero-1080.webp 1080w, /assets/images/lawyi/lawyi-site-hero-1600.webp 1600w',
     },
     logoImage: null,
-    video: 'https://videos.pexels.com/video-files/10678346/10678346-uhd_1440_2732_25fps.mp4',
-    galleryImages: [
-      {
-        src: '/assets/images/pexels-cottonbro-10678366.webp',
-        sizes: '100vw',
-        srcset:
-          '/assets/images/pexels-cottonbro-10678366-p-500.webp 500w, /assets/images/pexels-cottonbro-10678366-p-800.webp 800w, /assets/images/pexels-cottonbro-10678366-p-1080.webp 1080w, /assets/images/pexels-cottonbro-10678366-p-1600.webp 1600w, /assets/images/pexels-cottonbro-10678366-p-2000.webp 2000w, /assets/images/pexels-cottonbro-10678366-p-2600.webp 2600w, /assets/images/pexels-cottonbro-10678366-p-3200.webp 3200w, /assets/images/pexels-cottonbro-10678366.webp 4000w',
-      },
-      {
-        src: '/assets/images/pexels-cottonbro-10678363.webp',
-        sizes: '100vw',
-        srcset:
-          '/assets/images/pexels-cottonbro-10678363-p-500.webp 500w, /assets/images/pexels-cottonbro-10678363-p-800.webp 800w, /assets/images/pexels-cottonbro-10678363-p-1080.webp 1080w, /assets/images/pexels-cottonbro-10678363-p-1600.webp 1600w, /assets/images/pexels-cottonbro-10678363-p-2000.webp 2000w, /assets/images/pexels-cottonbro-10678363-p-2600.webp 2600w, /assets/images/pexels-cottonbro-10678363-p-3200.webp 3200w, /assets/images/pexels-cottonbro-10678363.webp 4000w',
-      },
-    ],
-    siteUrl: null,
+    video: null,
+    galleryImages: [],
+    siteUrl: 'https://lawyi.app',
     year: 2026,
   },
   {
-    slug: 'nova',
+    slug: 'las-musas',
     dataWfPage: '69ea3b293f46d55a8da1996c',
     wfScript: '/js/webflow.e6aeb930.103a96742c08bc67.js',
+    // Capture of the live site's home hero (lasmusascr.com, 1440x810 @2x).
     heroImage: {
-      src: '/assets/images/Vintage-Lace-Portrait-alt.webp',
+      src: '/assets/images/las-musas/las-musas-site-hero-1600.webp',
       sizes: '100vw',
       srcset:
-        '/assets/images/Vintage-Lace-Portrait-alt-p-500.webp 500w, /assets/images/Vintage-Lace-Portrait-alt-p-800.webp 800w, /assets/images/Vintage-Lace-Portrait-alt-p-1080.webp 1080w, /assets/images/Vintage-Lace-Portrait-alt-p-1600.webp 1600w, /assets/images/Vintage-Lace-Portrait-alt-p-2000.webp 2000w, /assets/images/Vintage-Lace-Portrait-alt-p-2600.webp 2600w, /assets/images/Vintage-Lace-Portrait-alt-p-3200.webp 3200w, /assets/images/Vintage-Lace-Portrait-alt.webp 4800w',
+        '/assets/images/las-musas/las-musas-site-hero-500.webp 500w, /assets/images/las-musas/las-musas-site-hero-800.webp 800w, /assets/images/las-musas/las-musas-site-hero-1080.webp 1080w, /assets/images/las-musas/las-musas-site-hero-1600.webp 1600w',
     },
-    logoImage: '/assets/images/logo-5.webp',
+    logoImage: null,
     video: null,
-    galleryImages: [
-      {
-        src: '/assets/images/project-nova-01.webp',
-        sizes: '100vw',
-        srcset:
-          '/assets/images/project-nova-01-p-500.webp 500w, /assets/images/project-nova-01-p-800.webp 800w, /assets/images/project-nova-01-p-1080.webp 1080w, /assets/images/project-nova-01.webp 1536w',
-      },
-      {
-        src: '/assets/images/project-nova-02.webp',
-        sizes: '100vw',
-        srcset:
-          '/assets/images/project-nova-02-p-500.webp 500w, /assets/images/project-nova-02-p-800.webp 800w, /assets/images/project-nova-02-p-1080.webp 1080w, /assets/images/project-nova-02.webp 1536w',
-      },
-    ],
-    siteUrl: null,
+    galleryImages: [],
+    siteUrl: 'https://lasmusascr.com',
     year: 2026,
   },
   {
