@@ -1,6 +1,6 @@
 // Locale-independent metadata for every project: the home/work index lists and
 // the case-study pages under /project/<slug>.
-// All five pages share one layout (identical dataWfPage, node ids, and
+// All case-study pages share one layout (identical dataWfPage, node ids, and
 // structure — verified structurally near-100% identical), so they render
 // through a single Astro template (ProjectPage.astro) and only this data plus
 // the per-locale namespace in src/i18n/locales/projects/<slug>/ differ
@@ -40,11 +40,12 @@ export const PROJECTS: ProjectData[] = [
     slug: 'dentika',
     dataWfPage: '69ea3b293f46d55a8da1996c',
     wfScript: '/js/webflow.e6aeb930.103a96742c08bc67.js',
+    // Capture of the live site's home hero (dentikacr.com, 1440x810 @2x).
     heroImage: {
-      src: '/assets/images/dentika/dentika-hero-1600.webp',
+      src: '/assets/images/dentika/dentika-site-hero-1600.webp',
       sizes: '100vw',
       srcset:
-        '/assets/images/dentika/dentika-hero-500.webp 500w, /assets/images/dentika/dentika-hero-800.webp 800w, /assets/images/dentika/dentika-hero-1080.webp 1080w, /assets/images/dentika/dentika-hero-1600.webp 1600w',
+        '/assets/images/dentika/dentika-site-hero-500.webp 500w, /assets/images/dentika/dentika-site-hero-800.webp 800w, /assets/images/dentika/dentika-site-hero-1080.webp 1080w, /assets/images/dentika/dentika-site-hero-1600.webp 1600w',
     },
     logoImage: '/assets/images/dentika/dentika-hero-500.webp',
     video: null,
@@ -61,6 +62,23 @@ export const PROJECTS: ProjectData[] = [
       },
     ],
     siteUrl: 'https://dentikacr.com',
+    year: 2026,
+  },
+  {
+    slug: 'cafco',
+    dataWfPage: '69ea3b293f46d55a8da1996c',
+    wfScript: '/js/webflow.e6aeb930.103a96742c08bc67.js',
+    // Capture of the live site's home hero (cafcocr.com, 1440x810 @2x).
+    heroImage: {
+      src: '/assets/images/cafco/cafco-site-hero-1600.webp',
+      sizes: '100vw',
+      srcset:
+        '/assets/images/cafco/cafco-site-hero-500.webp 500w, /assets/images/cafco/cafco-site-hero-800.webp 800w, /assets/images/cafco/cafco-site-hero-1080.webp 1080w, /assets/images/cafco/cafco-site-hero-1600.webp 1600w',
+    },
+    logoImage: null,
+    video: null,
+    galleryImages: [],
+    siteUrl: 'https://cafcocr.com',
     year: 2026,
   },
   {
