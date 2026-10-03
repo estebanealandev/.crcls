@@ -9,6 +9,7 @@ import compression from 'compression';
 const PORT = process.env.PORT || 3000;
 const LOCALE_PREFIXES = ['es', 'fr', 'de', 'pt'];
 const LOCALE_PREFIX_RE = new RegExp(`^/(${LOCALE_PREFIXES.join('|')})(/|$)`);
+const PROJECT_PATH_RE = new RegExp(`^(?:/(${LOCALE_PREFIXES.join('|')}))?/project(?:/|$)`);
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'hello@circlescr.com';
 const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Circles <hello@circlescr.com>';
@@ -396,9 +397,11 @@ createServer((req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=()');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()');
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   res.setHeader('X-XSS-Protection', '0');
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
 
   const parsedUrl = safeParseUrl(req);
   if (!parsedUrl) {
@@ -416,6 +419,17 @@ createServer((req, res) => {
   }
   if (req.method === 'POST' && pathname === '/api/subscribe') {
     handleFormSubmission(req, res, 'subscribe');
+    return;
+  }
+
+  // Case-study pages are switched off (PROJECT_PAGES_ENABLED in
+  // src/data/projects.ts); send their old URLs to the work index.
+  const projectMatch = pathname.match(PROJECT_PATH_RE);
+  if (projectMatch) {
+    res.statusCode = 301;
+    res.setHeader('Location', projectMatch[1] ? `/${projectMatch[1]}/work/` : '/work/');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.end();
     return;
   }
 

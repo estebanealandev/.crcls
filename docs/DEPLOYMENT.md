@@ -1,6 +1,17 @@
 # Deployment — Firebase Hosting + Cloud Functions
 
-Current infrastructure for circlescr.com. Supersedes everything in
+> **Production today is Railway, not Firebase.** `circlescr.com` is still
+> served by Railway (behind Cloudflare), which auto-deploys `main` using
+> `railway.json` + `railpack.json`: `npm run build`, then `node server.mjs`.
+> `server.mjs` sends the security headers, hashes the CSP from the built HTML
+> at startup (so it cannot drift), serves `/api/contact` and `/api/subscribe`,
+> and 301s the retired `/project/*` URLs. Keep `railway.json`, the `start`
+> script and the `sirv`/`compression` dependencies until the domain is moved
+> to Firebase: without them Railway falls back to serving `dist/` as a bare
+> static site, with no security headers and no form endpoints.
+> Everything below describes the Firebase target (`circlescr-web.web.app`).
+
+Target infrastructure for circlescr.com. Supersedes everything in
 [`docs/archive/`](archive/), which describes the previous self-hosted Node
 deployment.
 
