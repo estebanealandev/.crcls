@@ -4,6 +4,10 @@
  * its edges trail the motion through a damped spring, so it wobbles back into
  * shape when the cursor stops. Switching rows dissolves between textures.
  * Without WebGL (or with reduced motion) it falls back to the DOM image stack.
+ *
+ * The sheet sits beside the pointer (right of it, or left when there is no
+ * room), so the row being browsed stays readable, and each row change plays a
+ * short synthesized click on desktop.
  */
 (() => {
   const lists = document.querySelectorAll('[data-project-list]');
@@ -284,7 +288,7 @@
         cleared = false;
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.uniform2f(u.uRes, width, height);
-        gl.uniform2f(u.uCenter, s.x, s.y);
+        gl.uniform2f(u.uCenter, s.cx, s.cy);
         gl.uniform2f(u.uSize, planeW, planeH);
         gl.uniform2f(u.uDeform, s.dx, s.dy);
         const reveal = easeInOut(clamp(s.reveal, 0, 1));
@@ -337,6 +341,74 @@
     };
   };
 
+  /* ---------- Row click sound ---------- */
+
+  // A short synthesized tick (Web Audio, no file to load): band-passed noise
+  // for the transient plus a falling sine for body, with slight pitch jitter so
+  // a sweep doesn't sound mechanical. Browsers only allow audio after the
+  // visitor's first click or key press on the page, so the context is created
+  // or resumed on that gesture; until then rows switch silently.
+  const createClickSound = () => {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return () => {};
+    let ctx = null;
+    let noise = null;
+    let lastAt = 0;
+
+    const unlock = () => {
+      try {
+        if (!ctx) {
+          ctx = new AudioCtx({ latencyHint: 'interactive' });
+          const length = Math.round(ctx.sampleRate * 0.04);
+          noise = ctx.createBuffer(1, length, ctx.sampleRate);
+          const data = noise.getChannelData(0);
+          for (let i = 0; i < length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 4);
+        }
+        if (ctx.state === 'suspended') ctx.resume();
+      } catch {
+        ctx = null;
+      }
+    };
+    ['pointerdown', 'keydown'].forEach((type) =>
+      window.addEventListener(type, unlock, { capture: true, passive: true })
+    );
+
+    return () => {
+      if (!ctx || ctx.state !== 'running') return;
+      const now = ctx.currentTime;
+      if (now - lastAt < 0.05) return; // fast sweeps tick, they don't buzz
+      lastAt = now;
+      const jitter = 0.92 + Math.random() * 0.16;
+
+      const src = ctx.createBufferSource();
+      src.buffer = noise;
+      src.playbackRate.value = jitter;
+      const band = ctx.createBiquadFilter();
+      band.type = 'bandpass';
+      band.frequency.value = 2600 * jitter;
+      band.Q.value = 1.4;
+      const clickGain = ctx.createGain();
+      clickGain.gain.setValueAtTime(0.0001, now);
+      clickGain.gain.exponentialRampToValueAtTime(0.16, now + 0.002);
+      clickGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.03);
+      src.connect(band).connect(clickGain).connect(ctx.destination);
+      src.start(now);
+      src.stop(now + 0.045);
+
+      const body = ctx.createOscillator();
+      body.type = 'sine';
+      body.frequency.setValueAtTime(1500 * jitter, now);
+      body.frequency.exponentialRampToValueAtTime(420 * jitter, now + 0.025);
+      const bodyGain = ctx.createGain();
+      bodyGain.gain.setValueAtTime(0.0001, now);
+      bodyGain.gain.exponentialRampToValueAtTime(0.05, now + 0.002);
+      bodyGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035);
+      body.connect(bodyGain).connect(ctx.destination);
+      body.start(now);
+      body.stop(now + 0.045);
+    };
+  };
+
   /* ---------- Preview controller ---------- */
 
   const initPreview = (list) => {
@@ -351,9 +423,11 @@
     // position:fixed into "fixed to that section"; live under <body> instead.
     document.body.appendChild(preview);
 
-    // Motion state: (x, y) chases the pointer; (dx, dy) is the sheet's
-    // deformation, driven by a damped spring toward the current lag.
-    const s = { x: 0, y: 0, dx: 0, dy: 0, reveal: 0, visible: false, time: 0 };
+    // Motion state: (x, y) chases the pointer; (cx, cy) is the sheet's centre,
+    // `off` px beside it; (dx, dy) is the deformation, driven by a damped
+    // spring toward the current lag.
+    const s = { x: 0, y: 0, off: 0, cx: 0, cy: 0, dx: 0, dy: 0, reveal: 0, visible: false, time: 0 };
+    let side = 1; // 1: sheet right of the pointer, -1: left of it (no room on the right)
     let vx = 0;
     let vy = 0;
     let tx = 0;
@@ -402,6 +476,19 @@
       ).observe(list);
     }
 
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const playClick = finePointer.matches ? createClickSound() : () => {};
+
+    const GAP = 28; // px between the pointer and the sheet's near edge
+    const EDGE = 16; // px kept clear of the viewport edge
+    // Pick the side with room, with hysteresis so it can't flicker at the boundary.
+    const updateSide = (w) => {
+      const room = window.innerWidth - (GAP + w + EDGE);
+      if (side > 0 && tx > room) side = -1;
+      else if (side < 0 && tx < room - 80) side = 1;
+      return side * (GAP + w / 2);
+    };
+
     const STIFFNESS = 170;
     const DAMPING = 11; // under-damped (ζ≈0.42): a short jelly wobble when the cursor stops
     const STEP = 1 / 120;
@@ -419,7 +506,13 @@
       s.y += (ty - s.y) * follow;
 
       const [w, h] = renderer ? renderer.planeSize() : [1, 1];
-      const targetX = still ? 0 : clamp(tx - s.x, -w * 0.32, w * 0.32);
+      const offTarget = updateSide(w);
+      s.off += (offTarget - s.off) * (still ? 1 : approach(0.14, dt));
+      s.cx = s.x + s.off;
+      s.cy = s.y;
+
+      // Lag behind the pointer, plus any side switch in progress, bends the sheet.
+      const targetX = still ? 0 : clamp(tx - s.x + offTarget - s.off, -w * 0.32, w * 0.32);
       const targetY = still ? 0 : clamp(ty - s.y, -h * 0.42, h * 0.42);
       for (let t = 0; t < dt; t += STEP) {
         const h2 = Math.min(STEP, dt - t);
@@ -431,7 +524,7 @@
 
       s.reveal += ((s.visible ? 1 : 0) - s.reveal) * approach(s.visible ? 0.1 : 0.16, dt);
 
-      preview.style.transform = `translate3d(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px, 0)`;
+      preview.style.transform = `translate3d(${s.cx.toFixed(2)}px, ${s.cy.toFixed(2)}px, 0)`;
       const drawing = renderer ? renderer.draw(s, dt) : false;
       const moving = Math.abs(vx) + Math.abs(vy) > 0.5 || Math.abs(s.dx) + Math.abs(s.dy) > 0.25;
 
@@ -454,6 +547,7 @@
         renderer.setActive(activeIndex, !s.visible && s.reveal < 0.05);
         preview.toggleAttribute('data-linked', row.tagName === 'A');
         activeRow = row;
+        playClick();
       }
       if (s.visible) return;
       if (s.reveal < 0.05) {
@@ -461,6 +555,10 @@
         // with a small upward kick so the sheet settles in with a wobble.
         s.x = tx;
         s.y = ty;
+        side = 1; // a fresh appearance prefers the right, flipping only if it must
+        if (renderer) s.off = updateSide(renderer.planeSize()[0]);
+        s.cx = s.x + s.off;
+        s.cy = s.y;
         s.dx = 0;
         s.dy = 0;
         vx = 0;
@@ -468,7 +566,6 @@
       }
       s.visible = true;
       preview.classList.add('is-visible');
-      document.documentElement.classList.add('pl-previewing');
       kick();
     };
 
@@ -477,7 +574,6 @@
       s.visible = false;
       activeRow = null;
       preview.classList.remove('is-visible');
-      document.documentElement.classList.remove('pl-previewing');
       kick();
     };
 
@@ -492,11 +588,11 @@
         show(row);
       });
 
-      // Keyboard users get the same preview, parked over the focused row.
+      // Keyboard users get the same preview, parked beside the project name.
       row.addEventListener('focus', () => {
         if (!row.matches(':focus-visible')) return;
         const r = row.getBoundingClientRect();
-        tx = r.left + r.width * 0.62;
+        tx = r.left + r.width * 0.34;
         ty = r.top + r.height / 2;
         show(row);
       });

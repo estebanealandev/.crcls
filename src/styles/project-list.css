@@ -241,7 +241,7 @@
 
 /* ---------- Cursor preview ---------- */
 
-/* Follows the cursor. Holds the DOM fallback image stack and the pill; with
+/* Sits beside the cursor. Holds the DOM fallback image stack and the pill; with
    WebGL (.is-gl) the image itself is drawn on .pl-canvas and this box only
    provides the size and the pill. */
 .pl-preview {
@@ -305,7 +305,7 @@
   pointer-events: none;
 }
 
-/* Centred on the cursor, like the site's "View Project" pill (.view-work / .pill-text). */
+/* Centred on the sheet; styled like the site's "View Project" pill (.view-work / .pill-text). */
 .pl-preview__pill {
   position: absolute;
   top: 0;
@@ -340,15 +340,6 @@
   opacity: 1;
   scale: 1;
   transition-delay: .1s;
-}
-
-/* The crosshair's centre square makes way for the preview, as it did for the old cards. */
-.plus-wrapper {
-  transition: scale .25s ease;
-}
-
-html.pl-previewing .plus-wrapper {
-  scale: 0;
 }
 
 /* ---------- Touch: no cursor, so the thumbnail moves into the row ---------- */
