@@ -241,13 +241,16 @@
 
 /* ---------- Cursor preview ---------- */
 
+/* Follows the cursor. Holds the DOM fallback image stack and the pill; with
+   WebGL (.is-gl) the image itself is drawn on .pl-canvas and this box only
+   provides the size and the pill. */
 .pl-preview {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
-  width: clamp(16rem, 22vw, 24rem);
-  aspect-ratio: 5 / 4;
+  z-index: 1001;
+  width: clamp(18rem, 27vw, 30rem);
+  aspect-ratio: 16 / 9;
   pointer-events: none;
   will-change: transform;
 }
@@ -270,11 +273,9 @@
   clip-path: inset(0 0 0 0);
 }
 
-.pl-preview__frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgb(0 0 0 / 50%), transparent 45%);
+.pl-preview.is-gl .pl-preview__frame {
+  opacity: 0 !important;
+  transition: none;
 }
 
 .pl-preview__img {
@@ -293,17 +294,28 @@
   scale: 1;
 }
 
-/* Mirrors the site's cursor pill (.view-work / .pill-text). */
+/* Full-viewport WebGL layer: the sheet can bend past its box without clipping.
+   Sits under the crosshair (z 1000) and the pill. */
+.pl-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+/* Centred on the cursor, like the site's "View Project" pill (.view-work / .pill-text). */
 .pl-preview__pill {
   position: absolute;
-  left: .75rem;
-  bottom: .75rem;
+  top: 0;
+  left: 0;
   z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: .45rem;
-  padding: .5rem .85rem;
-  background: #0003;
+  padding: .55rem .95rem;
+  background: rgb(0 0 0 / 38%);
   border: 1px solid #ffffff2e;
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
@@ -311,9 +323,10 @@
   font-size: var(--text-field);
   line-height: 1;
   white-space: nowrap;
+  translate: -50% -50%;
   opacity: 0;
-  translate: 0 .6rem;
-  transition: opacity .35s ease, translate .7s cubic-bezier(.19, 1, .22, 1);
+  scale: .6;
+  transition: opacity .25s ease, scale .6s cubic-bezier(.19, 1, .22, 1);
 }
 
 .pl-preview__pill-text {
@@ -323,16 +336,26 @@
   letter-spacing: -.1px;
 }
 
-.pl-preview[data-linked] .pl-preview__pill {
+.pl-preview.is-visible[data-linked] .pl-preview__pill {
   opacity: 1;
-  translate: 0 0;
-  transition-delay: .12s;
+  scale: 1;
+  transition-delay: .1s;
+}
+
+/* The crosshair's centre square makes way for the preview, as it did for the old cards. */
+.plus-wrapper {
+  transition: scale .25s ease;
+}
+
+html.pl-previewing .plus-wrapper {
+  scale: 0;
 }
 
 /* ---------- Touch: no cursor, so the thumbnail moves into the row ---------- */
 
 @media (hover: none) {
-  .pl-preview {
+  .pl-preview,
+  .pl-canvas {
     display: none !important;
   }
 

@@ -1,7 +1,8 @@
 ---
 // Editorial index of projects: one row per project, linking out to the
-// project's live site. On fine pointers a thumbnail follows the cursor
-// (public/js/project-list.js); on touch it is inlined at the start of each row.
+// project's live site. On fine pointers a 16:9 thumbnail follows the cursor and
+// bends like a liquid while dragged (WebGL, public/js/project-list.js); on
+// touch it is inlined at the start of each row.
 import '../styles/project-list.css';
 import { type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
@@ -80,16 +81,16 @@ const rows = projects.map((p, i) => {
           data-pl-media
           src={row.heroImage.src}
           srcset={row.heroImage.srcset}
-          sizes="(min-width: 1600px) 24rem, 22vw"
+          sizes="(min-width: 1600px) 30rem, 27vw"
           alt=""
           loading="lazy"
           decoding="async"
         />
       ))}
-      <span class="pl-preview__pill">
-        <span class="pl-preview__pill-text">{t.projectList.visitSite}</span>
-        <span aria-hidden="true">↗</span>
-      </span>
     </div>
+    <span class="pl-preview__pill">
+      <span class="pl-preview__pill-text">{t.projectList.visitSite}</span>
+      <span aria-hidden="true">↗</span>
+    </span>
   </div>
 </div>
