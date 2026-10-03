@@ -1,5 +1,6 @@
 ---
 import { LOCALE_META, localizedAlternates, type Locale } from '../i18n/utils';
+import { versioned } from '../lib/assets';
 
 interface Props {
   locale: Locale;
@@ -25,7 +26,7 @@ const alternates = localizedAlternates(canonicalPath);
   </select>
 </div>
 
-<script is:inline defer src="/js/language-switcher.js"></script>
+<script is:inline defer src={versioned("/js/language-switcher.js")}></script>
 
 <style>
   .lang-switcher {

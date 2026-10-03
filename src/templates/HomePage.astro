@@ -12,6 +12,7 @@ import '../styles/services-hover.css';
 import { localizedPath, type Locale } from '../i18n/utils';
 import { dictionaries, slugDictionaries } from '../i18n/dictionaries';
 import { localizedAbsoluteUrl, jsonLdString, BUSINESS_ID, WEBSITE_ID } from '../lib/seo';
+import { versioned } from '../lib/assets';
 import { requirePost, postImageSrcset } from '../data/posts';
 import homeEn from '../i18n/locales/home/en.json';
 
@@ -322,5 +323,5 @@ const testimonials = t.testimonials.map((testimonial, i) => {
   <PlusLineGrid />
   <Preloader showLogoAnimation />
   <HoverTooltip locale={locale} hoverCards="post" />
-  <script is:inline src="/js/services-hover.js"></script>
+  <script is:inline src={versioned("/js/services-hover.js")}></script>
 </Layout>

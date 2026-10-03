@@ -2,6 +2,7 @@
 import '../../styles/hero-extended.css';
 import type { Locale } from '../../i18n/utils';
 import { dictionaries } from '../../i18n/dictionaries';
+import { versioned } from '../../lib/assets';
 import homeEn from '../../i18n/locales/home/en.json';
 
 const DICT = dictionaries<typeof homeEn>('home');
@@ -135,4 +136,4 @@ const labelsJson = JSON.stringify(t.cursorLabels);
   </div>
 </div>
 
-<script is:inline src="/js/hero-extended.js"></script>
+<script is:inline src={versioned("/js/hero-extended.js")}></script>
